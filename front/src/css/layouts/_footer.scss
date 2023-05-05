@@ -2,7 +2,64 @@
     background: #000;
 
     &-content {
+        position: relative;
         max-width: 1100px;
         margin:0 auto;
+        padding: 75px 0;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            background: $tertiary;
+            width: 100px;
+            height: 4px;
+        }
+
+        .nav {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .footer-bottom {
+            display: flex;
+            font-size: 0.9em;
+            margin-top: 35px;
+            line-height: 25px;
+
+            &-left {
+                display: flex;
+                flex: 1 1 0;
+                gap: 55px 0;
+                flex-direction: column;
+                color: rgba(255,255,255, 0.5);
+            }
+
+            &-right {
+                display: flex;
+                align-items: center;
+                flex: 1 1 0;
+                justify-content: flex-end;
+
+                .footer-social-list{
+                    display: flex;
+                    gap: 15px;
+
+                    &-item {
+                        cursor: pointer;
+
+                        & svg path {
+                            transition: all ease-in-out 0.2s;
+
+                            &:hover {
+                                fill: $tertiary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

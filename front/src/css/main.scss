@@ -1,5 +1,6 @@
 //Base
 @import './base/_reset',
+        './base/_base',
         './base/_colors',
         './base/_typography';
         
@@ -12,7 +13,6 @@
         './layouts/_footer';
 
 //Components
-// @import './components/_app';
 
 //Pages
 @import './pages/_homepage';

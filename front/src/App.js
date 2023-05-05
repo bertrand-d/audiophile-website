@@ -1,12 +1,12 @@
 import './css/main.scss'
+import Footer from './layouts/Footer';
 import Header from './layouts/Header'
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <Header/>
+      <Footer/>
     </div>
   );
 }
-
-export default App;

@@ -6,7 +6,7 @@ import {ReactComponent as Twitter} from '../assets/icons/twitter.svg'
 export default function Footer() {
     return (
         <footer className="footer">
-            <div className="footer-content">
+            <div className="footer-content max-content">
                 <Nav isHeader={false} />
                 <div className="footer-bottom">
                     <div className="footer-bottom-left">

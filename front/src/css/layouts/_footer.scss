@@ -1,10 +1,8 @@
 .footer {
-    background: #000;
+    background: $primary;
 
     &-content {
         position: relative;
-        max-width: 1100px;
-        margin:0 auto;
         padding: 75px 0;
 
         &:before {

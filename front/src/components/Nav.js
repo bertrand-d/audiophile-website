@@ -5,7 +5,7 @@ export default function Nav(props) {
     let isHeader = props.isHeader
 
     return (
-        <nav className="nav">
+        <nav className="nav max-content">
             <ul className="nav-list">
                 <li className="nav-list-item logo">
                     <Logo />

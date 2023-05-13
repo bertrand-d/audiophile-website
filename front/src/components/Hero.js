@@ -1,7 +1,7 @@
 export default function Hero() {
     return (
         <section className="section-hero">
-            <div className="section-hero-content">
+            <div className="section-hero-content max-content">
                 <span className="section-hero-new">New product</span>
                 <h1 className="section-hero-title">
                     <span className="section-hero-product-name">

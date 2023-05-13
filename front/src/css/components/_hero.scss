@@ -1,0 +1,41 @@
+.section-hero {
+    background: $primary;
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        height: 630px;
+        padding: 130px 0;
+        color: white;
+        background: center / cover no-repeat url('../../assets/home/desktop/image-hero.jpg');
+    }
+
+    &-new {
+        text-transform: uppercase;
+        letter-spacing: 10px;
+        opacity: 50%;
+    }
+
+    &-title {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 3.5em;
+        font-weight: 700;
+    }
+
+    &-product-name {
+        display: block;
+    }
+
+    &-description {
+        max-width: 350px;
+        line-height: 25px;
+        font-size: 0.9em;
+    }
+
+    .button-primary {
+        margin-top: 20px;
+    }
+
+}

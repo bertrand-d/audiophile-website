@@ -13,7 +13,9 @@
         './layouts/_footer';
 
 //Components
-@import './components/_nav';
+@import './components/buttons',
+        './components/hero',
+        './components/_nav';
 
 //Pages
 @import './pages/_homepage';

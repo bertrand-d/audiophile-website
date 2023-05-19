@@ -1,4 +1,5 @@
 import { ReactComponent as Arrow } from '../assets/icons/icon-arrow-right.svg'
+import { Link } from 'react-router-dom';
 
 export default function Categories(props) {
 
@@ -7,7 +8,7 @@ export default function Categories(props) {
             {
                 props.categoryData.map((category, index) => {
                     return (
-                        <a key={index} href="product-list" className="category">
+                        <Link to={"products-list/" + category.name} key={index} className="category">
                             <div className="category-content">
                                 <div className="category-picture-container">
                                     <img className="category-picture" src={category.image} alt={category.name} />
@@ -16,7 +17,7 @@ export default function Categories(props) {
                                 <span className="category-title">{category.name}</span>
                                 <span className="category-shop">Shop <Arrow /></span>
                             </div>
-                        </a>
+                        </Link>
                     )
                 })
             }

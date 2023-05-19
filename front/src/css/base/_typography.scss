@@ -16,3 +16,41 @@ h2 {
 p {
     margin: 0;
 }
+
+.big-title {
+    font-size: 3.5em;
+    line-height: 58px;
+    letter-spacing: 2px;
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &.white {
+        color: #fff;
+    }
+}
+
+.medium-title {
+    font-size: 2.5em;
+    line-height: 44px;
+    letter-spacing: 1.43px;
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &.white {
+        color: #fff;
+    }
+}
+
+.small-title {
+    font-size: 1.75em;
+    letter-spacing: 2px;
+    color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &.white {
+        color: #fff;
+    }
+}

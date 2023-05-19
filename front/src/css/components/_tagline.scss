@@ -1,0 +1,11 @@
+.section-tagline {
+    display: flex;
+    gap: 125px;
+    margin-bottom: 200px;
+    align-items: center;
+
+    &-left, 
+    &-right {
+        flex: 1;
+    }
+}

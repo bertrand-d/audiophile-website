@@ -14,10 +14,11 @@
         './layouts/_footer';
 
 //Components
-@import './components/buttons',
-        './components/categories',
-        './components/hero',
-        './components/_nav';
+@import './components/_buttons',
+        './components/_categories',
+        './components/_hero',
+        './components/_nav',
+        './components/_tagline';
 
 //Pages
 @import './pages/_homepage';

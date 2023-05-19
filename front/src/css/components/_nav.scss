@@ -1,7 +1,6 @@
 .nav {
     padding-bottom: 35px;
     border-bottom: solid 1px rgba(255, 255, 255, 0.2);
-    color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.8em;
@@ -14,10 +13,14 @@
 
         &-item {
             cursor: pointer;
-            transition: all ease-in-out 0.1s;
 
-            &:hover {
-                color: $tertiary;
+            a {
+                color: #fff;
+                transition: all ease-in-out 0.1s;
+
+                &:hover {
+                    color: $tertiary;
+                }
             }
 
             &.logo {

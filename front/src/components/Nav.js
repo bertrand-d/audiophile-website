@@ -1,5 +1,6 @@
-import {ReactComponent as Logo} from '../assets/icons/logo.svg'
-import {ReactComponent as Cart} from '../assets/icons/cart.svg'
+import { ReactComponent as Logo } from '../assets/icons/logo.svg'
+import { ReactComponent as Cart } from '../assets/icons/cart.svg'
+import { Link } from 'react-router-dom';
 
 export default function Nav(props) {
     let isHeader = props.isHeader
@@ -8,16 +9,38 @@ export default function Nav(props) {
         <nav className="nav max-content">
             <ul className="nav-list">
                 <li className="nav-list-item logo">
-                    <Logo />
+                    <Link to="/">
+                        <Logo />
+                    </Link>
                 </li>
-                <li className="nav-list-item">Home</li>
-                <li className="nav-list-item">Headphones</li>
-                <li className="nav-list-item">Speakers</li>
-                <li className="nav-list-item">Earphones</li>
+                <li className="nav-list-item">
+                    <Link to="/">
+                        Home
+                    </Link>
+                </li>
+                <li className="nav-list-item">
+                    <Link to="/product-list">
+                        Headphones
+                    </Link>
+                </li>
+                <li className="nav-list-item">
+                    <Link to="/product-list">
+                        Speakers
+                    </Link>
+                </li>
+                <li className="nav-list-item">
+                    <Link to="/product-list">
+                        Earphones
+                    </Link>
+                </li>
                 {
                     isHeader &&
-                    <li className="nav-list-item cart"><Cart /></li>
-                }        
+                    <li className="nav-list-item cart">
+                        <Link to="/cart">
+                            <Cart />
+                        </Link>
+                    </li>
+                }
             </ul>
         </nav>
     )

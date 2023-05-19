@@ -1,5 +1,6 @@
 import Categories from "../components/Categories"
 import Hero from "../components/Hero"
+import Tagline from "../components/Tagline";
 
 import { useEffect, useState } from "react";
 export default function Homepage() {
@@ -23,6 +24,7 @@ export default function Homepage() {
         <main className="homepage">
             <Hero />
             <Categories categoryData = {data.categories || []} />
+            <Tagline/>
         </main>
     )
 }

@@ -7,7 +7,7 @@ export default function Categories(props) {
             {
                 props.categoryData.map((category, index) => {
                     return (
-                        <a key={index} href={category.name} className="category">
+                        <a key={index} href="product-list" className="category">
                             <div className="category-content">
                                 <div className="category-picture-container">
                                     <img className="category-picture" src={category.image} alt={category.name} />

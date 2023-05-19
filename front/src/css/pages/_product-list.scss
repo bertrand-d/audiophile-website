@@ -1,0 +1,11 @@
+.product-list {
+    &-title-container {
+        margin-bottom: 160px;
+        background: $primary;
+        text-align: center;
+    }
+
+    &-title {
+        padding: 100px;
+    }
+}

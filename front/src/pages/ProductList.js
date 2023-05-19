@@ -21,8 +21,13 @@ export default function ProductList() {
 
     return (
         <main className="product-list">
-            <Categories categoryData = {data.categories || []} />
-            <Tagline/>
+            <div className="product-list-title-container">
+                <div className="product-list-title medium-title white max-content">
+                    <h1>Earphones</h1>
+                </div>
+            </div>
+            <Categories categoryData={data.categories || []} />
+            <Tagline />
         </main>
     )
 }

@@ -1,7 +1,7 @@
 import Categories from "../components/Categories"
 import Tagline from "../components/Tagline";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 export default function ProductList() {
 
     const [data, setData] = useState([])
@@ -19,6 +19,8 @@ export default function ProductList() {
         fetchJson()
     }, [])
 
+    console.log(data)
+
     return (
         <main className="product-list">
             <div className="product-list-title-container">
@@ -27,51 +29,31 @@ export default function ProductList() {
                 </div>
             </div>
             <div className="product-list-container max-content">
-                <article className="product-list-item">
-                    <div className="product-list-item-image">
-                        <img src ="../assets/product-xx99-mark-one-headphones/desktop/image-product.jpg"/>
-                    </div>
-                    <div className="product-list-item-informations">
-                        <span>New product</span>
-                        <h2 className="medium-title">XX99 Mark II</h2>
-                        <p>The new XX99 Mark II headphones is the pinnacle of
-                            pristine audio. It redefines your premium headphone
-                            experience by reproducing the balanced depth and
-                            precision of studio-quality sound.
-                        </p>
-                        <a className="button-primary">See product</a>
-                    </div>
-                </article>
-                <article className="product-list-item">
-                    <div className="product-list-item-image">
-                        <img src ="../assets/product-xx99-mark-one-headphones/desktop/image-product.jpg"/>
-                    </div>
-                    <div className="product-list-item-informations">
-                        <span>New product</span>
-                        <h2 className="medium-title">XX99 Mark II</h2>
-                        <p>The new XX99 Mark II headphones is the pinnacle of
-                            pristine audio. It redefines your premium headphone
-                            experience by reproducing the balanced depth and
-                            precision of studio-quality sound.
-                        </p>
-                        <a className="button-primary">See product</a>
-                    </div>
-                </article>
-                <article className="product-list-item">
-                    <div className="product-list-item-image">
-                        <img src ="../assets/product-xx99-mark-one-headphones/desktop/image-product.jpg"/>
-                    </div>
-                    <div className="product-list-item-informations">
-                        <span>New product</span>
-                        <h2 className="medium-title">XX99 Mark II</h2>
-                        <p>The new XX99 Mark II headphones is the pinnacle of
-                            pristine audio. It redefines your premium headphone
-                            experience by reproducing the balanced depth and
-                            precision of studio-quality sound.
-                        </p>
-                        <a className="button-primary">See product</a>
-                    </div>
-                </article>
+                {
+                    React.Children.toArray(data.products?.map((product) => {
+                        return (
+                            <article className="product-list-item">
+                                <div className="product-list-item-image">
+                                    <img src={product.image.desktop} />
+                                </div>
+                                <div className="product-list-item-informations">
+                                    {
+                                        product.new &&
+                                        <span className="new-title">New product</span>
+                                    }
+                                    <h2 className="medium-title">
+                                        <span className="product-list-item-product-name">{product.name}</span>
+                                        <span>{product.category}</span>
+                                    </h2>
+                                    <p>
+                                        {product.description}
+                                    </p>
+                                    <a className="button-primary">See product</a>
+                                </div>
+                            </article>
+                        )
+                    })) 
+                }
             </div>
             <Categories categoryData={data.categories || []} />
             <Tagline />

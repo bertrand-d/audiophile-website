@@ -17,6 +17,15 @@ p {
     margin: 0;
 }
 
+.new-title {
+    display: inline-block;
+    font-size: 0.9em;
+    letter-spacing: 10px;
+    color: $tertiary;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
 .big-title {
     font-size: 3.5em;
     line-height: 58px;

@@ -19,17 +19,17 @@ export default function Nav(props) {
                     </Link>
                 </li>
                 <li className="nav-list-item">
-                    <Link to="/product-list">
+                    <Link to="/product-list/Headphones">
                         Headphones
                     </Link>
                 </li>
                 <li className="nav-list-item">
-                    <Link to="/product-list">
+                    <Link to="/product-list/Speakers">
                         Speakers
                     </Link>
                 </li>
                 <li className="nav-list-item">
-                    <Link to="/product-list">
+                    <Link to="/product-list/Earphones">
                         Earphones
                     </Link>
                 </li>

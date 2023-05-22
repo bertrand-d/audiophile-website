@@ -8,7 +8,7 @@ export default function Categories(props) {
                 props.categoryData.map((category, index) => {
                     return (
                         //todo react children for key
-                        <Link to={"/product-list"} key={index} className="category">
+                        <Link to={`/product-list/${category.name}`} key={index} className="category">
                             <div className="category-content">
                                 <div className="category-picture-container">
                                     <img className="category-picture" src={category.image} alt={category.name} />

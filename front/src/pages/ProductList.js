@@ -1,12 +1,13 @@
 import Categories from "../components/Categories"
 import Tagline from "../components/Tagline";
-
+import { useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react";
 export default function ProductList() {
 
+    const { category } = useParams()
     const [data, setData] = useState([])
     const fetchJson = () => {
-        fetch('./data.json')
+        fetch('http://localhost:3000/data.json')
             .then(response => {
                 return response.json();
             }).then(response => {
@@ -19,18 +20,17 @@ export default function ProductList() {
         fetchJson()
     }, [])
 
-    console.log(data)
-
     return (
         <main className="product-list">
             <div className="product-list-title-container">
                 <div className="product-list-title max-content">
-                    <h1 className="medium-title white">Headphones</h1>
+                    <h1 className="medium-title white">{category}</h1>
                 </div>
             </div>
             <div className="product-list-container max-content">
                 {
                     React.Children.toArray(data.products?.map((product) => {
+                        if(category === product.category){
                         return (
                             <article className="product-list-item">
                                 <div className="product-list-item-image">
@@ -52,6 +52,7 @@ export default function ProductList() {
                                 </div>
                             </article>
                         )
+                    }
                     })) 
                 }
             </div>

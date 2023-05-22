@@ -13,7 +13,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/product-list" element={<ProductList />} />
+        <Route path="/product-list/:category" element={<ProductList />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />

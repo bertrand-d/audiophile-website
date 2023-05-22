@@ -7,6 +7,7 @@ import ProductList from './pages/ProductList';
 import Cart from './pages/Cart';
 
 export default function App() {
+  //todo data ici en contexte
   return (
     <div className="App">
       <Header />

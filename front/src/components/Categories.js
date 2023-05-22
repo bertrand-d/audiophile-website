@@ -2,12 +2,12 @@ import { ReactComponent as Arrow } from '../assets/icons/icon-arrow-right.svg'
 import { Link } from 'react-router-dom';
 
 export default function Categories(props) {
-
     return (
         <section className="section-categories max-content">
             {
                 props.categoryData.map((category, index) => {
                     return (
+                        //todo react children for key
                         <Link to={"/product-list"} key={index} className="category">
                             <div className="category-content">
                                 <div className="category-picture-container">

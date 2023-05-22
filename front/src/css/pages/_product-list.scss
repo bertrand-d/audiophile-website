@@ -8,4 +8,21 @@
     &-title {
         padding: 100px;
     }
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        gap: 160px;
+        margin-bottom: 160px;
+    }
+
+    &-item {
+        display: flex;
+        gap: 125px;
+        align-items: center;
+
+        &:nth-child(odd){
+            flex-direction: row-reverse;
+        }
+    }
 }

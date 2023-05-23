@@ -4,7 +4,10 @@ import { Navigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react";
 export default function ProductList() {
 
+    //category in url
     const { category } = useParams()
+
+    //data from fetch
     const [data, setData] = useState([])
 
     const fetchJson = () => {
@@ -19,10 +22,13 @@ export default function ProductList() {
     }
     useEffect(() => {
         fetchJson()
-
     }, [])
+    
+    if (data.categories) {
+        //sort all element with "new" as true first
+        const sortTrueFirst = data.products.sort((a, b) => b.new - a.new);
 
-    if(data.categories) {
+        //know if category name in url exist in data. if true, display the page, else redirect
         const isFound = data.categories.some(element => {
             if (element.name === category) {
                 return true
@@ -30,7 +36,7 @@ export default function ProductList() {
             return false
         })
 
-        if(isFound) {
+        if (isFound) {
             return (
                 <main className="product-list">
                     <div className="product-list-title-container">
@@ -40,7 +46,7 @@ export default function ProductList() {
                     </div>
                     <div className="product-list-container max-content">
                         {
-                            React.Children.toArray(data.products.map((product) => {
+                            React.Children.toArray(sortTrueFirst.map((product) => {
                                 if (category === product.category) {
                                     return (
                                         <article className="product-list-item">

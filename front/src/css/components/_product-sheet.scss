@@ -1,0 +1,22 @@
+.product-sheet {
+    display: flex;
+    gap: 125px;
+    align-items: center;
+
+    &:nth-child(even){
+        flex-direction: row-reverse;
+    }
+
+    &-image, 
+    &-informations {
+        flex: 1;
+    }
+
+    &-product-name {
+        display: block;
+    }
+
+    .button-primary {
+        margin-top: 40px;
+    }
+}

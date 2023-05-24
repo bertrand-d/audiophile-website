@@ -15,30 +15,4 @@
         gap: 160px;
         margin-bottom: 160px;
     }
-
-    &-item {
-        display: flex;
-        gap: 125px;
-        align-items: center;
-
-        &:nth-child(odd){
-            flex-direction: row-reverse;
-        }
-
-        &-image {
-            flex: 1;
-        }
-
-        &-informations {
-            flex: 1;
-        }
-
-        &-product-name {
-            display: block;
-        }
-
-        .button-primary {
-            margin-top: 40px;
-        }
-    }
 }

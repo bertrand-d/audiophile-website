@@ -1,4 +1,5 @@
 import Categories from "../components/Categories"
+import ProductSheet from "../components/ProductSheet";
 import Tagline from "../components/Tagline";
 import { Navigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react";
@@ -49,25 +50,7 @@ export default function ProductList() {
                             React.Children.toArray(sortTrueFirst.map((product) => {
                                 if (category === product.category) {
                                     return (
-                                        <article className="product-list-item">
-                                            <div className="product-list-item-image">
-                                                <img src={product.image.desktop} />
-                                            </div>
-                                            <div className="product-list-item-informations">
-                                                {
-                                                    product.new &&
-                                                    <span className="new-title">New product</span>
-                                                }
-                                                <h2 className="medium-title">
-                                                    <span className="product-list-item-product-name">{product.name}</span>
-                                                    <span>{product.category}</span>
-                                                </h2>
-                                                <p>
-                                                    {product.description}
-                                                </p>
-                                                <a className="button-primary">See product</a>
-                                            </div>
-                                        </article>
+                                        <ProductSheet productData = {product} />
                                     )
                                 }
                             }))

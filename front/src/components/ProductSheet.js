@@ -1,3 +1,4 @@
+import InputNumber from './InputNumber';
 import { useLocation, Link } from 'react-router-dom';
 
 export default function ProductSheet(props) {
@@ -41,11 +42,7 @@ export default function ProductSheet(props) {
                     <div className="product-sheet-add-container">
                         <span className="product-sheet-price">$ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
                         <div className="product-sheet-button-container">
-                            <div className="input-number">
-                                <button className="input-number-button">-</button>
-                                <input type="number" className="input-number-input" min="1" placeholder="1" />
-                                <button className="input-number-button">+</button>
-                            </div>
+                            <InputNumber/>
                             <button className="button-primary">add to cart</button>
                         </div>
                     </div>

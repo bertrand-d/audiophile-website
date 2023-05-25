@@ -1,4 +1,40 @@
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
 .input-number {
+    display: flex;
+    justify-content: center;
     background: $secondary;
     padding: 15px;
+    width: 120px;
+
+    &-button {
+        border: none;
+        background: none;
+        color: rgba(0,0,0,0.25);
+        font-weight: 700;
+        font-size: 0.8125em;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    &-input {
+        background: none;
+        text-align: center;
+        width: 57px;
+        font-weight: 700;
+        font-size: 0.8125em;
+        
+        &::placeholder {
+            font-weight: 700;
+        }
+    }
 }

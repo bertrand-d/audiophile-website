@@ -15,7 +15,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/product" element={<ProductPage />} />
+        <Route path="/product/:slug" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product-list/:category" element={<ProductList />} />
         <Route path='*' element={<NotFound />} />

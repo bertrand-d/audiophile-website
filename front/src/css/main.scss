@@ -17,10 +17,12 @@
 @import './components/_buttons',
         './components/_categories',
         './components/_hero',
+        './components/_inputs',
         './components/_nav',
         './components/_product-sheet',
         './components/_tagline';
 
 //Pages
 @import './pages/not-found',
-        './pages/_product-list';
+        './pages/_product-list',
+        './pages/_product-page';

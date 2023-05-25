@@ -1,6 +1,17 @@
+import { useLocation, Link } from 'react-router-dom';
+
 export default function ProductSheet(props) {
-    const {image, name, category, description} = props.productData
+    const {
+        image,
+        name,
+        category,
+        description,
+        price,
+        slug
+    } = props.productData
     const isNew = props.productData.new
+    const locationArray = useLocation().pathname.split('/')
+    const isProductPage = locationArray.includes('product')
 
     return (
         <article className="product-sheet">
@@ -19,7 +30,22 @@ export default function ProductSheet(props) {
                 <p>
                     {description}
                 </p>
-                <a className="button-primary">See product</a>
+                {
+                    !isProductPage &&
+                    <Link to={`/product/${slug}`} className="button-primary">
+                        See Product
+                    </Link>
+                }
+                {
+                    isProductPage &&
+                    <div className="product-sheet-add-container">
+                        <span className="product-sheet-price">$ {price}</span>
+                        <div className="product-sheet-button-container">
+                            <input type="number" className="input-number" min="1" placeholder="1"/>
+                            <button className="button-primary">add to cart</button>
+                        </div>
+                    </div>
+                }
             </div>
         </article>
     )

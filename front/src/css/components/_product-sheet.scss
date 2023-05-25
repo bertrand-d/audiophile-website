@@ -3,11 +3,11 @@
     gap: 125px;
     align-items: center;
 
-    &:nth-child(even){
+    &:nth-child(even) {
         flex-direction: row-reverse;
     }
 
-    &-image, 
+    &-image,
     &-informations {
         flex: 1;
     }
@@ -18,5 +18,27 @@
 
     .button-primary {
         margin-top: 40px;
+    }
+
+    &-add-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        gap: 50px;
+
+        .button-primary {
+            margin: 0;
+        }
+    }
+
+    &-price {
+        font-weight: 700;
+        letter-spacing: 1.30px;
+        font-size: 1.125em;
+    }
+
+    &-button-container {
+        display: flex;
+        gap: 15px;
     }
 }

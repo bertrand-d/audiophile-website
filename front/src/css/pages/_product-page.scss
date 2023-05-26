@@ -1,6 +1,48 @@
 .product-page {
 
-    &-sheet-container {
+    &-sheet-container,
+    &-features-container {
         margin-bottom: 160px;
     }
+
+    &-features-container {
+        display: flex;
+        gap: 125px;
+
+        &-left {
+            flex: 2;
+
+            & > p {
+                white-space: pre-line
+            }
+        }
+        
+        &-right {
+            flex: 1;
+        }
+    }
+
+    &-features-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &-list {
+            display: flex; 
+            gap: 25px;
+            font-size: 0.9em;
+
+            &-quantity {
+                color: $tertiary;
+                font-weight: 700;
+            }
+
+            &-name {
+                color: rgba(0,0,0,0.5);
+                text-transform: capitalize;
+            }
+        }
+    }
+
+    
 }

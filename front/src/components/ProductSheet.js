@@ -14,6 +14,10 @@ export default function ProductSheet(props) {
     const locationArray = useLocation().pathname.split('/')
     const isProductPage = locationArray.includes('product')
 
+    function parseToDecimal(value) {
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+
     return (
         <article className="product-sheet">
             <div className="product-sheet-image">
@@ -40,9 +44,9 @@ export default function ProductSheet(props) {
                 {
                     isProductPage &&
                     <div className="product-sheet-add-container">
-                        <span className="product-sheet-price">$ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span>
+                        <span className="product-sheet-price">$ {parseToDecimal(price)}</span>
                         <div className="product-sheet-button-container">
-                            <InputNumber/>
+                            <InputNumber />
                             <button className="button-primary">add to cart</button>
                         </div>
                     </div>

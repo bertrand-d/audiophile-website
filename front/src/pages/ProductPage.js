@@ -2,7 +2,7 @@
 import Categories from "../components/Categories"
 import Tagline from "../components/Tagline"
 import ProductSheet from "../components/ProductSheet"
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {
@@ -26,13 +26,19 @@ export default function ProductPage() {
 
     //slug in url
     const { slug } = useParams()
-    console.log(data.products)
+
+    //back to previous page
+    const navigate = useNavigate();
+    function goBack(e) {
+        e.preventDefault();
+        navigate(-1);
+    }
 
     if (data.products) {
         return (
             <main className="product-page max-content">
 
-                <a href="#" className="back-link">Go back</a>
+                <Link onClick={goBack} className="back-link">Go back</Link>
                 <div className="product-page-sheet-container">
                     {
                         React.Children.toArray(data.products.map((product) => {
@@ -44,7 +50,6 @@ export default function ProductPage() {
                         }))
                     }
                 </div>
-
                 <Categories categoryData={data.categories || []} />
                 <Tagline />
             </main>

@@ -43,15 +43,16 @@ export default function ProductPage() {
     }
 
     if (product) {
+        console.log(product.gallery)
         return (
             <main className="product-page max-content">
                 <Link onClick={goBack} className="back-link">Go back</Link>
-                <div className="product-page-sheet-container">
+                <section className="product-page-sheet-container">
                     {
                         <ProductSheet productData={product} />
                     }
-                </div>
-                <div className="product-page-features-container">
+                </section>
+                <section className="product-page-features-container">
                     <div className="product-page-features-container-left">
                         <h2 className="medium-title">Features</h2>
                         <p>
@@ -74,15 +75,20 @@ export default function ProductPage() {
                                 }))
                             }
                         </ul>
-
                     </div>
-                </div>
-                <div className="product-page-mosaic">
+                </section>
+                <section className="product-page-mosaic">
+                    <div className="product-page-mosaic-left">
+                        <img src={product.gallery.first.desktop} />
+                        <img src={product.gallery.second.desktop} />
+                    </div>
+                    <div className="product-page-mosaic-right">
+                        <img src={product.gallery.third.desktop} />
+                    </div>
+                </section>
+                <section className="product-page-related">
 
-                </div>
-                <div className="product-page-related">
-
-                </div>
+                </section>
                 <Categories categoryData={data.categories || []} />
                 <Tagline />
             </main>

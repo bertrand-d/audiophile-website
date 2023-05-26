@@ -7,6 +7,9 @@ import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {
 
+    //slug in url
+    const { slug } = useParams()
+
     //data from fetch
     const [data, setData] = useState([])
     const [product, setProduct] = useState()
@@ -30,10 +33,8 @@ export default function ProductPage() {
     }
     useEffect(() => {
         fetchJson()
-    }, [])
-
-    //slug in url
-    const { slug } = useParams()
+        //when slug change in url, remount component
+    }, [slug])
 
     //back to previous page
     const navigate = useNavigate();
@@ -42,10 +43,12 @@ export default function ProductPage() {
         navigate(-1);
     }
 
+    //todo fix go back
+
     if (product) {
-        console.log(product.gallery)
         return (
             <main className="product-page max-content">
+                
                 <Link onClick={goBack} className="back-link">Go back</Link>
                 <section className="product-page-sheet-container">
                     {
@@ -56,9 +59,7 @@ export default function ProductPage() {
                     <div className="product-page-features-container-left">
                         <h2 className="medium-title">Features</h2>
                         <p>
-                            {
-                                product.features
-                            }
+                            {product.features}
                         </p>
                     </div>
                     <div className="product-page-features-container-right">
@@ -87,7 +88,26 @@ export default function ProductPage() {
                     </div>
                 </section>
                 <section className="product-page-related">
-
+                    <h2 className="medium-title">You may also like</h2>
+                    <div className="product-page-related-content">
+                        {
+                            React.Children.toArray(product.others.map((other) => {
+                                return (
+                                    <div className="product-page-related-item">
+                                        <div className="product-page-related-item-image">
+                                            <img src={other.image.desktop} />
+                                        </div>
+                                        <span className="product-page-related-item-name">
+                                            {other.name}
+                                        </span>
+                                        <Link to={`/product/${other.slug}`} onClick={fetchJson} className="button-primary">
+                                            See Product
+                                        </Link>
+                                    </div>
+                                )
+                            }))
+                        }
+                    </div>
                 </section>
                 <Categories categoryData={data.categories || []} />
                 <Tagline />

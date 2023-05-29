@@ -6,7 +6,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {
-
     //slug in url
     const { slug } = useParams()
 
@@ -33,6 +32,8 @@ export default function ProductPage() {
     }
     useEffect(() => {
         fetchJson()
+        window.scrollTo(0, 0);
+        console.log(slug)
         //when slug change in url, remount component
     }, [slug])
 
@@ -43,12 +44,14 @@ export default function ProductPage() {
         navigate(-1);
     }
 
+    //back to previous page -> scroll to top when back from navigate(-1)
+    window.scrollTo(0, 0)
+
     //todo fix go back
 
     if (product) {
         return (
             <main className="product-page max-content">
-                
                 <Link onClick={goBack} className="back-link">Go back</Link>
                 <section className="product-page-sheet-container">
                     {

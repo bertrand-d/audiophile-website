@@ -1,5 +1,5 @@
 import './css/main.scss'
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Footer from './layouts/Footer';
 import Header from './layouts/Header'
 import Homepage from './pages/Homepage';
@@ -14,6 +14,7 @@ export default function App() {
   return (
     <div className="App">
       <Header />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/product/:slug" element={<ProductPage />} />
@@ -22,7 +23,6 @@ export default function App() {
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
-      <ScrollToTop />
     </div>
   );
 }

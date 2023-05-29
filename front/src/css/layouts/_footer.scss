@@ -32,7 +32,10 @@
                 flex: 1 1 0;
                 gap: 55px 0;
                 flex-direction: column;
-                color: rgba(255, 255, 255, 0.5);
+
+                & p {
+                    color: rgba(255, 255, 255, 0.5);
+                } 
             }
 
             &-right {

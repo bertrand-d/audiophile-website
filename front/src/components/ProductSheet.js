@@ -1,7 +1,23 @@
 import InputNumber from './InputNumber';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react"
 
 export default function ProductSheet(props) {
+    const [cart, setCart] = useState([])
+    const [inputQuantity, setInputQuantity] = useState(1)
+
+    function handleCallback(quantity){
+        setInputQuantity(quantity)
+    }
+
+    function addToCart(){
+        console.log('cart', inputQuantity)
+    }
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart])
+
     const {
         image,
         name,
@@ -46,8 +62,8 @@ export default function ProductSheet(props) {
                     <div className="product-sheet-add-container">
                         <span className="product-sheet-price">$ {parseToDecimal(price)}</span>
                         <div className="product-sheet-button-container">
-                            <InputNumber />
-                            <button className="button-primary">add to cart</button>
+                            <InputNumber callback={handleCallback} />
+                            <button className="button-primary" onClick={addToCart}>add to cart</button>
                         </div>
                     </div>
                 }

@@ -32,8 +32,6 @@ export default function ProductPage() {
     }
     useEffect(() => {
         fetchJson()
-        window.scrollTo(0, 0);
-        console.log(slug)
         //when slug change in url, remount component
     }, [slug])
 
@@ -44,7 +42,7 @@ export default function ProductPage() {
         navigate(-1);
     }
 
-    //back to previous page -> scroll to top when back from navigate(-1)
+    //back to previous page -> scroll to top when come from navigate(-1)
     window.scrollTo(0, 0)
 
     //todo fix go back

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-export default function InputNumber() {
+export default function InputNumber(props) {
 
     let [inputNumber, setInputNumber] = useState(1)
 
@@ -15,6 +15,10 @@ export default function InputNumber() {
     function handleChange(evt) {
         setInputNumber(parseInt(evt.target.value))
     }
+
+    useEffect(() => {
+        props.callback(inputNumber)
+    }, [inputNumber])
 
     return (
         <div className="input-number">

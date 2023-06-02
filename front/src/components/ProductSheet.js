@@ -3,22 +3,36 @@ import { useLocation, Link } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
 
 export default function ProductSheet(props) {
-    const [cart, setCart] = useState([])
-    const [inputQuantity, setInputQuantity] = useState(1)
 
-    function handleCallback(quantity){
+    //get input quantity when user press add to cart
+    const [inputQuantity, setInputQuantity] = useState(1)
+    function handleCallback(quantity) {
         setInputQuantity(quantity)
     }
 
-    function addToCart(){
-        console.log('cart', inputQuantity)
-    }
+    //cart
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
 
+    function addToCart() {
+
+        const product = {
+            id: id,
+            name: name,
+            price: price,
+            image: image.desktop,
+            quantity: inputQuantity
+        }
+
+
+        setCart([product])
+    }
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
 
+    //product informations
     const {
+        id,
         image,
         name,
         category,

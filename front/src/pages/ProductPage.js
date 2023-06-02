@@ -38,8 +38,8 @@ export default function ProductPage() {
     //back to previous page
     const navigate = useNavigate();
     function goBack(e) {
-        e.preventDefault();
-        navigate(-1);
+        e.preventDefault()
+        navigate(-1)
     }
 
     //back to previous page -> scroll to top when come from navigate(-1)

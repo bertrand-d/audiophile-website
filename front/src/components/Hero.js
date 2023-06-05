@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 export default function Hero() {
     return (
         <section className="section-hero">
@@ -16,7 +17,9 @@ export default function Hero() {
                     build quality made for the passionate music
                     enthusiast.
                 </p>
-                <a href="#" className="button-primary">See product</a>
+                <Link to={`/product/xx99-mark-two-headphones`} className="button-primary">
+                    See Product
+                </Link>
             </div>
         </section>
     )

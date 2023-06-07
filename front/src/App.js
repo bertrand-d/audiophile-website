@@ -5,7 +5,7 @@ import Header from './layouts/Header'
 import Homepage from './pages/Homepage';
 import ProductPage from './pages/ProductPage';
 import ProductList from './pages/ProductList';
-import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import NotFound from './pages/NotFound';
 import ScrollToTop from "./utils/ScrollToTop";
 
@@ -18,7 +18,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/product/:slug" element={<ProductPage />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/product-list/:category" element={<ProductList />} />
         <Route path='*' element={<NotFound />} />
       </Routes>

@@ -1,8 +1,9 @@
 import Categories from "../components/Categories"
 import Hero from "../components/Hero"
-import Tagline from "../components/Tagline";
+import Tagline from "../components/Tagline"
 
-import { useEffect, useState } from "react";
+
+import { useEffect, useState } from "react"
 export default function Homepage() {
 
     const [data, setData] = useState([])

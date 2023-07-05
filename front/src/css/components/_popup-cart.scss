@@ -16,5 +16,32 @@
             pointer-events: none;
         }
 
+        &-top {
+            display: flex;
+            justify-content: space-between;
+
+            &-title {
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 1.30px;
+
+            }
+        }
+
+        &-total {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+
+            &-title {
+                opacity: 0.5;
+            }
+
+            &-price {
+                font-weight: 700;
+                font-size: 1.2em;
+
+            }
+        }
     }
 }

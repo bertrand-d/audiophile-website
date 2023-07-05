@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom'
 
 export default function PopupCart({ popupRef }) {
-
   return (
     <div className="popup-cart">
       <div className="popup-cart-container max-content">
         <div className="popup-cart-box" ref={popupRef}>
           <div className="popup-cart-box-top">
-            <span className="popup-cart-title">
-              Cart nombre d'éléments
+            <span className="popup-cart-box-top-title">
+              Cart (1)
             </span>
-            <button className="">Remove all</button>
+            <button className="button-tertiary">Remove all</button>
           </div>
           <div className="popup-cart-box-content">
             <ul>
@@ -19,8 +18,8 @@ export default function PopupCart({ popupRef }) {
               </li>
             </ul>
             <div className="popup-cart-box-total">
-              <span>TOTAL</span>
-              <span>prix</span>
+              <span className="popup-cart-box-total-title">TOTAL</span>
+              <span className="popup-cart-box-total-price">$ 1,258</span>
             </div>
           </div>
           <Link to="/checkout/" className="button-primary">

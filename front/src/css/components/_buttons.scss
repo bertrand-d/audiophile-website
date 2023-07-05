@@ -1,6 +1,7 @@
 button {
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 .back-link {
@@ -19,6 +20,8 @@ button {
     font-size: 0.8em;
     display: inline-block;
     transition: all ease-in-out 0.2s;
+    display: flex;
+    justify-content: center;
 
     &:hover {
         background: $tertiary-lighten;

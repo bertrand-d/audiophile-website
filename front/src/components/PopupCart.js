@@ -14,7 +14,7 @@ export default function PopupCart({ popupRef }) {
         <div className="popup-cart-box" ref={popupRef}>
           <div className="popup-cart-box-top">
             <span className="popup-cart-box-top-title">
-              Cart (1)
+              Cart ({cart.length})
             </span>
             <button className="button-tertiary">Remove all</button>
           </div>
@@ -22,15 +22,12 @@ export default function PopupCart({ popupRef }) {
             {cart.length > 0 &&
               <ul className="popup-cart-box-content-list">
                 {
-
                   React.Children.toArray(cart.map((product) => {
                     
                      return(
 
                        <li className="popup-cart-box-content-list-item"> coucou </li>
                      )
-                      
-                    
                   }))
                 }
               </ul>

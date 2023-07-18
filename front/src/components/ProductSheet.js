@@ -1,6 +1,7 @@
-import InputNumber from './InputNumber';
+import InputNumber from './InputNumber'
 import { useLocation, Link } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
+import ParseToDecimal from "../utils/ParseToDecimal"
 
 export default function ProductSheet(props) {
 
@@ -43,7 +44,7 @@ export default function ProductSheet(props) {
                 }
             }
         } else {
-            //if not, just ad the product
+            //if not, just add the product
             setCart([product])
         }
     }
@@ -65,9 +66,7 @@ export default function ProductSheet(props) {
     const locationArray = useLocation().pathname.split('/')
     const isProductPage = locationArray.includes('product')
 
-    function parseToDecimal(value) {
-        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    }
+
 
     return (
         <article className="product-sheet">
@@ -95,7 +94,7 @@ export default function ProductSheet(props) {
                 {
                     isProductPage &&
                     <div className="product-sheet-add-container">
-                        <span className="product-sheet-price">$ {parseToDecimal(price)}</span>
+                        <span className="product-sheet-price">$ {ParseToDecimal(price)}</span>
                         <div className="product-sheet-button-container">
                             <InputNumber callback={handleCallback} />
                             <button className="button-primary" onClick={addToCart}>add to cart</button>

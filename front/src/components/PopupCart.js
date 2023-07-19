@@ -13,10 +13,11 @@ export default function PopupCart({ popupRef }) {
   const total = cart.reduce((sum, i) => sum + (i.price * i.quantity),0)
 
   //get input quantity when user press add to cart
-  const [quantity, setInputQuantity] = useState(null)
-  function handleCallback(quantity) {
-    setInputQuantity(quantity)
-  }
+  const [inputQuantity, setInputQuantity] = useState(null)
+    function handleCallback(quantity) {
+      console.log('La fonction handleClick du composant enfant a été déclenchée depuis le composant parent.')
+        setInputQuantity(quantity)
+    }
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])

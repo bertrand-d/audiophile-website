@@ -6,7 +6,7 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
 
-    function addToCart(data) {
+    const addToCart = (data) => {
         // get data from children
 
         //create the product
@@ -42,6 +42,20 @@ const CartProvider = ({ children }) => {
         }
     }
 
+    const changeQuantityCart = (itemId, data) => {
+        //create a newCart to manipulate if necessary
+        let newCart = cart.slice()
+
+        //loop on the newCart
+        for (let i = 0; i < newCart.length; i++) {
+
+            //if product already exist in the cart, just increase quantity and send the cart
+            if (newCart[i].id === data.id) {
+                newCart[i].quantity += data.quantity
+                setCart(newCart)
+            }
+        }
+    }
 
     const removeFromCart = (itemId) => {
         setCart(cart.filter((item) => item.id !== itemId))
@@ -56,7 +70,7 @@ const CartProvider = ({ children }) => {
     }, [cart])
 
   return (
-    <CartContext.Provider value={{cart, addToCart, removeFromCart, removeAllFromCart}}>
+    <CartContext.Provider value={{cart, addToCart, changeQuantityCart, removeFromCart, removeAllFromCart}}>
       {children}
     </CartContext.Provider>
   )

@@ -1,5 +1,6 @@
 import './css/main.scss'
 import { Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Footer from './layouts/Footer';
 import Header from './layouts/Header'
 import Homepage from './pages/Homepage';
@@ -13,16 +14,18 @@ export default function App() {
   //todo data ici en contexte
   return (
     <div className="App">
-      <Header />
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/product/:slug" element={<ProductPage />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/product-list/:category" element={<ProductList />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/product/:slug" element={<ProductPage />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/product-list/:category" element={<ProductList />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </div>
   );
 }

@@ -1,57 +1,31 @@
 import InputNumber from './InputNumber'
 import { useLocation, Link } from 'react-router-dom'
-import React, { useEffect, useState } from "react"
+import React, {useState, useContext } from "react"
+import { CartContext } from '../context/CartContext';
 import ParseToDecimal from "../utils/ParseToDecimal"
 
 export default function ProductSheet(props) {
 
+    //use cart
+    const { addToCart } = useContext(CartContext)
+
     //get input quantity when user press add to cart
-    const [inputQuantity, setInputQuantity] = useState(1)
+    const [inputQuantity, setInputQuantity] = useState(null)
     function handleCallback(quantity) {
         setInputQuantity(quantity)
     }
 
-    //cart
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
-
-    function addToCart() {
-
-        //create the product
-        const product = {
+    function handleUpdateCart() {
+        const data = {
             id: id,
             name: name,
             price: price,
             image: image.desktop,
             quantity: inputQuantity
         }
-
-        //check if cart already has a product inside
-        if (cart.length > 0) {
-
-            //create a newCart to manipulate if necessary
-            let newCart = cart.slice()
-
-            //loop on the newCart
-            for (let i = 0; i < newCart.length; i++) {
-
-                //if product already exist in the cart, just increase quantity and send the cart
-                if (newCart[i].id === product.id) {
-                    newCart[i].quantity += product.quantity
-                    setCart(newCart)
-                } else {
-                    //if not, so add the product to the existing cart
-                    setCart([...cart, product])
-                }
-            }
-        } else {
-            //if not, just add the product
-            setCart([product])
-        }
-    }
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart))
-    }, [cart])
-
+        addToCart(data)
+      }
+    
     //product informations
     const {
         id,
@@ -65,8 +39,6 @@ export default function ProductSheet(props) {
     const isNew = props.productData.new
     const locationArray = useLocation().pathname.split('/')
     const isProductPage = locationArray.includes('product')
-
-
 
     return (
         <article className="product-sheet">
@@ -97,7 +69,7 @@ export default function ProductSheet(props) {
                         <span className="product-sheet-price">$ {ParseToDecimal(price)}</span>
                         <div className="product-sheet-button-container">
                             <InputNumber callback={handleCallback} />
-                            <button className="button-primary" onClick={addToCart}>add to cart</button>
+                            <button className="button-primary" onClick={handleUpdateCart}>add to cart</button>
                         </div>
                     </div>
                 }

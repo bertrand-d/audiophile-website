@@ -9,10 +9,10 @@ export default function PopupCart({ popupRef }) {
   const [cart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
 
   //total
-  const total = cart.reduce((sum, {price}) => sum + price,0)
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity),0)
 
   //get input quantity when user press add to cart
-  const [inputQuantity, setInputQuantity] = useState(1)
+  const [setInputQuantity] = useState(null)
   function handleCallback(quantity) {
       setInputQuantity(quantity)
   }
@@ -32,6 +32,7 @@ export default function PopupCart({ popupRef }) {
               <ul className="popup-cart-box-content-list">
                 {
                   React.Children.toArray(cart.map((product) => {
+                    
 
                     return (
                       <li className="popup-cart-box-content-list-item">

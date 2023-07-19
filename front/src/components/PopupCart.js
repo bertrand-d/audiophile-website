@@ -1,21 +1,25 @@
 import { Link } from 'react-router-dom'
-import React, { useState } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import { CartContext } from '../context/CartContext'
 import InputNumber from './InputNumber'
 import ParseToDecimal from "../utils/ParseToDecimal"
 
 export default function PopupCart({ popupRef }) {
 
   //cart
-  const [cart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
+  const { cart, removeAllFromCart } = useContext(CartContext)
 
   //total
   const total = cart.reduce((sum, i) => sum + (i.price * i.quantity),0)
 
   //get input quantity when user press add to cart
-  const [setInputQuantity] = useState(null)
+  const [quantity, setInputQuantity] = useState(null)
   function handleCallback(quantity) {
-      setInputQuantity(quantity)
+    setInputQuantity(quantity)
   }
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   return (
     <div className="popup-cart">
@@ -25,14 +29,13 @@ export default function PopupCart({ popupRef }) {
             <span className="popup-cart-box-top-title">
               Cart ({cart.length})
             </span>
-            <button className="button-tertiary">Remove all</button>
+            <button className="button-tertiary" onClick={removeAllFromCart}>Remove all</button>
           </div>
           <div className="popup-cart-box-content">
             {cart.length > 0 ?
               <ul className="popup-cart-box-content-list">
                 {
                   React.Children.toArray(cart.map((product) => {
-                    
 
                     return (
                       <li className="popup-cart-box-content-list-item">
@@ -41,7 +44,7 @@ export default function PopupCart({ popupRef }) {
                           <span className="popup-cart-box-content-list-item-name">{product.name}</span>
                           <span className="popup-cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
                         </div>
-                        <InputNumber callback={handleCallback} />
+                        <InputNumber quantity={product.quantity} callback={handleCallback} />
                       </li>
                     )
                   }))

@@ -1,7 +1,7 @@
 import InputNumber from './InputNumber'
 import { useLocation, Link } from 'react-router-dom'
 import React, {useState, useContext } from "react"
-import { CartContext } from '../context/CartContext';
+import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 
 export default function ProductSheet(props) {

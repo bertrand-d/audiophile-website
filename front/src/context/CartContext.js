@@ -14,7 +14,7 @@ const CartProvider = ({ children }) => {
             id: data.id,
             name: data.name,
             price: data.price,
-            image: data.image.desktop,
+            image: data.image,
             quantity: data.quantity
         }
 
@@ -41,16 +41,22 @@ const CartProvider = ({ children }) => {
             setCart([product])
         }
     }
+
+
+    const removeFromCart = (itemId) => {
+        setCart(cart.filter((item) => item.id !== itemId))
+    }
+
+    const removeAllFromCart = () => {
+        setCart([])
+    }
+
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
 
-  const removeFromCart = (itemId) => {
-    setCart(cart.filter((item) => item.id !== itemId));
-  };
-
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{cart, addToCart, removeFromCart, removeAllFromCart}}>
       {children}
     </CartContext.Provider>
   )

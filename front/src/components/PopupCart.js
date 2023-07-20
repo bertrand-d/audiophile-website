@@ -7,17 +7,25 @@ import ParseToDecimal from "../utils/ParseToDecimal"
 export default function PopupCart({ popupRef }) {
 
   //cart
-  const { cart, removeAllFromCart } = useContext(CartContext)
+  const { cart, removeAllFromCart, setCart } = useContext(CartContext)
 
   //total
-  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity),0)
+  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
 
-  //get input quantity when user press add to cart
-  const [inputQuantity, setInputQuantity] = useState(null)
-    function handleCallback(quantity) {
-      console.log('La fonction handleClick du composant enfant a été déclenchée depuis le composant parent.')
-        setInputQuantity(quantity)
+  //update cart - product quantity - when increase / dicrease quantity
+  function handleCallback(index, quantity) {
+
+    const updatedCart = [...cart]
+    updatedCart[index].quantity = quantity
+
+    if(updatedCart[index].quantity === 0) {
+        updatedCart.splice(updatedCart[index], 1);
     }
+    // Make any other adjustments to the cart if necessary.
+    // For example, you might want to check for negative quantities.
+    // Then, update the cart state:
+    setCart(updatedCart)
+  }
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
@@ -36,7 +44,7 @@ export default function PopupCart({ popupRef }) {
             {cart.length > 0 ?
               <ul className="popup-cart-box-content-list">
                 {
-                  React.Children.toArray(cart.map((product) => {
+                  React.Children.toArray(cart.map((product, index) => {
 
                     return (
                       <li className="popup-cart-box-content-list-item">
@@ -45,7 +53,7 @@ export default function PopupCart({ popupRef }) {
                           <span className="popup-cart-box-content-list-item-name">{product.name}</span>
                           <span className="popup-cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
                         </div>
-                        <InputNumber quantity={product.quantity} callback={handleCallback} />
+                        <InputNumber initialQuantity={product.quantity} callback={(quantity) => handleCallback(index, quantity)}/>
                       </li>
                     )
                   }))

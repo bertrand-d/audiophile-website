@@ -1,5 +1,5 @@
 // CartContext.js
-import React, { createContext, useState, useEffect } from 'react';   
+import React, { createContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
@@ -42,21 +42,6 @@ const CartProvider = ({ children }) => {
         }
     }
 
-    const changeQuantityCart = (itemId, data) => {
-        //create a newCart to manipulate if necessary
-        let newCart = cart.slice()
-
-        //loop on the newCart
-        for (let i = 0; i < newCart.length; i++) {
-
-            //if product already exist in the cart, just increase quantity and send the cart
-            if (newCart[i].id === data.id) {
-                newCart[i].quantity += data.quantity
-                setCart(newCart)
-            }
-        }
-    }
-
     const removeFromCart = (itemId) => {
         setCart(cart.filter((item) => item.id !== itemId))
     }
@@ -69,11 +54,11 @@ const CartProvider = ({ children }) => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart])
 
-  return (
-    <CartContext.Provider value={{cart, addToCart, changeQuantityCart, removeFromCart, removeAllFromCart}}>
-      {children}
-    </CartContext.Provider>
-  )
+    return (
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, removeAllFromCart }}>
+            {children}
+        </CartContext.Provider>
+    )
 }
 
 export { CartContext, CartProvider }

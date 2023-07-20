@@ -19,12 +19,11 @@ export default function PopupCart({ popupRef }) {
     updatedCart[index].quantity = quantity
 
     if(updatedCart[index].quantity === 0) {
-        updatedCart.splice(updatedCart[index], 1);
-    }
-    // Make any other adjustments to the cart if necessary.
-    // For example, you might want to check for negative quantities.
-    // Then, update the cart state:
-    setCart(updatedCart)
+       updatedCart.splice(updatedCart[index], 1)
+    } 
+
+     
+      setCart(updatedCart)
   }
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))

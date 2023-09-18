@@ -1,29 +1,59 @@
 import { Link } from 'react-router-dom'
 import React, { useState, useEffect, useContext } from "react"
 import { CartContext } from '../context/CartContext'
-import InputNumber from './InputNumber'
 import ParseToDecimal from "../utils/ParseToDecimal"
 
 export default function PopupCart({ popupRef }) {
 
   //cart
-  const { cart, removeAllFromCart, setCart } = useContext(CartContext)
+  const {cart, removeAllFromCart, setCart } = useContext(CartContext)
 
   //total
   const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
 
+  //increase
+  //create a newCart to manipulate if necessary
+  let newCart = cart.slice()
+
+  function increase(product) {
+    //loop on the newCart
+    for (let i = 0; i < newCart.length; i++) {
+
+      //if product already exist in the cart, just increase quantity and send the cart
+      if (newCart[i].id === product.id) {
+        newCart[i].quantity += 1
+        setCart(newCart)
+      }
+    }
+  }
+
+  function decrease(product) {
+    //loop on the newCart
+    for (let i = 0; i < newCart.length; i++) {
+
+      //if product already exist in the cart, just increase quantity and send the cart
+      if (newCart[i].id === product.id) {
+        newCart[i].quantity -= 1
+
+        if (newCart[i].quantity === 0) {
+          newCart.splice(newCart[i], 1)
+        } 
+        setCart(newCart)
+      }
+    }
+  }
+
   //update cart - product quantity - when increase / dicrease quantity
-  function handleCallback(index, quantity) {
+  function handleChange(product) {
 
-    const updatedCart = [...cart]
-    updatedCart[index].quantity = quantity
+    for (let i = 0; i < newCart.length; i++) {
 
-    if(updatedCart[index].quantity === 0) {
-       updatedCart.splice(updatedCart[index], 1)
-    } 
-
-     
-      setCart(updatedCart)
+        if (newCart[i].quantity === 0) {
+          newCart.splice(newCart[i], 1)
+        } 
+        setCart(newCart)
+      
+    }
   }
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
@@ -52,7 +82,11 @@ export default function PopupCart({ popupRef }) {
                           <span className="popup-cart-box-content-list-item-name">{product.name}</span>
                           <span className="popup-cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
                         </div>
-                        <InputNumber initialQuantity={product.quantity} callback={(quantity) => handleCallback(index, quantity)}/>
+                        <div className="input-number">
+                          <button className="input-number-button" onClick={() => decrease(product)}>-</button>
+                          <input type="number" className="input-number-input" min="0" placeholder='1' value={product.quantity} onChange={handleChange} />
+                          <button className="input-number-button" onClick={() => increase(product)}>+</button>
+                        </div>
                       </li>
                     )
                   }))

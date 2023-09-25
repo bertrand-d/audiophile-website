@@ -29,46 +29,50 @@ export default function Checkout() {
                             <h2 className="checkout-second-title">Billing details</h2>
                             <div className="form-container">
                                 <div className="form-item">
-                                    <label className="form-label">Name</label>
+                                    <label className="form-label" htmlFor="name">Name</label>
                                     <input className="form-input" type="text" name="name" />
                                 </div>
                                 <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
+                                    <label className="form-label" htmlFor="mail">Email Address</label>
+                                    <input className="form-input" type="email" name="mail" />
                                 </div>
                                 <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
-                                </div>
-                            </div>
-                            <h2 className="checkout-second-title">Shipping info</h2>
-                            <div className="form-container">
-                                <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
-                                </div>
-                                <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
-                                </div>
-                                <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
+                                    <label className="form-label" htmlFor="phone">Phone Number</label>
+                                    <input className="form-input" type="number" name="phone" />
                                 </div>
                             </div>
                             <h2 className="checkout-second-title">Shipping info</h2>
                             <div className="form-container">
-                                <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
+                                <div className="form-item full">
+                                    <label className="form-label" htmlFor="address">Address</label>
+                                    <input className="form-input" type="text" name="address" />
                                 </div>
                                 <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
+                                    <label className="form-label" htmlFor="zipcode">ZIP Code</label>
+                                    <input className="form-input" type="number" name="zipcode" />
                                 </div>
                                 <div className="form-item">
-                                    <label className="form-label">Name</label>
-                                    <input className="form-input" type="text" name="name" />
+                                    <label className="form-label" htmlFor="city">City</label>
+                                    <input className="form-input" type="text" name="city" />
+                                </div>
+                                <div className="form-item">
+                                    <label className="form-label" htmlFor="country">Country</label>
+                                    <input className="form-input" type="text" name="country" />
+                                </div>
+                            </div>
+                            <h2 className="checkout-second-title">Payement Details</h2>
+                            <div className="form-container">
+                                <div className="form-item">
+                                    <label className="form-label" htmlFor="emoneynb">Payment Method</label>
+                                    <input type="radio" name="emoneynb" value="e-Money" checked />
+                                </div>
+                                <div className="form-item">
+                                    <label className="form-label" htmlFor="emoneynb">e-Money Number</label>
+                                    <input className="form-input" type="text" name="emoneynb" />
+                                </div>
+                                <div className="form-item">
+                                    <label className="form-label" htmlFor="emoneypin">e-Money PIN</label>
+                                    <input className="form-input" type="text" name="emoneypin" />
                                 </div>
                             </div>
                         </form>
@@ -87,7 +91,7 @@ export default function Checkout() {
                                                     <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
                                                 </div>
                                                 <div className="cart-box-content-list-item-quantity">
-                                                    x {product.quantity}
+                                                    x{product.quantity}
                                                 </div>
                                             </li>
                                         )
@@ -96,8 +100,13 @@ export default function Checkout() {
                             </ul>
                             : <span>Empty</span>
                         }
-                        {total}
-                        <input type="submit" form="myform" value="Update" />
+
+                        <div className="summary-bottom">
+                            <span>TOTAL ${total}</span>
+                            <span>SHIPPING $ 50</span>
+                            <span>GRAND TOTAL</span>
+                        </div>
+                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" />
                     </section>
                 </div>
             </div>

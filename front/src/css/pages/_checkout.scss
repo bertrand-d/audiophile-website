@@ -15,7 +15,7 @@
     }
 
     .checkout-section {
-        max-width: 60%;
+        flex: 3;
 
         .checkout-main-title {
             text-transform: uppercase;
@@ -32,7 +32,7 @@
     }
 
     .summary-section {
-        width: auto;
+        flex: 1;
 
         .summary-second-title {
             text-transform: uppercase;

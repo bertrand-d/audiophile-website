@@ -1,6 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
+import React, { useContext } from "react"
+import { CartContext } from '../context/CartContext'
+import ParseToDecimal from "../utils/ParseToDecimal"
 
 export default function Checkout() {
+
+    //cart
+    const { cart, removeAllFromCart, setCart } = useContext(CartContext)
+
+    //total
+    const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
 
     //back to previous page
     const navigate = useNavigate();
@@ -49,8 +58,27 @@ export default function Checkout() {
                     </section>
                     <section className="summary-section">
                         <h2 className="summary-second-title">Summary</h2>
-                        Panier
-                        Total
+                        {cart.length > 0 ?
+                            <ul className="cart-box-content-list">
+                                {
+                                    React.Children.toArray(cart.map((product, index) => {
+                                        return (
+                                            <li className="cart-box-content-list-item">
+                                                <img src={product.image} className="cart-box-content-list-item-image" />
+                                                <div className="cart-box-content-list-item-content">
+                                                    <span className="cart-box-content-list-item-name">{product.name}</span>
+                                                    <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
+                                                </div>
+                                                <div className="cart-box-content-list-item-quantity">
+                                                x{product.quantity}
+                                                </div>
+                                            </li>
+                                        )
+                                    }))
+                                }
+                            </ul>
+                            : <span>Empty</span>
+                        }
                         <input type="submit" form="myform" value="Update" />
                     </section>
                 </div>

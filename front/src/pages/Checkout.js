@@ -6,7 +6,7 @@ import ParseToDecimal from "../utils/ParseToDecimal"
 export default function Checkout() {
 
     //cart
-    const { cart, removeAllFromCart, setCart } = useContext(CartContext)
+    const { cart } = useContext(CartContext)
 
     //total
     const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
@@ -102,9 +102,22 @@ export default function Checkout() {
                         }
 
                         <div className="summary-bottom">
-                            <span>TOTAL ${total}</span>
-                            <span>SHIPPING $ 50</span>
-                            <span>GRAND TOTAL</span>
+                            <span className="summary-bottom-text">
+                                TOTAL
+                                <span className="summary-bottom-price">${total}</span>
+                            </span>
+                            <span className="summary-bottom-text">
+                                SHIPPING
+                                <span className="summary-bottom-price">
+                                    $ 50
+                                </span>
+                            </span>
+                            <span className="summary-bottom-text grand-total">
+                                GRAND TOTAL
+                                <span className="summary-bottom-price">
+                                    $ {total + 50}
+                                </span>
+                            </span>
                         </div>
                         <input type="submit" form="myform" value="Continue & pay" className="button-primary" />
                     </section>

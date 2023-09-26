@@ -42,6 +42,38 @@
             margin-bottom: 40px;
         }
 
+        .summary-bottom {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            gap: 10px;
+
+            &-text {
+                color: #9d9d9d;
+                display: flex;
+
+                
+                &.grand-total {
+                    margin-top: 25px;
+
+                    .summary-bottom-price {
+                        color: $tertiary;
+                    }
+                }
+            }
+
+            &-price {
+                margin-left: auto;
+                color: #000;
+                font-weight: 700;
+            }
+        }
+
+        .button-primary {
+            width: 100%;
+            margin-top: 30px;
+        }
+
     }
 
 }

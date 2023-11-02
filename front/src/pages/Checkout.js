@@ -62,9 +62,14 @@ export default function Checkout() {
                             </div>
                             <h2 className="checkout-second-title">Payement Details</h2>
                             <div className="form-container">
-                                <div className="form-item">
-                                    <label className="form-label" htmlFor="emoneynb">Payment Method</label>
-                                    <input type="radio" name="emoneynb" value="e-Money" checked />
+                                <span className="form-label">Payment Method</span>
+                                <div className="form-item-radio">
+                                    <label className="form-label" htmlFor="emoney">e-Money</label>
+                                    <input type="radio" name="money" value="e-Money" checked />
+                                </div>
+                                <div className="form-item-radio">
+                                    <label className="form-label" htmlFor="cash">Cash on Delivery</label>
+                                    <input type="radio" name="money" value="cash" />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneynb">e-Money Number</label>

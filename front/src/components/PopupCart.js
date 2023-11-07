@@ -5,6 +5,8 @@ import ParseToDecimal from "../utils/ParseToDecimal"
 
 export default function PopupCart({ popupRef }) {
 
+  console.log(popupRef)
+
   //cart
   const {cart, removeAllFromCart, setCart } = useContext(CartContext)
 

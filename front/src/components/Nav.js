@@ -9,14 +9,10 @@ export default function Nav(props) {
     const [cartIsOpen, setCartIsOpen] = useState(false)
     const isPopupClicked = useRef()
 
+
     useEffect(() => {
         function handler(e) {   
-            // e.stopPropagation()
 
-            // if(e.target !== isPopupClicked.current) { 
-               
-            //     setCartIsOpen(false)
-            // }
         }
         document.addEventListener('mousedown', handler)
     })

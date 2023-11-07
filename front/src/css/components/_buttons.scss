@@ -4,6 +4,10 @@ button {
     text-align: center;
 }
 
+input[type=submit] {
+    cursor: pointer;
+}
+
 .back-link {
     display: block;
     margin: 0 0 60px 0;

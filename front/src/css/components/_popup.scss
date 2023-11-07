@@ -1,3 +1,21 @@
+.popup-container {
+    position: absolute;
+    top: 97px;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0, 0.5);
+
+    &.show {
+        display: block;
+    }
+
+    &.hide {
+        display: none;
+    }
+}
+
 .cart-box {
     background: #fff;
     border-radius: 5px;
@@ -86,6 +104,18 @@
 
         }
     }
+
+    &-checkout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-centered {
+        margin: 7% auto;
+        max-width: 540px;
+
+    }
+
     .button-primary {
         width: 100%;
     }

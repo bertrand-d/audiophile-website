@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
+import PopupCheckout from '../components/PopupCheckout'
 
 export default function Checkout() {
 
@@ -10,6 +11,18 @@ export default function Checkout() {
 
     //total
     const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+
+    //checkout popup
+    const [isPopupVisible, setPopupVisible] = useState(false)
+
+    const openPopup = (e) => {
+        e.preventDefault()
+        setPopupVisible(true);
+      };
+    
+      const closePopup = () => {
+        setPopupVisible(false);
+      };
 
     //back to previous page
     const navigate = useNavigate();
@@ -124,8 +137,9 @@ export default function Checkout() {
                                 </span>
                             </span>
                         </div>
-                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" />
+                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" onClick={openPopup} />
                     </section>
+                    <PopupCheckout show = {isPopupVisible} onClose={closePopup}/>
                 </div>
             </div>
         </main>

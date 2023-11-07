@@ -60,8 +60,8 @@ export default function PopupCart({ popupRef }) {
   }, [cart])
 
   return (
-    <div className="popup-cart">
-      <div className="popup-cart-container max-content">
+    <div className="popup-container">
+      <div className="popup-cart max-content">
         <div className="cart-box" ref={popupRef}>
           <div className="cart-box-top">
             <span className="cart-box-top-title">

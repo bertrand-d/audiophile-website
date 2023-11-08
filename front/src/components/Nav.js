@@ -1,28 +1,16 @@
 import { ReactComponent as Logo } from '../assets/icons/logo.svg'
 import { ReactComponent as Cart } from '../assets/icons/cart.svg'
 import { Link } from 'react-router-dom'
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 import PopupCart from './PopupCart'
 
 export default function Nav(props) {
     let isHeader = props.isHeader
     const [isPopupVisible, setPopupVisible] = useState(false);
 
-    function openPopup() {
+    function displayPopup() {
         setPopupVisible(!isPopupVisible);
     };
-
-    function closePopup() {
-        setPopupVisible(false);
-    };
-
-
-    useEffect(() => {
-        function handler(e) {
-
-        }
-        document.addEventListener('mousedown', handler)
-    })
 
     return (
         <>
@@ -55,13 +43,13 @@ export default function Nav(props) {
                     </li>
                     {
                         isHeader &&
-                        <li className="nav-list-item cart" onClick={openPopup}>
+                        <li className="nav-list-item cart" onClick={displayPopup}>
                             <Cart />
                         </li>
                     }
                 </ul>
             </nav>
-            <PopupCart show={isPopupVisible} onClose={closePopup} />
+            <PopupCart show={isPopupVisible} onClose={displayPopup} />
         </>
     )
 }

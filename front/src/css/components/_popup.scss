@@ -20,7 +20,6 @@
     background: #fff;
     border-radius: 5px;
     max-width: 400px;
-    margin: 30px 0 0 auto;
     padding: 30px;
 
     &-top {
@@ -118,5 +117,15 @@
 
     .button-primary {
         width: 100%;
+    }
+}
+
+.popup-cart {
+    position: relative;
+
+    & .cart-box {
+        position: absolute;
+        right: 0;
+        top: 30px;
     }
 }

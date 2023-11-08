@@ -26,16 +26,18 @@ const CartProvider = ({ children }) => {
 
             //if product already exist in the cart, just increase quantity and send the cart
             if (productExist) {
+
                 //loop on the newCart
                 for (let i = 0; i < newCart.length; i++) {
-
                     newCart[i].quantity += product.quantity
                     setCart(newCart)
                 }
+                
             } else {
                 //if not, so add the product to the existing cart
                 setCart([...cart, product])
             }
+            
         } else {
             //if not, just add the product
             setCart([product])

@@ -3,9 +3,7 @@ import React, { useEffect, useContext } from "react"
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 
-export default function PopupCart({ popupRef }) {
-
-  console.log(popupRef)
+export default function PopupCart({ show, onClose }) {
 
   //cart
   const {cart, removeAllFromCart, setCart } = useContext(CartContext)
@@ -54,17 +52,22 @@ export default function PopupCart({ popupRef }) {
           newCart.splice(newCart[i], 1)
         } 
         setCart(newCart)
-      
     }
   }
+
+  function stopPropagation(e) {
+    e.stopPropagation()
+}
+
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
 
   return (
-    <div className="popup-container">
-      <div className="popup-cart max-content">
-        <div className="cart-box" ref={popupRef}>
+    <div className={`popup-container ${show ? 'show' : 'hide'}`} onClick = {onClose}>
+      <div className="popup-cart max-content" onClick ={stopPropagation}>
+        <div className="cart-box">
           <div className="cart-box-top">
             <span className="cart-box-top-title">
               Cart ({cart.length})
@@ -101,7 +104,7 @@ export default function PopupCart({ popupRef }) {
               <span className="cart-box-total-price">$ {ParseToDecimal(total)}</span>
             </div>
           </div>
-          <Link to="/checkout/" className="button-primary">
+          <Link to="/checkout/" className="button-primary" onClick={onClose}>
             Checkout
           </Link>
         </div>

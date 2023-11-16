@@ -19,32 +19,31 @@ export default function PopupCheckout({ show, onClose }) {
                 <span className="small-title">THANK YOU<br /> FOR YOUR ORDER</span>
                 <span>You will receive an email confirmation shortly</span>
                 <div className="cart-box-checkout-total">
-                    <div className="cart-box-checkout-total-left">
-                        {
-                            cart.length > 0 ?
-                                React.Children.toArray(cart.map((product, index) => {
-                                    return (
-                                        index === 0 &&
-                                        <div>
-                                            <img src={product.image}/>
-                                            <div>
-                                                <span>{product.name}</span>
-                                                <span>$ {ParseToDecimal(product.price)}</span>
+                    {
+                        cart.length > 0 ?
+                            React.Children.toArray(cart.map((product, index) => {
+                                return (
+                                    index === 0 &&
+                                    <div className="cart-box-checkout-total-left">
+                                        <div className="cart-box-content-list-item">
+                                            <img src={product.image} className="cart-box-content-list-item-image" />
+                                            <div className="cart-box-content-list-item-content">
+                                                <span className="cart-box-content-list-item-name">{product.name}</span>
+                                                <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
                                             </div>
-                                            <div>
+                                            <div className="cart-box-content-list-item-quantity">
                                                 x{product.quantity}
                                             </div>
-                                            <div> and {cart.length - 1 } other item(s)</div>
                                         </div>
-                                    )
-                                }))
-
-                                : <span> Empty </span>
-                        }
-                    </div>
+                                        <div className="cart-box-checkout-total-left__bottom"> and {cart.length - 1} other item(s)</div>
+                                    </div>
+                                )
+                            }))
+                            : <span> Empty </span>
+                    }
                     <div className="cart-box-checkout-total-right">
                         <span>GRAND TOTAL</span>
-                        <span>$ {total + 50}</span>
+                        <span>$ {ParseToDecimal(total + 50)}</span>
                     </div>
                 </div>
                 <Link to="/" className="button-primary">Back to home</Link>

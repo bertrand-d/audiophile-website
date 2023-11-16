@@ -15,14 +15,14 @@ export default function Checkout() {
     //checkout popup
     const [isPopupVisible, setPopupVisible] = useState(false)
 
-    const openPopup = (e) => {
+    function openPopup(e) {
         e.preventDefault()
         setPopupVisible(true);
-      };
-    
-      const closePopup = () => {
+    };
+
+    function closePopup() {
         setPopupVisible(false);
-      };
+    };
 
     //back to previous page
     const navigate = useNavigate();
@@ -31,6 +31,30 @@ export default function Checkout() {
         navigate(-1)
     }
 
+    //form data
+    const [userData, setUserData] = useState({
+        name: '',
+        email: '',
+        phoneNumber: '',
+        address: '',
+        postalCode: '',
+        city: '',
+        country: '',
+        paymentMethod: '',
+        eMoneyNumber: '',
+        eMoneyPin: ''
+    });
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setUserData({ ...userData, [name]: value });
+    };
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(userData);
+    };
+
     return (
         <main className="checkout">
             <div className="max-content">
@@ -38,39 +62,39 @@ export default function Checkout() {
                 <div className="section-container">
                     <section className="checkout-section">
                         <h1 className="checkout-main-title">Checkout</h1>
-                        <form className="form" id="myform" method="get" action="something.php">
+                        <form className="form" onSubmit={handleSubmit}>
                             <h2 className="checkout-second-title">Billing details</h2>
                             <div className="form-container">
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="name">Name</label>
-                                    <input className="form-input" type="text" name="name" />
+                                    <input className="form-input" type="text" name="name" value={userData.name} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="mail">Email Address</label>
-                                    <input className="form-input" type="email" name="mail" />
+                                    <input className="form-input" type="email" name="mail" value={userData.email} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="phone">Phone Number</label>
-                                    <input className="form-input" type="number" name="phone" />
+                                    <input className="form-input" type="number" name="phone" value={userData.phoneNumber} onChange={handleChange} />
                                 </div>
                             </div>
                             <h2 className="checkout-second-title">Shipping info</h2>
                             <div className="form-container">
                                 <div className="form-item full">
                                     <label className="form-label" htmlFor="address">Address</label>
-                                    <input className="form-input" type="text" name="address" />
+                                    <input className="form-input" type="text" name="address" value={userData.address} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="zipcode">ZIP Code</label>
-                                    <input className="form-input" type="number" name="zipcode" />
+                                    <input className="form-input" type="number" name="zipcode" value={userData.postalCode} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="city">City</label>
-                                    <input className="form-input" type="text" name="city" />
+                                    <input className="form-input" type="text" name="city" value={userData.city} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="country">Country</label>
-                                    <input className="form-input" type="text" name="country" />
+                                    <input className="form-input" type="text" name="country" value={userData.country} onChange={handleChange} />
                                 </div>
                             </div>
                             <h2 className="checkout-second-title">Payement Details</h2>
@@ -78,19 +102,19 @@ export default function Checkout() {
                                 <span className="form-label">Payment Method</span>
                                 <div className="form-item-radio">
                                     <label className="form-label" htmlFor="emoney">e-Money</label>
-                                    <input type="radio" name="money" value="e-Money" checked />
+                                    <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} checked onChange={handleChange} />
                                 </div>
                                 <div className="form-item-radio">
                                     <label className="form-label" htmlFor="cash">Cash on Delivery</label>
-                                    <input type="radio" name="money" value="cash" />
+                                    <input type="radio" name="money"  value={userData.paymentMethod = "cash"} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneynb">e-Money Number</label>
-                                    <input className="form-input" type="text" name="emoneynb" />
+                                    <input className="form-input" type="text" name="emoneynb" value={userData.eMoneyNumber} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneypin">e-Money PIN</label>
-                                    <input className="form-input" type="text" name="emoneypin" />
+                                    <input className="form-input" type="text" name="emoneypin" value={userData.eMoneyPin} onChange={handleChange} />
                                 </div>
                             </div>
                         </form>
@@ -137,9 +161,9 @@ export default function Checkout() {
                                 </span>
                             </span>
                         </div>
-                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" onClick={openPopup} />
+                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" onClick={handleSubmit} />
                     </section>
-                    <PopupCheckout show = {isPopupVisible} onClose={closePopup}/>
+                    <PopupCheckout show={isPopupVisible} onClose={closePopup} />
                 </div>
             </div>
         </main>

@@ -122,7 +122,7 @@ export default function Checkout() {
                         <div className="summary-bottom">
                             <span className="summary-bottom-text">
                                 TOTAL
-                                <span className="summary-bottom-price">${total}</span>
+                                <span className="summary-bottom-price">$ {ParseToDecimal(total)}</span>
                             </span>
                             <span className="summary-bottom-text">
                                 SHIPPING
@@ -133,7 +133,7 @@ export default function Checkout() {
                             <span className="summary-bottom-text grand-total">
                                 GRAND TOTAL
                                 <span className="summary-bottom-price">
-                                    $ {total + 50}
+                                    $ {ParseToDecimal(total + 50)}
                                 </span>
                             </span>
                         </div>

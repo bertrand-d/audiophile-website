@@ -15,14 +15,13 @@ export default function Checkout() {
     //checkout popup
     const [isPopupVisible, setPopupVisible] = useState(false)
 
-    function openPopup(e) {
-        e.preventDefault()
+    function openPopup() {
         setPopupVisible(true);
-    };
+    }
 
     function closePopup() {
         setPopupVisible(false);
-    };
+    }
 
     //back to previous page
     const navigate = useNavigate();
@@ -43,17 +42,46 @@ export default function Checkout() {
         paymentMethod: '',
         eMoneyNumber: '',
         eMoneyPin: ''
-    });
+    })
 
     function handleChange(e) {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
+    }
+
+    //form validation
+    const [formErrors, setFormErrors] = useState({});
+
+    function validateForm() {
+        const errors = {}
+        // Validation personnalisée - par exemple, vérifier si les champs requis sont remplis
+        console.log(userData)
+        if (!userData.name.trim()) {
+            errors.name = 'Le nom est requis.'
+        }
+        if (!userData.email.trim()) {
+            errors.email = 'L\'email est requis.'
+        } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
+            errors.email = 'L\'email est invalide.';
+        }
+        // Ajoute d'autres validations ici selon tes critères
+
+        setFormErrors(errors);
+        console.log(formErrors)
+        return Object.keys(errors).length === 0; // Si aucun erreur, le formulaire est valide
     };
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(userData);
-    };
+        const isValid = validateForm();
+        if (isValid) {
+            // Traiter les données du formulaire car elles sont valides
+            console.log(userData)
+            openPopup()
+        } else {
+            console.log('Le formulaire contient des erreurs.')
+        }
+    }
 
     return (
         <main className="checkout">
@@ -70,8 +98,8 @@ export default function Checkout() {
                                     <input className="form-input" type="text" name="name" value={userData.name} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
-                                    <label className="form-label" htmlFor="mail">Email Address</label>
-                                    <input className="form-input" type="email" name="mail" value={userData.email} onChange={handleChange} />
+                                    <label className="form-label" htmlFor="email">Email Address</label>
+                                    <input className="form-input" type="email" name="email" value={userData.email} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="phone">Phone Number</label>
@@ -106,7 +134,7 @@ export default function Checkout() {
                                 </div>
                                 <div className="form-item-radio">
                                     <label className="form-label" htmlFor="cash">Cash on Delivery</label>
-                                    <input type="radio" name="money"  value={userData.paymentMethod = "cash"} onChange={handleChange} />
+                                    <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneynb">e-Money Number</label>

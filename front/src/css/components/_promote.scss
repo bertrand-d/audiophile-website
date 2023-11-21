@@ -1,0 +1,52 @@
+.section-promote {
+
+    &-content {
+        display: flex;
+        align-items: center;
+        background: $tertiary;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        padding: 100px;
+        gap: 140px;
+        height: 550px;
+    }
+
+    &-picture-container {
+        min-width: 400px;
+    }
+
+    &-icon {
+        position: absolute;
+        left: -200px;
+        top: -20px;
+        z-index: 0;
+    }
+
+    &-picture {
+        max-width: 400px;
+        z-index: 1;
+        position: absolute;
+        object-fit: contain;
+        bottom: -50px;
+    }
+
+    &-content-text {
+        position: relative;
+    }
+
+    &-title {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-description {
+        color: white;
+        margin-top: 25px;
+        font-size: 1em;
+    }
+
+    .button-primary {
+        margin-top: 40px;
+    }
+}

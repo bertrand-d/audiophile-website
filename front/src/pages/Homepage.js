@@ -1,4 +1,5 @@
 import Categories from "../components/Categories"
+import PromoteOne from "../components/PromoteOne"
 import Hero from "../components/Hero"
 import Tagline from "../components/Tagline"
 
@@ -7,6 +8,7 @@ import { useEffect, useState } from "react"
 export default function Homepage() {
 
     const [data, setData] = useState([])
+    console.log(data)
     const fetchJson = () => {
         fetch('./data.json')
             .then(response => {
@@ -24,8 +26,9 @@ export default function Homepage() {
     return (
         <main className="homepage">
             <Hero />
-            <Categories categoryData = {data.categories || []} />
-            <Tagline/>
+            <Categories categoryData={data.categories || []} />
+            <PromoteOne/>
+            <Tagline />
         </main>
     )
 }

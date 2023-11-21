@@ -30,6 +30,14 @@ input[type=submit] {
     &:hover {
         background: $tertiary-lighten;
     }
+
+    &-dark {
+        background: $primary;
+
+        &:hover {
+            background: $primary-lighten;
+        }
+    }
 }
 
 .button-tertiary {

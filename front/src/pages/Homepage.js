@@ -1,5 +1,6 @@
 import Categories from "../components/Categories"
 import PromoteOne from "../components/PromoteOne"
+import PromoteTwo from "../components/PromoteTwo"
 import Hero from "../components/Hero"
 import Tagline from "../components/Tagline"
 
@@ -27,7 +28,10 @@ export default function Homepage() {
         <main className="homepage">
             <Hero />
             <Categories categoryData={data.categories || []} />
-            <PromoteOne/>
+            <section className="section-promote">
+                <PromoteOne />
+                <PromoteTwo />
+            </section>
             <Tagline />
         </main>
     )

@@ -1,4 +1,7 @@
 .section-promote {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 
     .promote-one-content {
         display: flex;
@@ -46,7 +49,19 @@
         font-size: 1em;
     }
 
-    .button-primary {
+    .promote-two-content {
+        display: flex;
+        background-image: url("/assets/home/desktop/image-speaker-zx7.jpg");
+        align-items: center;
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 100px;
+        height: 320px;
+        width: 100%;
+    }
+
+    .button-primary, 
+    .button-secondary {
         margin-top: 40px;
     }
 }

@@ -1,6 +1,6 @@
 .section-promote {
 
-    &-content {
+    .promote-one-content {
         display: flex;
         align-items: center;
         background: $tertiary;
@@ -12,18 +12,18 @@
         height: 550px;
     }
 
-    &-picture-container {
+    .promote-one-picture-container {
         min-width: 400px;
     }
 
-    &-icon {
+    .promote-one-icon {
         position: absolute;
         left: -200px;
         top: -20px;
         z-index: 0;
     }
 
-    &-picture {
+    .promote-one-picture {
         max-width: 400px;
         z-index: 1;
         position: absolute;
@@ -31,16 +31,16 @@
         bottom: -50px;
     }
 
-    &-content-text {
+    .promote-one-content-text {
         position: relative;
     }
 
-    &-title {
+    .promote-one-title {
         display: flex;
         flex-direction: column;
     }
 
-    &-description {
+    .promote-one-description {
         color: white;
         margin-top: 25px;
         font-size: 1em;

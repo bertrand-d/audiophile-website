@@ -60,6 +60,38 @@
         width: 100%;
     }
 
+    .promote-three-content {
+        display: flex;
+        gap: 30px;
+        width: 100%;
+
+        & > * {
+            flex-basis: 50%;
+        }
+
+        .promote-three-picture-container {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        &-text {
+            display: flex;
+            flex-direction: column;
+            background: $secondary;
+            border-radius: 10px;
+            padding: 100px;
+
+            .promote-three-title {
+                margin-bottom: 0;
+            }
+
+            .button-secondary {
+                width: fit-content;
+            }
+
+        }
+    }
+
     .button-primary, 
     .button-secondary {
         margin-top: 40px;

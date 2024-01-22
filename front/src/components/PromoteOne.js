@@ -13,7 +13,7 @@ export default function PromoteOne() {
                     <span>
                         ZX9
                     </span>
-                    <span className="promote-one-category-name">
+                    <span>
                         Speaker
                     </span>
                 </h2>

@@ -44,13 +44,21 @@ export default function Checkout() {
         eMoneyPin: ''
     })
 
+    // check if radio button is selected
+    const [radioSelected, setRadioSelected] = useState(null)
+
+    function handleRadioChange(event){
+        setRadioSelected(event.target.value)
+        console.log(event.target.value)
+    }
+
     function handleChange(e) {
         const { name, value } = e.target;
-        setUserData({ ...userData, [name]: value });
+        setUserData({ ...userData, [name]: value })
     }
 
     //form validation
-    const [formErrors, setFormErrors] = useState({});
+    const [formErrors, setFormErrors] = useState({})
 
     function validateForm() {
         const errors = {}
@@ -128,13 +136,13 @@ export default function Checkout() {
                             <h2 className="checkout-second-title">Payement Details</h2>
                             <div className="form-container">
                                 <span className="form-label">Payment Method</span>
-                                <div className="form-item-radio">
+                                <div className= {radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'}>
                                     <label className="form-label" htmlFor="emoney">e-Money</label>
-                                    <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} checked onChange={handleChange} />
+                                    <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} checked onChange={handleRadioChange} />
                                 </div>
-                                <div className="form-item-radio">
+                                <div className= {radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
                                     <label className="form-label" htmlFor="cash">Cash on Delivery</label>
-                                    <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleChange} />
+                                    <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleRadioChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneynb">e-Money Number</label>

@@ -25,6 +25,7 @@
         padding: 20px;
         border-radius: 10px;
         border: solid 1px #CFCFCF;
+        transition: all ease-in-out 0.2s;
 
         &:focus {
             border: solid 1px $tertiary;
@@ -32,6 +33,10 @@
 
         &:nth-child(3){
             grid-column: 2 / 3;
+        }
+
+        &.checked {
+            border: solid 1px $tertiary;
         }
     }
 

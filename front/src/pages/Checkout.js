@@ -47,9 +47,8 @@ export default function Checkout() {
     // check if radio button is selected
     const [radioSelected, setRadioSelected] = useState("e-Money")
 
-    function handleRadioChange(event){
+    function handleRadioChange(event) {
         setRadioSelected(event.target.value)
-        console.log(event.target.value)
     }
 
     function handleChange(e) {
@@ -62,8 +61,6 @@ export default function Checkout() {
 
     function validateForm() {
         const errors = {}
-        // Validation personnalisée - par exemple, vérifier si les champs requis sont remplis
-        console.log(userData)
         if (!userData.name.trim()) {
             errors.name = 'Le nom est requis.'
         }
@@ -72,10 +69,8 @@ export default function Checkout() {
         } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
             errors.email = 'L\'email est invalide.';
         }
-        // Ajoute d'autres validations ici selon tes critères
 
         setFormErrors(errors);
-        console.log(formErrors)
         return Object.keys(errors).length === 0; // Si aucun erreur, le formulaire est valide
     };
 
@@ -83,8 +78,6 @@ export default function Checkout() {
         e.preventDefault();
         const isValid = validateForm();
         if (isValid) {
-            // Traiter les données du formulaire car elles sont valides
-            console.log(userData)
             openPopup()
         } else {
             console.log('Le formulaire contient des erreurs.')
@@ -136,13 +129,17 @@ export default function Checkout() {
                             <h2 className="checkout-second-title">Payement Details</h2>
                             <div className="form-container">
                                 <span className="form-label">Payment Method</span>
-                                <div className=  {radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
-                                    <label className="form-label" htmlFor="emoney">e-Money</label>
-                                    <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} defaultChecked onChange={handleRadioChange} />
+                                <div className={radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
+                                    <label className="form-label form-label-container" htmlFor="emoney">e-Money
+                                        <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} defaultChecked onChange={handleRadioChange} />
+                                        <span class="form-label-container-radio-checkmark"></span>
+                                    </label>
                                 </div>
-                                <div className= {radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
-                                    <label className="form-label" htmlFor="emoney">Cash on Delivery</label>
-                                    <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleRadioChange} />
+                                <div className={radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
+                                    <label className="form-label form-label-container" htmlFor="emoney">Cash on Delivery
+                                        <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleRadioChange} />
+                                        <span class="form-label-container-radio-checkmark"></span>
+                                    </label>
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneynb">e-Money Number</label>

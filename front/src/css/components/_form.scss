@@ -31,12 +31,74 @@
             border: solid 1px $tertiary;
         }
 
-        &:nth-child(3){
+        &:nth-child(3) {
             grid-column: 2 / 3;
         }
 
         &.checked {
             border: solid 1px $tertiary;
+        }
+
+    }
+
+    /* Customize the radio checkmark*/
+    .form-label-container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        cursor: pointer;
+
+        /* Hide the browser's default radio button */
+        & input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 20px;
+            width: 20px;
+            z-index: 1;
+            top: -4px;
+            left: 0;
+        }
+
+        /* Create a custom radio button */
+        &-radio-checkmark {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: white;
+            border: solid 1px #CFCFCF;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        &:hover input~.form-label-container-radio-checkmark {
+            background-color: #ccc;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        &-radio-checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        & input:checked~.form-label-container-radio-checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        & .form-label-container-radio-checkmark:after {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: $tertiary;
         }
     }
 
@@ -48,10 +110,9 @@
         font-size: 1em;
         font-weight: 700;
     }
-    
+
     &-label {
         font-size: 0.75em;
         font-weight: 700;
     }
 }
-

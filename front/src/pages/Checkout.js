@@ -45,7 +45,7 @@ export default function Checkout() {
     })
 
     // check if radio button is selected
-    const [radioSelected, setRadioSelected] = useState(null)
+    const [radioSelected, setRadioSelected] = useState("e-Money")
 
     function handleRadioChange(event){
         setRadioSelected(event.target.value)
@@ -103,54 +103,54 @@ export default function Checkout() {
                             <div className="form-container">
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="name">Name</label>
-                                    <input className="form-input" type="text" name="name" value={userData.name} onChange={handleChange} />
+                                    <input className="form-input" type="text" name="name" value={userData.name} placeholder='Alexei Ward' onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="email">Email Address</label>
-                                    <input className="form-input" type="email" name="email" value={userData.email} onChange={handleChange} />
+                                    <input className="form-input" type="email" name="email" value={userData.email} placeholder='alexei@mail.com' onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="phone">Phone Number</label>
-                                    <input className="form-input" type="number" name="phone" value={userData.phoneNumber} onChange={handleChange} />
+                                    <input className="form-input" type="number" name="phone" value={userData.phoneNumber} placeholder='+1 202-555-0136' onChange={handleChange} />
                                 </div>
                             </div>
                             <h2 className="checkout-second-title">Shipping info</h2>
                             <div className="form-container">
                                 <div className="form-item full">
                                     <label className="form-label" htmlFor="address">Address</label>
-                                    <input className="form-input" type="text" name="address" value={userData.address} onChange={handleChange} />
+                                    <input className="form-input" type="text" name="address" value={userData.address} placeholder='1137 Williams Avenue' onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="zipcode">ZIP Code</label>
-                                    <input className="form-input" type="number" name="zipcode" value={userData.postalCode} onChange={handleChange} />
+                                    <input className="form-input" type="number" name="zipcode" value={userData.postalCode} placeholder='10001' onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="city">City</label>
-                                    <input className="form-input" type="text" name="city" value={userData.city} onChange={handleChange} />
+                                    <input className="form-input" type="text" name="city" value={userData.city} placeholder='New York' onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="country">Country</label>
-                                    <input className="form-input" type="text" name="country" value={userData.country} onChange={handleChange} />
+                                    <input className="form-input" type="text" name="country" value={userData.country} placeholder='United States' onChange={handleChange} />
                                 </div>
                             </div>
                             <h2 className="checkout-second-title">Payement Details</h2>
                             <div className="form-container">
                                 <span className="form-label">Payment Method</span>
-                                <div className= {radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'}>
+                                <div className=  {radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
                                     <label className="form-label" htmlFor="emoney">e-Money</label>
-                                    <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} checked onChange={handleRadioChange} />
+                                    <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} defaultChecked onChange={handleRadioChange} />
                                 </div>
                                 <div className= {radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
-                                    <label className="form-label" htmlFor="cash">Cash on Delivery</label>
+                                    <label className="form-label" htmlFor="emoney">Cash on Delivery</label>
                                     <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleRadioChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneynb">e-Money Number</label>
-                                    <input className="form-input" type="text" name="emoneynb" value={userData.eMoneyNumber} onChange={handleChange} />
+                                    <input className="form-input" type="text" name="emoneynb" value={userData.eMoneyNumber} placeholder='238521993' onChange={handleChange} />
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneypin">e-Money PIN</label>
-                                    <input className="form-input" type="text" name="emoneypin" value={userData.eMoneyPin} onChange={handleChange} />
+                                    <input className="form-input" type="text" name="emoneypin" value={userData.eMoneyPin} placeholder='6891' onChange={handleChange} />
                                 </div>
                             </div>
                         </form>

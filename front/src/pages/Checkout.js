@@ -132,13 +132,13 @@ export default function Checkout() {
                                 <div className={radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
                                     <label className="form-label form-label-container" htmlFor="emoney">e-Money
                                         <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} defaultChecked onChange={handleRadioChange} />
-                                        <span class="form-label-container-radio-checkmark"></span>
+                                        <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
                                 <div className={radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
                                     <label className="form-label form-label-container" htmlFor="emoney">Cash on Delivery
                                         <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleRadioChange} />
-                                        <span class="form-label-container-radio-checkmark"></span>
+                                        <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
                                 <div className="form-item">

@@ -1,11 +1,11 @@
 import { ReactComponent as Logo } from '../assets/icons/logo.svg'
 import { ReactComponent as Cart } from '../assets/icons/cart.svg'
+import { ReactComponent as MenuHamburger } from '../assets/icons/icon-hamburger.svg'
 import { Link } from 'react-router-dom'
 import { useState } from "react"
 import PopupCart from './PopupCart'
 
-export default function Nav(props) {
-    let isHeader = props.isHeader
+export default function Nav() {
     const [isPopupVisible, setPopupVisible] = useState(false);
 
     function displayPopup() {
@@ -16,37 +16,37 @@ export default function Nav(props) {
         <>
             <nav className="nav max-content">
                 <ul className="nav-list">
+                    <li className="nav-list-item menu-hamburger">
+                        <MenuHamburger/>
+                    </li>
                     <li className="nav-list-item logo">
                         <Link to="/">
                             <Logo />
                         </Link>
                     </li>
-                    <li className="nav-list-item">
+                    <li className="nav-list-item text-link">
                         <Link to="/">
                             Home
                         </Link>
                     </li>
-                    <li className="nav-list-item">
+                    <li className="nav-list-item text-link">
                         <Link to="/product-list/Headphones">
                             Headphones
                         </Link>
                     </li>
-                    <li className="nav-list-item">
+                    <li className="nav-list-item text-link">
                         <Link to="/product-list/Speakers">
                             Speakers
                         </Link>
                     </li>
-                    <li className="nav-list-item">
+                    <li className="nav-list-item text-link">
                         <Link to="/product-list/Earphones">
                             Earphones
                         </Link>
                     </li>
-                    {
-                        isHeader &&
-                        <li className="nav-list-item cart" onClick={displayPopup}>
-                            <Cart />
-                        </li>
-                    }
+                    <li className="nav-list-item cart" onClick={displayPopup}>
+                        <Cart />
+                    </li>
                 </ul>
             </nav>
             <PopupCart show={isPopupVisible} onClose={displayPopup} />

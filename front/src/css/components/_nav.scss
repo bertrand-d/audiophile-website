@@ -23,12 +23,34 @@
                 }
             }
 
+            &.text-link{
+                @include breakpoint(md) {
+                    display: none;
+               } 
+            }
+
+            &.menu-hamburger {
+                display: none;
+
+                @include breakpoint(md) {
+                    display: flex;
+               } 
+            }
+
             &.logo {
                 margin-right: auto;
+
+                @include breakpoint(md) {
+                    margin: auto;
+               } 
             }
 
             &.cart {
                 margin-left: auto;
+
+                @include breakpoint(md) {
+                    margin-left: 0;
+               } 
             }
         }
     }

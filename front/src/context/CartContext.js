@@ -45,7 +45,10 @@ const CartProvider = ({ children }) => {
     }
 
     const removeFromCart = (itemId) => {
-        setCart(cart.filter((item) => item.id !== itemId))
+        let newCart = cart.filter((item) => item.id !== itemId)
+        console.log(newCart)
+
+        setCart(newCart)
     }
 
     const removeAllFromCart = () => {

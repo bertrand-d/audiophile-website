@@ -6,7 +6,7 @@ import ParseToDecimal from "../utils/ParseToDecimal"
 export default function PopupCart({ show, onClose }) {
 
   //cart
-  const {cart, removeAllFromCart, setCart } = useContext(CartContext)
+  const {cart, removeFromCart, removeAllFromCart, setCart } = useContext(CartContext)
 
   //total
   const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
@@ -36,7 +36,8 @@ export default function PopupCart({ show, onClose }) {
         newCart[i].quantity -= 1
 
         if (newCart[i].quantity === 0) {
-          newCart.splice(newCart[i], 1)
+          removeFromCart(newCart[i].id)
+          // newCart.splice(newCart[i], 1)
         } 
         setCart(newCart)
       }

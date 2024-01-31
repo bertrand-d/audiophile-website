@@ -10,7 +10,6 @@ import { useEffect, useState } from "react"
 export default function Homepage() {
 
     const [data, setData] = useState([])
-    console.log(data)
     const fetchJson = () => {
         fetch('./data.json')
             .then(response => {

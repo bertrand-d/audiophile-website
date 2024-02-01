@@ -27,26 +27,44 @@ const CartProvider = ({ children }) => {
             //if product already exist in the cart, just increase quantity and send the cart
             if (productExist) {
 
+                //check here TODO
                 //loop on the newCart
                 for (let i = 0; i < newCart.length; i++) {
                     newCart[i].quantity += product.quantity
                     setCart(newCart)
                 }
-                
+
             } else {
                 //if not, so add the product to the existing cart
                 setCart([...cart, product])
             }
-            
+
         } else {
             //if not, just add the product
             setCart([product])
         }
     }
 
-    const removeFromCart = (itemId) => {
-        let newCart = cart.filter((item) => item.id !== itemId)
-        console.log(newCart)
+    const increaseFromCart = (product) => {
+        let newCart = cart.slice()
+        const isProductId = newCart.some(item => product.id === item.id)
+
+        if (isProductId) {
+            product.quantity += 1
+            setCart(newCart)
+        }
+    }
+
+    const decreaseFromCart = (product) => {
+        let newCart = cart.slice()
+        const isProductId = newCart.some(item => product.id === item.id)
+        if (isProductId) {
+            product.quantity -= 1
+
+            if (product.quantity === 0) {
+                newCart = newCart.filter((item) => item.id !== product.id)
+            }
+        }
         setCart(newCart)
     }
 
@@ -59,7 +77,7 @@ const CartProvider = ({ children }) => {
     }, [cart])
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, removeAllFromCart }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, increaseFromCart, decreaseFromCart, removeAllFromCart }}>
             {children}
         </CartContext.Provider>
     )

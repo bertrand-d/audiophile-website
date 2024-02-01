@@ -6,47 +6,17 @@ import ParseToDecimal from "../utils/ParseToDecimal"
 export default function PopupCart({ show, onClose }) {
 
   //cart
-  const {cart, removeFromCart, removeAllFromCart, setCart } = useContext(CartContext)
+  const {cart, increaseFromCart, decreaseFromCart, removeAllFromCart, setCart } = useContext(CartContext)
 
   //total
   const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
 
-  //increase
+  
   //create a newCart to manipulate if necessary
   let newCart = cart.slice()
 
-  function increase(product) {
-    //loop on the newCart
-    for (let i = 0; i < newCart.length; i++) {
-
-      //if product already exist in the cart, just increase quantity and send the cart
-      if (newCart[i].id === product.id) {
-        newCart[i].quantity += 1
-        setCart(newCart)
-      }
-    }
-  }
-
-  function decrease(product) {
-    //loop on the newCart
-    for (let i = 0; i < newCart.length; i++) {
-
-      //if product already exist in the cart, just increase quantity and send the cart
-      if (newCart[i].id === product.id) {
-        newCart[i].quantity -= 1
-
-        if (newCart[i].quantity === 0) {
-          removeFromCart(newCart[i].id)
-          // newCart.splice(newCart[i], 1)
-        } 
-        setCart(newCart)
-      }
-    }
-  }
-
   //update cart - product quantity - when increase / dicrease quantity
   function handleChange(product) {
-
     for (let i = 0; i < newCart.length; i++) {
 
         if (newCart[i].quantity === 0) {
@@ -89,9 +59,9 @@ export default function PopupCart({ show, onClose }) {
                           <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
                         </div>
                         <div className="input-number">
-                          <button className="input-number-button" onClick={() => decrease(product)}>-</button>
+                          <button className="input-number-button" onClick={() => decreaseFromCart(product)}>-</button>
                           <input type="number" className="input-number-input" min="0" placeholder='1' value={product.quantity} onChange={handleChange} />
-                          <button className="input-number-button" onClick={() => increase(product)}>+</button>
+                          <button className="input-number-button" onClick={() => increaseFromCart(product)}>+</button>
                         </div>
                       </li>
                     )

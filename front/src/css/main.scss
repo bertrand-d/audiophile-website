@@ -1,13 +1,12 @@
+//Utils
+@import './utils/_breakpoints',
+        './utils/_max-content';
+
 //Base
 @import './base/_reset',
         './base/_base',
         './base/_colors',
-        './base/_typography';
-        
-//Utils
-@import './utils/_breakpoints',
-        './utils/_max-content';
-       
+        './base/_typography';   
 
 //Layouts
 @import './layouts/_header',

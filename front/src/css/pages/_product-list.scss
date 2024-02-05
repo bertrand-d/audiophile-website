@@ -3,10 +3,22 @@
         margin-bottom: 160px;
         background: $primary;
         text-align: center;
+
+        @include breakpoint(md) {
+            margin-bottom: 60px;
+       } 
     }
 
     &-title {
         padding: 100px;
+
+        @include breakpoint(md) {
+            padding: 50px 0;
+
+            h1 {
+                margin-bottom: 0;
+            }
+       } 
     }
 
     &-container {
@@ -14,5 +26,10 @@
         flex-direction: column;
         gap: 160px;
         margin-bottom: 160px;
+
+        @include breakpoint(md) {
+            gap: 120px;
+            margin-bottom: 90px;
+        }
     }
 }

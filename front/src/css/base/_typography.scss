@@ -1,4 +1,5 @@
-*, body {
+*,
+body {
     font-family: Manrope, Arial, Helvetica, sans-serif;
     // Weights: 100, 400, 600, 700
 }
@@ -15,7 +16,7 @@ p {
     font-size: 0.9em;
     line-height: 25px;
     margin: 0;
-    color: rgba(0,0,0,0.5)
+    color: rgba(0, 0, 0, 0.5)
 }
 
 .new-title {
@@ -25,6 +26,10 @@ p {
     color: $tertiary;
     text-transform: uppercase;
     margin-bottom: 15px;
+
+    @include breakpoint(md) {
+        margin-bottom: 25px;
+    }
 }
 
 .big-title {
@@ -51,6 +56,10 @@ p {
 
     &.white {
         color: #fff;
+    }
+
+    @include breakpoint(md) {
+        font-size: 2em;
     }
 }
 

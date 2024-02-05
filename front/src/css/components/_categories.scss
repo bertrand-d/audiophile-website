@@ -3,6 +3,12 @@
     gap: 30px;
     margin-bottom: 160px;
 
+    @include breakpoint(sm) {
+        flex-wrap: wrap;
+        flex-direction: column;
+        padding: 0 25px;
+   } 
+
     .category {
         position: relative;
         flex-grow: 1;

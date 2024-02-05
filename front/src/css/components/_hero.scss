@@ -10,6 +10,12 @@
         padding: 130px 0;
         color: white;
         background: center / cover no-repeat url('../../assets/home/desktop/image-hero.jpg');
+    
+        @include breakpoint(md) {
+            justify-content: center;
+            text-align: center;
+            padding: 130px 25px;
+       } 
     }
 
     &-new {

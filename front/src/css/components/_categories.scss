@@ -7,7 +7,8 @@
         flex-wrap: wrap;
         flex-direction: column;
         padding: 0 25px;
-   } 
+        margin-bottom: 120px;
+    }
 
     .category {
         position: relative;
@@ -69,7 +70,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: rgba(0,0,0,0.5);
+            color: rgba(0, 0, 0, 0.5);
             transition: all ease-in-out 0.2s;
 
             svg {

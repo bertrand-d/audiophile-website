@@ -65,6 +65,11 @@
         gap: 30px;
         width: 100%;
 
+        @include breakpoint(sm) {
+            padding: 0 25px;
+            flex-direction: column;
+        }
+
         & > * {
             flex-basis: 50%;
         }
@@ -80,6 +85,10 @@
             background: $secondary;
             border-radius: 10px;
             padding: 100px;
+
+            @include breakpoint(sm) {
+                padding: 40px 25px;
+            }
 
             .promote-three-title {
                 margin-bottom: 0;

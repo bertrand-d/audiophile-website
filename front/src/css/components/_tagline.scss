@@ -4,8 +4,30 @@
     margin: 200px auto;
     align-items: center;
 
+    @include breakpoint(md) {
+        flex-direction: column-reverse;
+        padding: 0 25px;
+        gap: 60px;
+        text-align: center;
+        margin: 120px auto;
+    }
+
     &-left, 
     &-right {
         flex: 1;
+    }
+
+    &-right {
+        @include breakpoint(md) {
+            width: 100%;
+        }
+    }
+
+    &-right img {
+        border-radius: 10px;
+
+        @include breakpoint(md) {
+            width: 100%;
+        }
     }
 }

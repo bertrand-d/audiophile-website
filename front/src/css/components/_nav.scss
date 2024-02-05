@@ -11,6 +11,10 @@
         align-items: center;
         gap: 0 35px;
 
+        @include breakpoint(sm) {
+            padding: 0 25px;
+       } 
+
         &-item {
             cursor: pointer;
 

@@ -1,4 +1,8 @@
 .header {
     background: $primary;
     padding: 35px 25px 0 25px;
+
+    @include breakpoint(sm) {
+        padding: 35px 0 0 0;
+   } 
 }

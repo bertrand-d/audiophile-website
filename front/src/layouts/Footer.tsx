@@ -25,7 +25,6 @@ export default function Footer() {
                                 <Twitter/>
                             </li>
                         </ul>
-
                     </div>
                 </div>
             </div>

@@ -1,9 +1,4 @@
-interface param {
-    toParse : number
-}
-
-const ParseToDecimal = (value: param) => {
-    console.log(value)
+const ParseToDecimal = (value : number) => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
 

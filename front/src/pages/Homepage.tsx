@@ -1,4 +1,5 @@
-import Categories from "../components/Categories"
+import { useEffect, useState } from "react"
+import Categories, { TCategory } from "../components/Categories"
 import PromoteOne from "../components/PromoteOne"
 import PromoteTwo from "../components/PromoteTwo"
 import PromoteThree from "../components/PromoteThree"
@@ -6,10 +7,16 @@ import Hero from "../components/Hero"
 import Tagline from "../components/Tagline"
 
 
-import { useEffect, useState } from "react"
+interface IData {
+    categories: Array<TCategory>,
+    // products: Array<{id: number, slug: string, image: any, category: string, categoryImage: any}>
+    products: Array<any>
+}
+
+
 export default function Homepage() {
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState<IData>()
     const fetchJson = () => {
         fetch('./data.json')
             .then(response => {
@@ -22,12 +29,13 @@ export default function Homepage() {
     }
     useEffect(() => {
         fetchJson()
+        
     }, [])
 
     return (
         <main className="homepage">
             <Hero />
-            <Categories categoryData={data.categories || []} />
+            <Categories categoryData={data?.categories || []} />
             <section className="section-promote">
                 <PromoteOne />
                 <PromoteTwo />

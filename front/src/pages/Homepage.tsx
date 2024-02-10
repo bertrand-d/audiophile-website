@@ -13,6 +13,8 @@ interface IData {
     products: Array<any>
 }
 
+//todo change response to only category
+
 
 export default function Homepage() {
 
@@ -20,16 +22,15 @@ export default function Homepage() {
     const fetchJson = () => {
         fetch('./data.json')
             .then(response => {
-                return response.json();
+                return response.json()
             }).then(response => {
-                setData(response);
+                setData(response)
             }).catch((error) => {
-                console.log(error);
-            });
+                console.log(error)
+            })
     }
     useEffect(() => {
         fetchJson()
-        
     }, [])
 
     return (

@@ -1,36 +1,38 @@
 import Categories from "../components/Categories"
-import ProductSheet from "../components/ProductSheet";
-import Tagline from "../components/Tagline";
+import ProductSheet from "../components/ProductSheet"
+import Tagline from "../components/Tagline"
+import { IData } from "../pages/Homepage"
 import { Navigate, useParams } from 'react-router-dom'
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
+
 export default function ProductList() {
 
     //category in url
     const { category } = useParams()
 
     //data from fetch
-    const [data, setData] = useState([])
+    const [data, setData] = useState<IData>()
 
     const fetchJson = () => {
         fetch('http://localhost:3000/data.json')
             .then(response => {
                 return response.json();
             }).then(response => {
-                setData(response);
+                setData(response)
             }).catch((error) => {
-                console.log(error);
-            });
+                console.log(error)
+            })
     }
     useEffect(() => {
         fetchJson()
     }, [])
     
-    if (data.categories) {
+    if (data?.categories) {
         //sort all element with "new" as true first
-        const sortTrueFirst = data.products.sort((a, b) => b.new - a.new);
+        const sortTrueFirst = data?.products.sort((a) => a.new ? -1 : 1)
 
         //know if category name in url exist in data. if true, display the page, else redirect
-        const isFound = data.categories.some(element => {
+        const isFound = data?.categories.some(element => {
             if (element.name === category) {
                 return true
             }
@@ -56,7 +58,7 @@ export default function ProductList() {
                             }))
                         }
                     </div>
-                    <Categories categoryData={data.categories || []} />
+                    <Categories categoryData={data?.categories || []} />
                     <Tagline />
                 </main>
             )
@@ -64,4 +66,5 @@ export default function ProductList() {
             return <Navigate to="/*" />
         }
     }
+
 }

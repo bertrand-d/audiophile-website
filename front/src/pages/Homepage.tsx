@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Categories, { TCategory } from "../components/Categories"
+import Categories from "../components/Categories"
 import PromoteOne from "../components/PromoteOne"
 import PromoteTwo from "../components/PromoteTwo"
 import PromoteThree from "../components/PromoteThree"
@@ -7,10 +7,20 @@ import Hero from "../components/Hero"
 import Tagline from "../components/Tagline"
 
 
-interface IData {
+export type TCategory = {
+    name: string,
+    image: string
+}
+
+export type TProduct = {
+    new : boolean,
+    category : string
+}
+
+export interface IData {
     categories: Array<TCategory>,
     // products: Array<{id: number, slug: string, image: any, category: string, categoryImage: any}>
-    products: Array<any>
+    products: Array<TProduct>
 }
 
 //todo change response to only category

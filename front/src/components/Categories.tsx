@@ -1,16 +1,10 @@
 import { ReactComponent as Arrow } from '../assets/icons/icon-arrow-right.svg'
-import { Link } from 'react-router-dom';
-
-
-export type TCategory = {
-    name: string,
-    image: string
-}
+import { TCategory } from "../pages/Homepage"
+import { Link } from 'react-router-dom'
 
 type TProps = {
-    categoryData : Array<TCategory>
+    categoryData: Array<TCategory>
 }
-
 
 export default function Categories(props: TProps) {
     return (

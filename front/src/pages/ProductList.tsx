@@ -19,6 +19,8 @@ export default function ProductList() {
                 return response.json();
             }).then(response => {
                 setData(response)
+                console.log(response)
+                console.log("data", data)
             }).catch((error) => {
                 console.log(error)
             })

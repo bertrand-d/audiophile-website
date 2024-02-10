@@ -13,8 +13,14 @@ export type TCategory = {
 }
 
 export type TProduct = {
-    new : boolean,
-    category : string
+    id: number,
+    image : any,
+    name: string,
+    category : string,
+    description: string,
+    price: number,
+    slug: string,
+    new : boolean;
 }
 
 export interface IData {

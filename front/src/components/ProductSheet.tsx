@@ -1,17 +1,23 @@
 import InputNumber from './InputNumber'
 import { useLocation, Link } from 'react-router-dom'
 import React, {useState, useContext } from "react"
-import { CartContext } from '../context/CartContext';
+import { TProduct } from '../pages/Homepage'
+import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 
-export default function ProductSheet(props) {
+type TProps = {
+    productData: TProduct
+}
+
+export default function ProductSheet(props : TProps) {
 
     //use cart
     const { addToCart } = useContext(CartContext)
 
     //get input quantity when user press add to cart
-    const [inputQuantity, setInputQuantity] = useState(null)
-    function handleCallback(quantity) {
+    const [inputQuantity, setInputQuantity] = useState<number>(0)
+
+    function handleCallback(quantity : number) {
         setInputQuantity(quantity)
     }
 

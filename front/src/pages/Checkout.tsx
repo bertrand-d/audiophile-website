@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useContext, useState } from "react"
 import { CartContext } from '../context/CartContext'
+import { TProduct } from './Homepage'
 import ParseToDecimal from "../utils/ParseToDecimal"
 import PopupCheckout from '../components/PopupCheckout'
 
@@ -9,23 +10,25 @@ export default function Checkout() {
     //cart
     const { cart } = useContext(CartContext)
 
+    //***** any to i et e */
     //total
-    const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+    const total = cart.reduce((sum: number, i: any) => sum + (i.price * i.quantity), 0)
 
     //checkout popup
     const [isPopupVisible, setPopupVisible] = useState(false)
 
     function openPopup() {
-        setPopupVisible(true);
+        setPopupVisible(true)
     }
 
     function closePopup() {
-        setPopupVisible(false);
+        setPopupVisible(false)
     }
 
+    //***** */
     //back to previous page
-    const navigate = useNavigate();
-    function goBack(e) {
+    const navigate = useNavigate()
+    function goBack(e: any) {
         e.preventDefault()
         navigate(-1)
     }
@@ -47,34 +50,44 @@ export default function Checkout() {
     // check if radio button is selected
     const [radioSelected, setRadioSelected] = useState("e-Money")
 
-    function handleRadioChange(event) {
+    function handleRadioChange(event: any) {
         setRadioSelected(event.target.value)
     }
 
-    function handleChange(e) {
+    function handleChange(e: any) {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value })
     }
 
+    type TErrors = {
+        name: string,
+        email: string
+    }
+
     //form validation
+
+    //pourquoi tu rales pas gros
     const [formErrors, setFormErrors] = useState({})
 
     function validateForm() {
-        const errors = {}
+        const errors: TErrors = {
+            name: "",
+            email: ""
+        }
         if (!userData.name.trim()) {
             errors.name = 'Le nom est requis.'
         }
         if (!userData.email.trim()) {
             errors.email = 'L\'email est requis.'
         } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
-            errors.email = 'L\'email est invalide.';
+            errors.email = 'L\'email est invalide.'
         }
 
         setFormErrors(errors);
         return Object.keys(errors).length === 0; // Si aucun erreur, le formulaire est valide
-    };
+    }
 
-    function handleSubmit(e) {
+    function handleSubmit(e: any) {
         e.preventDefault();
         const isValid = validateForm();
         if (isValid) {
@@ -84,10 +97,12 @@ export default function Checkout() {
         }
     }
 
+    // link to #
     return (
         <main className="checkout">
             <div className="max-content">
-                <Link onClick={goBack} className="back-link">Go back</Link>
+
+                <Link to="#" onClick={goBack} className="back-link">Go back</Link>
                 <div className="section-container">
                     <section className="checkout-section">
                         <h1 className="checkout-main-title">Checkout</h1>
@@ -157,7 +172,8 @@ export default function Checkout() {
                         {cart.length > 0 ?
                             <ul className="cart-box-content-list">
                                 {
-                                    React.Children.toArray(cart.map((product, index) => {
+                                    /* TProduct for */
+                                    React.Children.toArray(cart.map((product: TProduct) => {
                                         return (
                                             <li className="cart-box-content-list-item">
                                                 <img src={product.image} className="cart-box-content-list-item-image" />

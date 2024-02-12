@@ -16,11 +16,9 @@ export default function ProductList() {
     const fetchJson = () => {
         fetch('http://localhost:3000/data.json')
             .then(response => {
-                return response.json();
+                return response.json()
             }).then(response => {
                 setData(response)
-                console.log(response)
-                console.log("data", data)
             }).catch((error) => {
                 console.log(error)
             })

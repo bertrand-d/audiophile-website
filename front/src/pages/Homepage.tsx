@@ -20,7 +20,8 @@ export type TProduct = {
     description: string,
     price: number,
     slug: string,
-    new : boolean;
+    new : boolean,
+    quantity : number;
 }
 
 export interface IData {
@@ -30,6 +31,8 @@ export interface IData {
 }
 
 //todo change response to only category
+//todo add in TProduct more informations about image
+// maybe create another file for types
 
 
 export default function Homepage() {

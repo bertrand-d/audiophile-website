@@ -8,7 +8,7 @@ import PopupCheckout from '../components/PopupCheckout'
 export default function Checkout() {
 
     //cart
-    const { cart } = useContext(CartContext)
+    const { cart: cart } = useContext(CartContext)
 
     //***** any to i et e */
     //total

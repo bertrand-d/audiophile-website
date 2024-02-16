@@ -22,7 +22,8 @@ export default function ProductSheet(props : TProps) {
     }
 
     function handleUpdateCart() {
-        const data = {
+        const data: TProduct = {
+            ...props.productData,
             id: id,
             name: name,
             price: price,

@@ -14,7 +14,7 @@ type TProps = {
 export default function PopupCheckout(props: TProps) {
 
     //cart
-    const { cart } = useContext(CartContext)
+    const { cart: cart } = useContext(CartContext)
 
     //total
     const total = cart.reduce((sum: number, i: { price: number, quantity: number }) => sum + (i.price * i.quantity), 0)

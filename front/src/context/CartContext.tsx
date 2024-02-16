@@ -1,12 +1,36 @@
 // CartContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react'
+import { TProduct } from '../pages/Homepage'
+import { IData } from '../pages/Homepage'
 
-const CartContext = createContext();
+type TCartContext = {
+    cart: Array<any>, 
+    setCart: React.Dispatch<any>, 
+    addToCart: (data: TProduct) => void, 
+    increaseFromCart: (product : TProduct) => void, 
+    decreaseFromCart: (product : TProduct) => void, 
+    removeAllFromCart : () => void
+}
 
-const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
+const defaultValue: TCartContext = {
+    cart: [], 
+    setCart: () => {}, 
+    addToCart: () => {}, 
+    increaseFromCart: () => {}, 
+    decreaseFromCart: () => {}, 
+    removeAllFromCart: () => {}
+}
 
-    const addToCart = (data) => {
+const CartContext = createContext<TCartContext>(defaultValue)
+
+
+const defaultCartItem = localStorage.getItem('cart') || JSON.stringify([])
+
+
+const CartProvider = (props:any) => {
+    const [cart, setCart] = useState<Array<any>>(JSON.parse(defaultCartItem))
+
+    function addToCart(data : TProduct) {
 
         //create the product
         const product = {
@@ -40,7 +64,7 @@ const CartProvider = ({ children }) => {
         }
     }
 
-    const increaseFromCart = (product) => {
+    const increaseFromCart = (product : TProduct) => {
         let newCart = cart.slice()
         const isProductId = newCart.some(item => product.id === item.id)
 
@@ -50,7 +74,7 @@ const CartProvider = ({ children }) => {
         }
     }
 
-    const decreaseFromCart = (product) => {
+    const decreaseFromCart = (product : TProduct) => {
         let newCart = cart.slice()
         const isProductId = newCart.some(item => product.id === item.id)
 
@@ -73,8 +97,8 @@ const CartProvider = ({ children }) => {
     }, [cart])
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, increaseFromCart, decreaseFromCart, removeAllFromCart }}>
-            {children}
+        <CartContext.Provider value={{ cart: cart, setCart, addToCart, increaseFromCart, decreaseFromCart, removeAllFromCart }}>
+            {props.children}
         </CartContext.Provider>
     )
 }

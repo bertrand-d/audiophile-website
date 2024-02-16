@@ -172,7 +172,7 @@ export default function Checkout() {
                         {cart.length > 0 ?
                             <ul className="cart-box-content-list">
                                 {
-                                    /* TProduct for */
+                                    /* TProduct quantity */
                                     React.Children.toArray(cart.map((product: TProduct) => {
                                         return (
                                             <li className="cart-box-content-list-item">

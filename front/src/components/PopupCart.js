@@ -6,14 +6,10 @@ import ParseToDecimal from "../utils/ParseToDecimal"
 export default function PopupCart({ show, onClose }) {
 
   //cart
-  const {cart, increaseFromCart, decreaseFromCart, removeAllFromCart} = useContext(CartContext)
+  const { cart, increaseFromCart, decreaseFromCart, removeAllFromCart } = useContext(CartContext)
 
   //total
   const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
-
-  
-  //create a newCart to manipulate if necessary
-  // let newCart = cart.slice()
 
   //update cart - product quantity - when increase / dicrease quantity
   function handleChange(product) {
@@ -28,7 +24,7 @@ export default function PopupCart({ show, onClose }) {
 
   function stopPropagation(e) {
     e.stopPropagation()
-}
+  }
 
 
   useEffect(() => {
@@ -36,8 +32,8 @@ export default function PopupCart({ show, onClose }) {
   }, [cart])
 
   return (
-    <div className={`popup-container ${show ? 'show' : 'hide'}`} onClick = {onClose}>
-      <div className="popup-cart max-content" onClick ={stopPropagation}>
+    <div className={`popup-container ${show ? 'show' : 'hide'}`} onClick={onClose}>
+      <div className="popup-cart max-content" onClick={stopPropagation}>
         <div className="cart-box">
           <div className="cart-box-top">
             <span className="cart-box-top-title">

@@ -3,6 +3,8 @@ import Categories from "../components/Categories"
 import Tagline from "../components/Tagline"
 import ProductSheet from "../components/ProductSheet"
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { TProduct } from "./Homepage"
+import { IData } from "./Homepage"
 import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {
@@ -10,15 +12,15 @@ export default function ProductPage() {
     const { slug } = useParams()
 
     //data from fetch
-    const [data, setData] = useState([])
-    const [product, setProduct] = useState()
+    const [data, setData] = useState<IData>()
+    const [product, setProduct] = useState<TProduct>()
 
     const fetchJson = () => {
         fetch('http://localhost:3000/data.json')
             .then(response => {
-                return response.json();
+                return response.json()
             }).then(response => {
-                setData(response);
+                setData(response)
 
                 //set product
                 for (let i = 0; i < response.products.length; i++) {
@@ -27,7 +29,7 @@ export default function ProductPage() {
                     }
                 }
             }).catch((error) => {
-                console.log(error);
+                console.log(error)
             });
     }
     useEffect(() => {
@@ -37,7 +39,7 @@ export default function ProductPage() {
 
     //back to previous page
     const navigate = useNavigate();
-    function goBack(e) {
+    function goBack(e : any) {
         e.preventDefault()
         navigate(-1)
     }
@@ -46,11 +48,14 @@ export default function ProductPage() {
     window.scrollTo(0, 0)
 
     //todo fix go back
+    //todo fix link to
+
+    //todo fix other
 
     if (product) {
         return (
             <main className="product-page max-content">
-                <Link onClick={goBack} className="back-link">Go back</Link>
+                <Link to="#" onClick={goBack} className="back-link">Go back</Link>
                 <section className="product-page-sheet-container">
                     {
                         <ProductSheet productData={product} />
@@ -67,7 +72,7 @@ export default function ProductPage() {
                         <h2 className="medium-title">In the box</h2>
                         <ul className="product-page-features-items">
                             {
-                                React.Children.toArray(product.includes.map((includeItem) => {
+                                React.Children.toArray(product.includes.map((includeItem : {quantity : number, item : string}) => {
                                     return (
                                         <li className="product-page-features-items-list">
                                             <span className="product-page-features-items-list-quantity">{includeItem.quantity}x</span>
@@ -92,7 +97,8 @@ export default function ProductPage() {
                     <h2 className="medium-title">You may also like</h2>
                     <div className="product-page-related-content">
                         {
-                            React.Children.toArray(product.others.map((other) => {
+                            React.Children.toArray(product.others.map((other:any) => {
+                                console.log("other ", other)
                                 return (
                                     <div className="product-page-related-item">
                                         <div className="product-page-related-item-image">
@@ -110,7 +116,7 @@ export default function ProductPage() {
                         }
                     </div>
                 </section>
-                <Categories categoryData={data.categories || []} />
+                <Categories categoryData={data?.categories || []} />
                 <Tagline />
             </main>
         )

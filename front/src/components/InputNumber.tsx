@@ -1,6 +1,14 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
-export default function InputNumber(props) {
+//callback any void ?
+type TProps = {
+    initialQuantity?: number,
+    callback: (quantity: number) => void
+}
+
+
+export default function InputNumber(props : TProps) {
+    
     //use initial quantity from props or 1
     const [inputNumber, setInputNumber] = useState(props.initialQuantity || 1)
 
@@ -12,7 +20,7 @@ export default function InputNumber(props) {
         setInputNumber(inputNumber - 1)
     }
 
-    function handleChange(evt) {
+    function handleChange(evt : any) {
         setInputNumber(parseInt(evt.target.value))
     }
 

@@ -2,17 +2,27 @@ import { Link } from 'react-router-dom'
 import React, { useEffect, useContext } from "react"
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
+import { TProduct } from '../pages/Homepage'
 
-export default function PopupCart({ show, onClose }) {
+type TProps = {
+  show: boolean,
+  onClose : any
+}
+
+//TODO TYPE fn onclose
+
+export default function PopupCart(props: TProps) {
 
   //cart
   const { cart, increaseFromCart, decreaseFromCart, removeAllFromCart } = useContext(CartContext)
 
   //total
-  const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+  const total = cart.reduce((sum: number, i: { price: number, quantity: number }) => sum + (i.price * i.quantity), 0)
+
+  //TODO HANDLE CHANGE
 
   //update cart - product quantity - when increase / dicrease quantity
-  function handleChange(product) {
+  function handleChange(product: any) {
     // for (let i = 0; i < newCart.length; i++) {
 
     //     if (newCart[i].quantity === 0) {
@@ -22,17 +32,16 @@ export default function PopupCart({ show, onClose }) {
     // }
   }
 
-  function stopPropagation(e) {
+  function stopPropagation(e: any) {
     e.stopPropagation()
   }
-
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
 
   return (
-    <div className={`popup-container ${show ? 'show' : 'hide'}`} onClick={onClose}>
+    <div className={`popup-container ${props.show ? 'show' : 'hide'}`} onClick={props.onClose}>
       <div className="popup-cart max-content" onClick={stopPropagation}>
         <div className="cart-box">
           <div className="cart-box-top">
@@ -45,7 +54,7 @@ export default function PopupCart({ show, onClose }) {
             {cart.length > 0 ?
               <ul className="cart-box-content-list">
                 {
-                  React.Children.toArray(cart.map((product, index) => {
+                  React.Children.toArray(cart.map((product: TProduct) => {
 
                     return (
                       <li className="cart-box-content-list-item">
@@ -71,7 +80,7 @@ export default function PopupCart({ show, onClose }) {
               <span className="cart-box-total-price">$ {ParseToDecimal(total)}</span>
             </div>
           </div>
-          <Link to="/checkout/" className="button-primary" onClick={onClose}>
+          <Link to="/checkout/" className="button-primary" onClick={props.onClose}>
             Checkout
           </Link>
         </div>

@@ -98,7 +98,6 @@ export default function ProductPage() {
                     <div className="product-page-related-content">
                         {
                             React.Children.toArray(product.others.map((other:any) => {
-                                console.log("other ", other)
                                 return (
                                     <div className="product-page-related-item">
                                         <div className="product-page-related-item-image">

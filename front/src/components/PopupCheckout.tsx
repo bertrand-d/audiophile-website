@@ -3,17 +3,23 @@ import { Link } from 'react-router-dom'
 import React, { useContext } from "react"
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
+import { TProduct } from '../pages/Homepage'
 
-export default function PopupCheckout({ show, onClose }) {
+type TProps = {
+    show: boolean,
+    onClose: any
+}
+
+export default function PopupCheckout(props: TProps) {
 
     //cart
     const { cart } = useContext(CartContext)
 
     //total
-    const total = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+    const total = cart.reduce((sum: number, i: { price: number, quantity: number }) => sum + (i.price * i.quantity), 0)
 
     return (
-        <div className={`popup-container ${show ? 'show' : 'hide'}`}>
+        <div className={`popup-container ${props.show ? 'show' : 'hide'}`}>
             <div className="cart-box cart-box-centered cart-box-checkout ">
                 <CheckedLogo />
                 <span className="small-title">THANK YOU<br /> FOR YOUR ORDER</span>
@@ -21,7 +27,7 @@ export default function PopupCheckout({ show, onClose }) {
                 <div className="cart-box-checkout-total">
                     {
                         cart.length > 0 ?
-                            React.Children.toArray(cart.map((product, index) => {
+                            React.Children.toArray(cart.map((product: TProduct, index: number) => {
                                 return (
                                     index === 0 &&
                                     <div className="cart-box-checkout-total-left">

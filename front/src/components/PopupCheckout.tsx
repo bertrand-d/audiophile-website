@@ -5,6 +5,7 @@ import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 import { TProduct } from '../pages/Homepage'
 
+//todo onclose type
 type TProps = {
     show: boolean,
     onClose: any

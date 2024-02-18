@@ -10,9 +10,8 @@ export default function Checkout() {
     //cart
     const { cart: cart } = useContext(CartContext)
 
-    //***** any to i et e */
     //total
-    const total = cart.reduce((sum: number, i: any) => sum + (i.price * i.quantity), 0)
+    const total = cart.reduce((sum: number, i) => sum + (i.price * i.quantity), 0)
 
     //checkout popup
     const [isPopupVisible, setPopupVisible] = useState(false)
@@ -25,10 +24,9 @@ export default function Checkout() {
         setPopupVisible(false)
     }
 
-    //***** */
     //back to previous page
     const navigate = useNavigate()
-    function goBack(e: any) {
+    const goBack: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
         e.preventDefault()
         navigate(-1)
     }
@@ -50,11 +48,11 @@ export default function Checkout() {
     // check if radio button is selected
     const [radioSelected, setRadioSelected] = useState("e-Money")
 
-    function handleRadioChange(event: any) {
-        setRadioSelected(event.target.value)
+    const handleRadioChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        setRadioSelected(e.target.value)
     }
 
-    function handleChange(e: any) {
+    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value })
     }
@@ -66,7 +64,6 @@ export default function Checkout() {
 
     //form validation
 
-    //pourquoi tu rales pas gros
     const [formErrors, setFormErrors] = useState({})
 
     function validateForm() {
@@ -87,9 +84,9 @@ export default function Checkout() {
         return Object.keys(errors).length === 0; // Si aucun erreur, le formulaire est valide
     }
 
-    function handleSubmit(e: any) {
-        e.preventDefault();
-        const isValid = validateForm();
+    const handleSubmit: React.FormEventHandler = (e) => {
+        e.preventDefault()
+        const isValid = validateForm()
         if (isValid) {
             openPopup()
         } else {
@@ -97,7 +94,6 @@ export default function Checkout() {
         }
     }
 
-    // link to #
     return (
         <main className="checkout">
             <div className="max-content">

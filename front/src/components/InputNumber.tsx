@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 
-//callback any void ?
 type TProps = {
     initialQuantity?: number,
     callback: (quantity: number) => void

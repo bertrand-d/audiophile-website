@@ -8,7 +8,7 @@ import { TProduct } from '../pages/Homepage'
 //todo onclose type
 type TProps = {
     show: boolean,
-    onClose: any
+    onClose: React.MouseEventHandler<Element>
 }
 
 export default function PopupCheckout(props: TProps) {

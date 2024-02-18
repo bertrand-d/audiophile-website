@@ -6,10 +6,8 @@ import { TProduct } from '../pages/Homepage'
 
 type TProps = {
   show: boolean,
-  onClose : any
+  onClose: React.MouseEventHandler
 }
-
-//TODO TYPE fn onclose
 
 export default function PopupCart(props: TProps) {
 
@@ -18,19 +16,6 @@ export default function PopupCart(props: TProps) {
 
   //total
   const total = cart.reduce((sum: number, i: { price: number, quantity: number }) => sum + (i.price * i.quantity), 0)
-
-  //TODO HANDLE CHANGE
-
-  //update cart - product quantity - when increase / dicrease quantity
-  function handleChange(product: any) {
-    // for (let i = 0; i < newCart.length; i++) {
-
-    //     if (newCart[i].quantity === 0) {
-    //       newCart.splice(newCart[i], 1)
-    //     } 
-    //     setCart(newCart)
-    // }
-  }
 
   function stopPropagation(e: any) {
     e.stopPropagation()
@@ -65,7 +50,7 @@ export default function PopupCart(props: TProps) {
                         </div>
                         <div className="input-number">
                           <button className="input-number-button" onClick={() => decreaseFromCart(product)}>-</button>
-                          <input type="number" className="input-number-input" min="0" placeholder='1' value={product.quantity} onChange={handleChange} />
+                          <input type="number" className="input-number-input" min="0" placeholder='1' value={product.quantity} />
                           <button className="input-number-button" onClick={() => increaseFromCart(product)}>+</button>
                         </div>
                       </li>

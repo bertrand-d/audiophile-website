@@ -13,7 +13,7 @@ export type TCategory = {
 }
 //todo change response to only category
 // maybe create another file for types
-//TODO fix all any
+//TODO fix all any 
 export type TProduct = {
     id: number,
     image : any, //object
@@ -25,8 +25,8 @@ export type TProduct = {
     price: number,
     slug: string,
     new : boolean,
-    others: any, //array with objects
-    includes: any, //array with objects
+    others: Array<any>,
+    includes: Array<any>,
     quantity : number;
 }
 export interface IData {

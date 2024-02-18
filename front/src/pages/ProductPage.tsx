@@ -38,8 +38,8 @@ export default function ProductPage() {
     }, [slug])
 
     //back to previous page
-    const navigate = useNavigate();
-    function goBack(e : any) {
+    const navigate = useNavigate()
+    const goBack: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
         e.preventDefault()
         navigate(-1)
     }
@@ -47,10 +47,8 @@ export default function ProductPage() {
     //back to previous page -> scroll to top when come from navigate(-1)
     window.scrollTo(0, 0)
 
-    //todo fix go back
-    //todo fix link to
 
-    //todo fix other
+    //todo fix link to
 
     if (product) {
         return (
@@ -97,7 +95,7 @@ export default function ProductPage() {
                     <h2 className="medium-title">You may also like</h2>
                     <div className="product-page-related-content">
                         {
-                            React.Children.toArray(product.others.map((other:any) => {
+                            React.Children.toArray(product.others.map((other) => {
                                 return (
                                     <div className="product-page-related-item">
                                         <div className="product-page-related-item-image">

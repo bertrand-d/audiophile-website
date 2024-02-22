@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import React, { useContext } from "react"
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
-import { TProduct } from '../pages/Homepage'
+import { TProduct } from '../utils/Types'
 
 //todo onclose type
 type TProps = {

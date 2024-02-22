@@ -1,6 +1,6 @@
 // CartContext.js
 import { createContext, useState, useEffect } from 'react'
-import { TProduct } from '../pages/Homepage'
+import { TProduct } from '../utils/Types'
 
 type TCartContext = {
     cart: Array<any>, 

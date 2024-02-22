@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useContext, useState } from "react"
 import { CartContext } from '../context/CartContext'
-import { TProduct } from './Homepage'
+import { TProduct } from '../utils/Types'
 import ParseToDecimal from "../utils/ParseToDecimal"
 import PopupCheckout from '../components/PopupCheckout'
 

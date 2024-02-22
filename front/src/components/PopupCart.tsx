@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import React, { useEffect, useContext } from "react"
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
-import { TProduct } from '../pages/Homepage'
+import { TProduct } from '../utils/Types'
 
 type TProps = {
   show: boolean,

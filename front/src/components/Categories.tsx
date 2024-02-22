@@ -1,5 +1,5 @@
 import { ReactComponent as Arrow } from '../assets/icons/icon-arrow-right.svg'
-import { TCategory } from "../pages/Homepage"
+import { TCategory } from '../utils/Types'
 import { Link } from 'react-router-dom'
 
 type TProps = {

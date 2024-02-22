@@ -3,8 +3,8 @@ import Categories from "../components/Categories"
 import Tagline from "../components/Tagline"
 import ProductSheet from "../components/ProductSheet"
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { TProduct } from "./Homepage"
-import { IData } from "./Homepage"
+import { TProduct } from "../utils/Types"
+import { IData } from "../utils/Types"
 import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {

@@ -1,7 +1,7 @@
 import InputNumber from './InputNumber'
 import { useLocation, Link } from 'react-router-dom'
 import React, {useState, useContext } from "react"
-import { TProduct } from '../pages/Homepage'
+import { TProduct } from '../utils/Types'
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 

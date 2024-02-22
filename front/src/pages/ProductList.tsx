@@ -1,7 +1,7 @@
 import Categories from "../components/Categories"
 import ProductSheet from "../components/ProductSheet"
 import Tagline from "../components/Tagline"
-import { IData } from "../pages/Homepage"
+import { IData } from "../utils/Types"
 import { Navigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
 

@@ -5,6 +5,11 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
         margin-bottom: 50px;
+
+        @include breakpoint(md) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &-item {
@@ -12,6 +17,9 @@
         flex-direction: column;
         gap: 10px;
 
+        @include breakpoint(md) {
+            width: 100%;
+        }
         &.full {
             grid-column: 1 / 3;
         }

@@ -8,7 +8,7 @@ type TProps = {
 
 export default function Categories(props: TProps) {
     return (
-        <section className="section-categories max-content">
+        <section className="section-categories">
             {
                 props.categoryData.map((category, index) => {
                     return (

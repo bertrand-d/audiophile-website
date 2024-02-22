@@ -59,5 +59,9 @@
     &-button-container {
         display: flex;
         gap: 15px;
+
+        @include breakpoint(md) {
+            justify-content: center;
+        }
     }
 }

@@ -12,6 +12,10 @@ input[type=submit] {
     display: block;
     margin: 0 0 60px 0;
     color: rgba(0, 0, 0, 0.5);
+
+    @include breakpoint(md) {
+        margin: 0 0 20px 0;
+    }
 }
 
 .button-primary {

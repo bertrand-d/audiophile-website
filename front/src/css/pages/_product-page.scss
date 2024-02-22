@@ -1,25 +1,38 @@
 .product-page {
     padding-top: 80px;
 
+    @include breakpoint(md) {
+        padding-top: 20px;
+    }
+
     &-sheet-container,
     &-features-container,
     &-mosaic,
     &-related {
         margin-bottom: 160px;
+
+        @include breakpoint(md) {
+            margin-bottom: 80px;
+        }
     }
 
     &-features-container {
         display: flex;
         gap: 125px;
 
+        @include breakpoint(md) {
+            flex-wrap: wrap;
+            gap: 80px;
+        }
+
         &-left {
             flex: 2;
 
-            & > p {
+            &>p {
                 white-space: pre-line
             }
         }
-        
+
         &-right {
             flex: 1;
         }
@@ -31,7 +44,7 @@
         gap: 10px;
 
         &-list {
-            display: flex; 
+            display: flex;
             gap: 25px;
             font-size: 0.9em;
 
@@ -41,28 +54,33 @@
             }
 
             &-name {
-                color: rgba(0,0,0,0.5);
+                color: rgba(0, 0, 0, 0.5);
                 text-transform: capitalize;
             }
         }
     }
 
     &-mosaic {
-        display: flex; 
+        display: flex;
         gap: 30px;
         max-height: 600px;
 
-        &-left, 
+        @include breakpoint(md) {
+            flex-direction: column;
+            max-height: none;
+        }
+
+        &-left,
         &-right {
             flex: 1;
             object-fit: contain;
 
-            & > img {
+            &>img {
                 border-radius: 5px;
             }
         }
 
-        &-right{
+        &-right {
             flex: 1.5;
         }
 
@@ -84,14 +102,19 @@
             display: flex;
             gap: 30px;
             justify-content: space-between;
+
+            @include breakpoint(md) {
+                flex-direction: column;
+                gap: 60px;
+            }
         }
 
         &-item {
             text-align: center;
-            
+
             &-image {
                 overflow: hidden;
-                border-radius: 5px;
+                border-radius: 8px;
             }
 
             &-name {
@@ -114,5 +137,5 @@
 
     }
 
-    
+
 }

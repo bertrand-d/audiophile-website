@@ -171,5 +171,10 @@
         position: absolute;
         right: 0;
         top: 30px;
+
+        @include breakpoint(md) {
+            position: relative;
+            margin: 0 auto;
+        }
     }
 }

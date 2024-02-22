@@ -27,7 +27,7 @@ export default function ProductSheet(props : TProps) {
             id: id,
             name: name,
             price: price,
-            image: image.desktop,
+            image: image,
             quantity: inputQuantity
         }
         addToCart(data)
@@ -46,7 +46,6 @@ export default function ProductSheet(props : TProps) {
     const isNew = props.productData.new
     const locationArray = useLocation().pathname.split('/')
     const isProductPage = locationArray.includes('product')
-
     return (
         <article className="product-sheet">
             <div className="product-sheet-image">

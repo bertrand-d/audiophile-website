@@ -1,25 +1,44 @@
-
-
 export type TCategory = {
     name: string,
     image: string
 }
 
+type TProductImage = {
+    mobile : string,
+    tablet : string,
+    desktop: string
+}
 
-//TODO fix all any 
+type TProductGallery = {
+    first : TProductImage,
+    second : TProductImage,
+    third : TProductImage  
+}
+
+type TProductOthers = {
+    slug: string,
+    name: string,
+    image: TProductImage
+}
+
+type TProductIncludes = {
+    quantity: number,
+    item : string
+}
+
 export type TProduct = {
     id: number,
-    image : any, //object
+    image : TProductImage,
     name: string,
     category : string,
     description: string,
     features : string,
-    gallery: any, //object
+    gallery: TProductGallery,
     price: number,
     slug: string,
     new : boolean,
-    others: Array<any>,
-    includes: Array<any>,
+    others: Array<TProductOthers>,
+    includes: Array<TProductIncludes>,
     quantity : number;
 }
 export interface IData {

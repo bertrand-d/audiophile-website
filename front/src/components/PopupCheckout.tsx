@@ -33,7 +33,7 @@ export default function PopupCheckout(props: TProps) {
                                     index === 0 &&
                                     <div className="cart-box-checkout-total-left">
                                         <div className="cart-box-content-list-item">
-                                            <img src={product.image} className="cart-box-content-list-item-image" />
+                                            <img src={product.image.desktop} className="cart-box-content-list-item-image" />
                                             <div className="cart-box-content-list-item-content">
                                                 <span className="cart-box-content-list-item-name">{product.name}</span>
                                                 <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>

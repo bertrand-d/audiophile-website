@@ -1,6 +1,6 @@
 export default function Tagline() {
     return (
-        <section className="section-tagline">
+        <section className="section-tagline max-content">
             <div className="section-tagline-left">
                 <h2 className="medium-title">
                     Bringing you the

@@ -16,17 +16,6 @@ export default function Checkout() {
     //total
     const total = cart.reduce((sum: number, i) => sum + (i.price * i.quantity), 0)
 
-    //checkout popup
-    const [isPopupVisible, setPopupVisible] = useState(false)
-
-    function openPopup() {
-        setPopupVisible(true)
-    }
-
-    function closePopup() {
-        setPopupVisible(false)
-    }
-
     //back to previous page
     const navigate = useNavigate()
     const goBack: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
@@ -34,43 +23,61 @@ export default function Checkout() {
         navigate(-1)
     }
 
+    /* form */
+
+    //schema validation
+    const schema = yup
+        .object({
+            radio: yup.boolean(),
+            name: yup.string().required(),
+            email: yup.string().email().required(),
+            phone: yup.string().min(8).required(),
+            address: yup.string().min(8).required(),
+            zipcode: yup.number().transform((value) => Number.isNaN(value) ? null : value)
+                .nullable().min(2).positive().integer().required(),
+            city: yup.string().required(),
+            country: yup.string().required(),
+            emoneynb: yup.string().when('$radioSelected', {
+                is: "e-Money",
+                then: (schema) => schema.required(),
+                otherwise: (schema) => schema.notRequired(),
+            }),
+            emoneypin: yup.string().when('$radioSelected', {
+                is: "e-Money",
+                then: (schema) => schema.required(),
+                otherwise: (schema) => schema.notRequired(),
+            })
+        })
+        .required()
+
     // check if radio button is selected
     const [radioSelected, setRadioSelected] = useState("e-Money")
 
     const handleRadioChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setRadioSelected(e.target.value)
     }
+    schema.describe({ value: { radio: true } })
 
-    /* form */
-    const wait = function (duration = 1000) {
-        return new Promise<void>((resolve) => {
-            window.setTimeout(resolve, duration)
-        })
-    }
-
-    const schema = yup
-        .object({
-            name: yup.string().required(),
-            email: yup.string().email().required(),
-            phone: yup.string().min(8).required(),
-            address: yup.string().min(8).required(),
-            zipcode: yup.number().positive().integer().required(),
-            city: yup.string().required(),
-            country: yup.string().required(),
-            emoneynb: yup.number().min(4).required(),
-            emoneypin: yup.number().min(4).max(4).integer()
-        })
-        .required()
-
+    //react hook form
     const { register, handleSubmit, formState, formState: { errors } } = useForm({
         mode: "onTouched",
-        resolver: yupResolver(schema)
+        resolver: yupResolver(schema),
+        context: {
+            radioSelected
+        }
     })
-    const { isSubmitting } = formState
+    const { isSubmitting, isSubmitSuccessful } = formState
+
+    console.log(errors)
 
     const onSubmit = async data => {
-        await wait(2000)
         console.log(data)
+    }
+
+    //checkout popup
+    const [isPopupVisible, setPopupVisible] = useState(true)
+    function closePopup() {
+        setPopupVisible(false)
     }
 
     return (
@@ -148,32 +155,37 @@ export default function Checkout() {
                                 <span className="form-label">Payment Method</span>
                                 <div className={radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
                                     <label className="form-label form-label-container" htmlFor="emoney">e-Money
-                                        <input type="radio" name="money" defaultChecked onChange={handleRadioChange} />
+                                        <input type="radio" name="money" value="e-Money" defaultChecked onChange={handleRadioChange} />
                                         <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
                                 <div className={radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
                                     <label className="form-label form-label-container" htmlFor="emoney">Cash on Delivery
-                                        <input type="radio" name="money" onChange={handleRadioChange} />
+                                        <input type="radio" name="money" value="cash" onChange={handleRadioChange} />
                                         <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
-                                <div className="form-item">
-                                    <label className="form-label" htmlFor="emoneynb">e-Money Number</label>
-                                    <input className="form-input" type="text" placeholder='238521993' {...register("emoneynb")} />
-                                    {
-                                        errors.emoneynb &&
-                                        <span className="invalid-input">{errors.emoneynb?.message?.toString()}</span>
-                                    }
-                                </div>
-                                <div className="form-item">
-                                    <label className="form-label" htmlFor="emoneypin">e-Money PIN</label>
-                                    <input className="form-input" type="text" placeholder='6891' {...register("emoneypin")} />
-                                    {
-                                        errors.emoneypin &&
-                                        <span className="invalid-input">{errors.emoneypin?.message?.toString()}</span>
-                                    }
-                                </div>
+                                {
+                                    radioSelected === "e-Money" &&
+                                    <>
+                                        <div className="form-item">
+                                            <label className="form-label" htmlFor="emoneynb">e-Money Number</label>
+                                            <input className="form-input" type="text" placeholder='238521993' {...register("emoneynb")} />
+                                            {
+                                                errors.emoneynb &&
+                                                <span className="invalid-input">{errors.emoneynb?.message?.toString()}</span>
+                                            }
+                                        </div>
+                                        <div className="form-item">
+                                            <label className="form-label" htmlFor="emoneypin">e-Money PIN</label>
+                                            <input className="form-input" type="text" placeholder='6891' {...register("emoneypin")} />
+                                            {
+                                                errors.emoneypin &&
+                                                <span className="invalid-input">{errors.emoneypin?.message?.toString()}</span>
+                                            }
+                                        </div>
+                                    </>
+                                }
                             </div>
                         </form>
                     </section>
@@ -182,7 +194,6 @@ export default function Checkout() {
                         {cart.length > 0 ?
                             <ul className="cart-box-content-list">
                                 {
-                                    /* TProduct quantity */
                                     React.Children.toArray(cart.map((product: TProduct) => {
                                         return (
                                             <li className="cart-box-content-list-item">
@@ -222,7 +233,10 @@ export default function Checkout() {
                         </div>
                         <input type="submit" form="myform" value="Continue & pay" className="button-primary" disabled={isSubmitting} onClick={handleSubmit(onSubmit)} />
                     </section>
-                    <PopupCheckout show={isPopupVisible} onClose={closePopup} />
+                    {
+                        isSubmitSuccessful &&
+                        <PopupCheckout show={isPopupVisible} onClose={closePopup} />
+                    }
                 </div>
             </div>
         </main>

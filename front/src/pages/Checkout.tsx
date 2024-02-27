@@ -1,5 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
 import React, { useContext, useState } from "react"
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
 import { CartContext } from '../context/CartContext'
 import { TProduct } from '../utils/Types'
 import ParseToDecimal from "../utils/ParseToDecimal"
@@ -31,20 +34,6 @@ export default function Checkout() {
         navigate(-1)
     }
 
-    //form data
-    const [userData, setUserData] = useState({
-        name: '',
-        email: '',
-        phoneNumber: '',
-        address: '',
-        postalCode: '',
-        city: '',
-        country: '',
-        paymentMethod: '',
-        eMoneyNumber: '',
-        eMoneyPin: ''
-    })
-
     // check if radio button is selected
     const [radioSelected, setRadioSelected] = useState("e-Money")
 
@@ -52,89 +41,106 @@ export default function Checkout() {
         setRadioSelected(e.target.value)
     }
 
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-        const { name, value } = e.target;
-        setUserData({ ...userData, [name]: value })
+    /* form */
+    const wait = function (duration = 1000) {
+        return new Promise<void>((resolve) => {
+            window.setTimeout(resolve, duration)
+        })
     }
 
-    type TErrors = {
-        name: string,
-        email: string
-    }
+    const schema = yup
+        .object({
+            name: yup.string().required(),
+            email: yup.string().email().required(),
+            phone: yup.string().min(8).required(),
+            address: yup.string().min(8).required(),
+            zipcode: yup.number().positive().integer().required(),
+            city: yup.string().required(),
+            country: yup.string().required(),
+            emoneynb: yup.number().min(4).required(),
+            emoneypin: yup.number().min(4).max(4).integer()
+        })
+        .required()
 
-    //form validation
+    const { register, handleSubmit, formState, formState: { errors } } = useForm({
+        mode: "onTouched",
+        resolver: yupResolver(schema)
+    })
+    const { isSubmitting } = formState
 
-    const [formErrors, setFormErrors] = useState({})
-
-    function validateForm() {
-        const errors: TErrors = {
-            name: "",
-            email: ""
-        }
-        if (!userData.name.trim()) {
-            errors.name = 'Le nom est requis.'
-        }
-        if (!userData.email.trim()) {
-            errors.email = 'L\'email est requis.'
-        } else if (!/\S+@\S+\.\S+/.test(userData.email)) {
-            errors.email = 'L\'email est invalide.'
-        }
-
-        setFormErrors(errors);
-        return Object.keys(errors).length === 0; // Si aucun erreur, le formulaire est valide
-    }
-
-    const handleSubmit: React.FormEventHandler = (e) => {
-        e.preventDefault()
-        const isValid = validateForm()
-        if (isValid) {
-            openPopup()
-        } else {
-            console.log('Le formulaire contient des erreurs.')
-        }
+    const onSubmit = async data => {
+        await wait(2000)
+        console.log(data)
     }
 
     return (
         <main className="checkout">
             <div className="max-content">
-
                 <Link to="#" onClick={goBack} className="back-link">Go back</Link>
                 <div className="section-container">
                     <section className="checkout-section">
                         <h1 className="checkout-main-title">Checkout</h1>
-                        <form className="form" onSubmit={handleSubmit}>
+                        <form className="form" name="myform" onSubmit={handleSubmit(onSubmit)}>
                             <h2 className="checkout-second-title">Billing details</h2>
                             <div className="form-container">
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="name">Name</label>
-                                    <input className="form-input" type="text" name="name" value={userData.name} placeholder='Alexei Ward' onChange={handleChange} />
+                                    <input className="form-input" type="text" placeholder='Alexei Ward' {...register("name")} />
+                                    {
+                                        errors.name &&
+                                        <span className="invalid-input">{errors.name?.message?.toString()}</span>
+                                    }
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="email">Email Address</label>
-                                    <input className="form-input" type="email" name="email" value={userData.email} placeholder='alexei@mail.com' onChange={handleChange} />
+                                    <input className="form-input" type="email" placeholder='alexei@mail.com' {...register("email")} />
+                                    {
+                                        errors.email &&
+                                        <span className="invalid-input">{errors.email?.message?.toString()}</span>
+                                    }
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="phone">Phone Number</label>
-                                    <input className="form-input" type="number" name="phone" value={userData.phoneNumber} placeholder='+1 202-555-0136' onChange={handleChange} />
+                                    <input className="form-input" type="number" placeholder='+1 202-555-0136' {...register("phone")} />
+                                    {
+                                        errors.phone &&
+                                        <span className="invalid-input">{errors.phone?.message?.toString()}</span>
+                                    }
                                 </div>
                             </div>
                             <h2 className="checkout-second-title">Shipping info</h2>
                             <div className="form-container">
                                 <div className="form-item full">
                                     <label className="form-label" htmlFor="address">Address</label>
-                                    <input className="form-input" type="text" name="address" value={userData.address} placeholder='1137 Williams Avenue' onChange={handleChange} />
+                                    <input className="form-input" type="text" placeholder='1137 Williams Avenue' {...register("address")} />
+                                    {
+                                        errors.address &&
+                                        <span className="invalid-input">{errors.address?.message?.toString()}</span>
+                                    }
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="zipcode">ZIP Code</label>
-                                    <input className="form-input" type="number" name="zipcode" value={userData.postalCode} placeholder='10001' onChange={handleChange} />
+                                    <input className="form-input" type="number" placeholder='10001' {...register("zipcode")} />
+                                    {
+                                        errors.zipcode &&
+                                        <span className="invalid-input">{errors.zipcode?.message?.toString()}</span>
+                                    }
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="city">City</label>
-                                    <input className="form-input" type="text" name="city" value={userData.city} placeholder='New York' onChange={handleChange} />
+                                    <input className="form-input" type="text" placeholder='New York' {...register("city")} />
+                                    {
+                                        errors.city &&
+                                        <span className="invalid-input">{errors.city?.message?.toString()}</span>
+                                    }
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="country">Country</label>
-                                    <input className="form-input" type="text" name="country" value={userData.country} placeholder='United States' onChange={handleChange} />
+                                    <input className="form-input" type="text" placeholder='United States' {...register("country")} />
+                                    {
+                                        errors.country &&
+                                        <span className="invalid-input">{errors.country?.message?.toString()}</span>
+                                    }
                                 </div>
                             </div>
                             <h2 className="checkout-second-title">Payement Details</h2>
@@ -142,23 +148,31 @@ export default function Checkout() {
                                 <span className="form-label">Payment Method</span>
                                 <div className={radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
                                     <label className="form-label form-label-container" htmlFor="emoney">e-Money
-                                        <input type="radio" name="money" value={userData.paymentMethod = "e-Money"} defaultChecked onChange={handleRadioChange} />
+                                        <input type="radio" name="money" defaultChecked onChange={handleRadioChange} />
                                         <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
                                 <div className={radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
                                     <label className="form-label form-label-container" htmlFor="emoney">Cash on Delivery
-                                        <input type="radio" name="money" value={userData.paymentMethod = "cash"} onChange={handleRadioChange} />
+                                        <input type="radio" name="money" onChange={handleRadioChange} />
                                         <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneynb">e-Money Number</label>
-                                    <input className="form-input" type="text" name="emoneynb" value={userData.eMoneyNumber} placeholder='238521993' onChange={handleChange} />
+                                    <input className="form-input" type="text" placeholder='238521993' {...register("emoneynb")} />
+                                    {
+                                        errors.emoneynb &&
+                                        <span className="invalid-input">{errors.emoneynb?.message?.toString()}</span>
+                                    }
                                 </div>
                                 <div className="form-item">
                                     <label className="form-label" htmlFor="emoneypin">e-Money PIN</label>
-                                    <input className="form-input" type="text" name="emoneypin" value={userData.eMoneyPin} placeholder='6891' onChange={handleChange} />
+                                    <input className="form-input" type="text" placeholder='6891' {...register("emoneypin")} />
+                                    {
+                                        errors.emoneypin &&
+                                        <span className="invalid-input">{errors.emoneypin?.message?.toString()}</span>
+                                    }
                                 </div>
                             </div>
                         </form>
@@ -206,7 +220,7 @@ export default function Checkout() {
                                 </span>
                             </span>
                         </div>
-                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" onClick={handleSubmit} />
+                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" disabled={isSubmitting} onClick={handleSubmit(onSubmit)} />
                     </section>
                     <PopupCheckout show={isPopupVisible} onClose={closePopup} />
                 </div>

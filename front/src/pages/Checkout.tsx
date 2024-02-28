@@ -28,23 +28,22 @@ export default function Checkout() {
     //schema validation
     const schema = yup
         .object({
-            radio: yup.boolean(),
             name: yup.string().required(),
             email: yup.string().email().required(),
             phone: yup.string().min(8).required(),
             address: yup.string().min(8).required(),
             zipcode: yup.number().transform((value) => Number.isNaN(value) ? null : value)
-                .nullable().min(2).positive().integer().required(),
+                .min(2, "Zip code must be greater than or equal to 2 numbers length").positive().integer().required("Zip code is a required field"),
             city: yup.string().required(),
             country: yup.string().required(),
-            emoneynb: yup.string().when('$radioSelected', {
+            emoneynb: yup.number().transform((value) => Number.isNaN(value) ? null : value).when('$radioSelected', {
                 is: "e-Money",
-                then: (schema) => schema.required(),
+                then: (schema) => schema.required("E-money number is a required field").min(3, "E-money number must be greater than or equal to 3 numbers length"),
                 otherwise: (schema) => schema.notRequired(),
             }),
-            emoneypin: yup.string().when('$radioSelected', {
+            emoneypin: yup.number().transform((value) => Number.isNaN(value) ? null : value).when('$radioSelected', {
                 is: "e-Money",
-                then: (schema) => schema.required(),
+                then: (schema) => schema.required("E-money pin is a required field").min(4, "E-money pin must be equal to 4 numbers length").max(4, "E-money pin must be equal to 4 numbers length"),
                 otherwise: (schema) => schema.notRequired(),
             })
         })
@@ -56,7 +55,13 @@ export default function Checkout() {
     const handleRadioChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setRadioSelected(e.target.value)
     }
-    schema.describe({ value: { radio: true } })
+
+    //check if cart is empty
+    const [isCartEmpty, setIsCartEmpty] = useState(false)
+
+    const handleEmptyError: any = () => {
+        setIsCartEmpty(true)
+    }
 
     //react hook form
     const { register, handleSubmit, formState, formState: { errors } } = useForm({
@@ -66,12 +71,12 @@ export default function Checkout() {
             radioSelected
         }
     })
+
     const { isSubmitting, isSubmitSuccessful } = formState
 
-    console.log(errors)
 
-    const onSubmit = async data => {
-        console.log(data)
+    const onSubmit = (data) => {
+        console.log("data", data)
     }
 
     //checkout popup
@@ -210,9 +215,10 @@ export default function Checkout() {
                                     }))
                                 }
                             </ul>
-                            : <span>Empty</span>
+                            : isCartEmpty ?
+                                <span className="empty-alert">The cart is empty, please add at least one product</span>
+                                : <span>Empty</span>
                         }
-
                         <div className="summary-bottom">
                             <span className="summary-bottom-text">
                                 TOTAL
@@ -231,7 +237,7 @@ export default function Checkout() {
                                 </span>
                             </span>
                         </div>
-                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" disabled={isSubmitting} onClick={handleSubmit(onSubmit)} />
+                        <input type="submit" form="myform" value="Continue & pay" className="button-primary" disabled={isSubmitting} onClick={cart.length > 0 ? handleSubmit(onSubmit) : handleEmptyError} />
                     </section>
                     {
                         isSubmitSuccessful &&

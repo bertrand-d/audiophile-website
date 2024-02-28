@@ -50,17 +50,17 @@ export default function Checkout() {
         .required()
 
     // check if radio button is selected
-    const [radioSelected, setRadioSelected] = useState("e-Money")
+    const [radioSelected, setRadioSelected] = useState("cash")
 
     const handleRadioChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         setRadioSelected(e.target.value)
     }
 
     //check if cart is empty
-    const [isCartEmpty, setIsCartEmpty] = useState(false)
+    const [isCartEmptyAlert, setIsCartEmptyAlert] = useState(false)
 
     const handleEmptyError: any = () => {
-        setIsCartEmpty(true)
+        setIsCartEmptyAlert(true)
     }
 
     //react hook form
@@ -158,15 +158,15 @@ export default function Checkout() {
                             <h2 className="checkout-second-title">Payement Details</h2>
                             <div className="form-container">
                                 <span className="form-label">Payment Method</span>
-                                <div className={radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
-                                    <label className="form-label form-label-container" htmlFor="emoney">e-Money
-                                        <input type="radio" name="money" value="e-Money" defaultChecked onChange={handleRadioChange} />
+                                <div className={radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
+                                    <label className="form-label form-label-container" htmlFor="emoney">Cash on Delivery
+                                        <input type="radio" name="money" value="cash" defaultChecked onChange={handleRadioChange} />
                                         <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
-                                <div className={radioSelected === 'cash' ? 'form-item-radio checked' : 'form-item-radio'}>
-                                    <label className="form-label form-label-container" htmlFor="emoney">Cash on Delivery
-                                        <input type="radio" name="money" value="cash" onChange={handleRadioChange} />
+                                <div className={radioSelected === 'e-Money' ? 'form-item-radio checked' : 'form-item-radio'} >
+                                    <label className="form-label form-label-container" htmlFor="emoney">e-Money
+                                        <input type="radio" name="money" value="e-Money" onChange={handleRadioChange} />
                                         <span className="form-label-container-radio-checkmark"></span>
                                     </label>
                                 </div>
@@ -215,7 +215,7 @@ export default function Checkout() {
                                     }))
                                 }
                             </ul>
-                            : isCartEmpty ?
+                            : isCartEmptyAlert ?
                                 <span className="empty-alert">The cart is empty, please add at least one product</span>
                                 : <span>Empty</span>
                         }

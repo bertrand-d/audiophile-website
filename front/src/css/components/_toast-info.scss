@@ -1,0 +1,19 @@
+.toast-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    background: white;
+    width: 99vw;
+    box-shadow: 1px -8px 10px rgb(232, 232, 232);
+    z-index: 10;
+
+    svg {
+        width: 40px;
+    }
+}

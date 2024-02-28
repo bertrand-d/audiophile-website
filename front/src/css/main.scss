@@ -1,5 +1,6 @@
 //Utils
 @import './utils/_breakpoints',
+        './utils/_animations',
         './utils/_max-content';
 
 //Base
@@ -22,7 +23,8 @@
         './components/_nav',
         './components/_product-sheet',
         './components/_promote',
-        './components/_tagline';
+        './components/_tagline',
+        './components/_toast-info';
 
 //Pages
 @import './pages/_checkout',

@@ -30,7 +30,7 @@ export default function Homepage() {
         <main className="homepage">
             <Hero />
             <Categories categoryData={data?.categories || []} />
-            <section className="section-promote">
+            <section className="section-promote max-content">
                 <PromoteOne />
                 <PromoteTwo />
                 <PromoteThree />

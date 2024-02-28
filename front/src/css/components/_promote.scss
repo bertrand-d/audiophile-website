@@ -13,10 +13,26 @@
         padding: 100px;
         gap: 140px;
         height: 550px;
+
+        @include breakpoint(md) {
+            flex-wrap: wrap;
+            height: initial;
+            padding: 55px 25px;
+            gap: 50px;
+        }
+
+        .button-primary {
+            margin: 40px auto 0 auto;
+        }
     }
 
     .promote-one-picture-container {
         min-width: 400px;
+
+        @include breakpoint(md) {
+            min-width: initial;
+            margin: auto;
+        }
     }
 
     .promote-one-icon {
@@ -24,6 +40,12 @@
         left: -200px;
         top: -20px;
         z-index: 0;
+
+        @include breakpoint(md) {
+            left: 50%;
+            top: -20px;
+            transform: translateX(-50%);
+        }
     }
 
     .promote-one-picture {
@@ -32,15 +54,30 @@
         position: absolute;
         object-fit: contain;
         bottom: -50px;
+
+        @include breakpoint(md) {
+            position: relative;
+            max-width: 300px;
+            top: 0;
+        }
+
+        @include breakpoint(sm) {
+            max-width: 200px;
+        }
     }
 
     .promote-one-content-text {
         position: relative;
+
+        @include breakpoint(md) {
+            text-align: center;
+        }
     }
 
     .promote-one-title {
         display: flex;
         flex-direction: column;
+        word-break: break-all;
     }
 
     .promote-one-description {
@@ -51,13 +88,18 @@
 
     .promote-two-content {
         display: flex;
-        background-image: url("/assets/home/desktop/image-speaker-zx7.jpg");
+        background: center / cover no-repeat url("/assets/home/desktop/image-speaker-zx7.jpg");
         align-items: center;
         border-radius: 10px;
         overflow: hidden;
         padding: 100px;
         height: 320px;
         width: 100%;
+
+        @include breakpoint(sm) {
+            padding: 25px;
+            background: center / cover no-repeat url("/assets/home/mobile/image-speaker-zx7.jpg");
+        }
     }
 
     .promote-three-content {
@@ -66,7 +108,6 @@
         width: 100%;
 
         @include breakpoint(sm) {
-            padding: 0 25px;
             flex-direction: column;
         }
 

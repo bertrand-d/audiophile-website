@@ -50,6 +50,7 @@
         }
     }
 
+    //remove element on mobile who aren't on footer, because footer dont have cart but have text link inside
     &-list:not(.footer) {
         .text-link {
             @include breakpoint(md) {

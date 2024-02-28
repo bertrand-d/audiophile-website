@@ -3,7 +3,7 @@ import { ReactComponent as Circle } from "../assets/home/desktop/pattern-circles
 
 export default function PromoteOne() {
     return (
-        <div className="promote-one-content max-content">
+        <div className="promote-one-content">
             <div className="promote-one-picture-container">
                 <Circle className="promote-one-icon" />
                 <img className="promote-one-picture" src="\assets\home\desktop\image-speaker-zx9.png" alt="zx9" />

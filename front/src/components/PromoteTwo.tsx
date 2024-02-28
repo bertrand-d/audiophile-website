@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function PromoteTwo() {
     return (
-        <div className="promote-two-content max-content">
+        <div className="promote-two-content">
             <div className="promote-two-content-text">
                 <h2 className="promote-two-title small-title">
                     ZX7 Speaker

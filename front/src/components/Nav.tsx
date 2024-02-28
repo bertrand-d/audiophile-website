@@ -11,10 +11,11 @@ type TProps = {
 }
 export default function Nav(props: TProps) {
 
+    //footer don't have cart on all devices, but keep text link in the mobile
     let isInHeader = props.isInHeader
     let isInFooter = props.isInFooter
 
-    const [isPopupVisible, setPopupVisible] = useState(false);
+    const [isPopupVisible, setPopupVisible] = useState(false)
 
     function displayPopup() {
         setPopupVisible(!isPopupVisible)
@@ -54,14 +55,12 @@ export default function Nav(props: TProps) {
                             Earphones
                         </Link>
                     </li>
-
                     {
                         isInHeader &&
                         <li className="nav-list-item cart" onClick={displayPopup}>
                             <Cart />
                         </li>
                     }
-
                 </ul>
             </nav>
             <PopupCart show={isPopupVisible} onClose={displayPopup} />

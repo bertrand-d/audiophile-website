@@ -2,8 +2,7 @@ import { ReactComponent as CheckedLogo } from '../assets/icons/checked.svg'
 
 //todo onclose type
 type TProps = {
-    show: boolean,
-    onClose: React.MouseEventHandler<Element>
+    show: boolean
 }
 
 export default function ToastInfo(props: TProps) {

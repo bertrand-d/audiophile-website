@@ -11,9 +11,6 @@
         align-items: center;
         gap: 0 35px;
 
-        @include breakpoint(sm) {
-            padding: 0 25px;
-       } 
 
         &-item {
             cursor: pointer;
@@ -27,18 +24,12 @@
                 }
             }
 
-            &.text-link{
-                @include breakpoint(md) {
-                    display: none;
-               } 
-            }
-
             &.menu-hamburger {
                 display: none;
 
                 @include breakpoint(md) {
                     display: flex;
-               } 
+                }
             }
 
             &.logo {
@@ -46,7 +37,7 @@
 
                 @include breakpoint(md) {
                     margin: auto;
-               } 
+                }
             }
 
             &.cart {
@@ -54,7 +45,26 @@
 
                 @include breakpoint(md) {
                     margin-left: 0;
-               } 
+                }
+            }
+        }
+    }
+
+    &-list:not(.footer) {
+        .text-link {
+            @include breakpoint(md) {
+                display: none;
+            }
+        }
+    }
+
+    &-list.footer {
+        @include breakpoint(md) {
+            flex-direction: column;
+            gap: 30px;
+
+            .logo {
+                margin-bottom: 30px;
             }
         }
     }

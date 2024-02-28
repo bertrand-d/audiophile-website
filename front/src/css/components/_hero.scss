@@ -15,6 +15,7 @@
             justify-content: center;
             text-align: center;
             padding: 130px 25px;
+            background: center / contain no-repeat url('../../assets/home/mobile/image-header.jpg');
        } 
     }
 
@@ -28,15 +29,27 @@
         display: block;
     }
 
+    &-category-name {
+        word-break: break-word;
+    }
+
     &-description {
         max-width: 350px;
         line-height: 25px;
         font-size: 0.9em;
         color: rgba(255, 255, 255, 0.5);
+
+        @include breakpoint(md) {
+            margin: 0 auto;
+       } 
     }
 
     .button-primary {
         margin-top: 20px;
+
+        @include breakpoint(md) {
+            margin: 20px auto 0 auto;
+       } 
     }
 
 }

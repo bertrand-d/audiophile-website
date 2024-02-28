@@ -62,10 +62,6 @@ export default function ProductSheet(props: TProps) {
           
     }
 
-    function closeToast() {
-        setToastVisible(false)
-    }
-
     return (
         <>
             <article className="product-sheet">
@@ -109,7 +105,7 @@ export default function ProductSheet(props: TProps) {
             </article>
             {
                 isToastVisible &&
-                <ToastInfo show={isToastVisible} onClose={closeToast} />
+                <ToastInfo show={isToastVisible} />
             }
         </>
     )

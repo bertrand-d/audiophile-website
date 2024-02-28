@@ -5,20 +5,30 @@ import { Link } from 'react-router-dom'
 import { useState } from "react"
 import PopupCart from './PopupCart'
 
-export default function Nav() {
+type TProps = {
+    isInHeader: boolean,
+    isInFooter: boolean
+}
+export default function Nav(props: TProps) {
+
+    let isInHeader = props.isInHeader
+    let isInFooter = props.isInFooter
+
     const [isPopupVisible, setPopupVisible] = useState(false);
 
     function displayPopup() {
-        setPopupVisible(!isPopupVisible);
-    };
+        setPopupVisible(!isPopupVisible)
+    }
 
     return (
         <>
             <nav className="nav max-content">
-                <ul className="nav-list">
-                    <li className="nav-list-item menu-hamburger">
-                        <MenuHamburger/>
-                    </li>
+                <ul className={isInFooter ? "nav-list footer" : "nav-list"}>
+                    {isInHeader &&
+                        <li className="nav-list-item menu-hamburger">
+                            <MenuHamburger />
+                        </li>
+                    }
                     <li className="nav-list-item logo">
                         <Link to="/">
                             <Logo />
@@ -44,9 +54,14 @@ export default function Nav() {
                             Earphones
                         </Link>
                     </li>
-                    <li className="nav-list-item cart" onClick={displayPopup}>
-                        <Cart />
-                    </li>
+
+                    {
+                        isInHeader &&
+                        <li className="nav-list-item cart" onClick={displayPopup}>
+                            <Cart />
+                        </li>
+                    }
+
                 </ul>
             </nav>
             <PopupCart show={isPopupVisible} onClose={displayPopup} />
@@ -55,5 +70,5 @@ export default function Nav() {
 }
 
 Nav.defaultProps = {
-    isHeader: true
+    isInHeader: true
 }

@@ -5,6 +5,10 @@
         position: relative;
         padding: 75px 0;
 
+        @include breakpoint(md) {
+            padding: 50px 0;
+        }
+
         &:before {
             content: '';
             position: absolute;
@@ -14,6 +18,11 @@
             background: $tertiary;
             width: 100px;
             height: 4px;
+
+            @include breakpoint(md) {
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
 
         .nav {
@@ -27,15 +36,27 @@
             margin-top: 35px;
             line-height: 25px;
 
+            @include breakpoint(md) {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 50px;
+                margin-top: 60px;
+            }
+
             &-left {
                 display: flex;
                 flex: 1 1 0;
                 gap: 55px 0;
                 flex-direction: column;
 
+                @include breakpoint(md) {
+                    padding: 0 20px;
+                }
+
                 & p {
                     color: rgba(255, 255, 255, 0.5);
-                } 
+                }
             }
 
             &-right {
@@ -43,6 +64,10 @@
                 align-items: center;
                 flex: 1 1 0;
                 justify-content: flex-end;
+
+                @include breakpoint(md) {
+                    justify-content: center;
+                }
 
                 .footer-social-list {
                     display: flex;

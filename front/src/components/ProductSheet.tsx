@@ -43,6 +43,7 @@ export default function ProductSheet(props : TProps) {
         price,
         slug
     } = props.productData
+    
     const isNew = props.productData.new
     const locationArray = useLocation().pathname.split('/')
     const isProductPage = locationArray.includes('product')

@@ -43,7 +43,7 @@ export default function Checkout() {
             }),
             emoneypin: yup.number().transform((value) => Number.isNaN(value) ? null : value).when('$radioSelected', {
                 is: "e-Money",
-                then: (schema) => schema.required("E-money pin is a required field").min(4, "E-money pin must be equal to 4 numbers length").max(4, "E-money pin must be equal to 4 numbers length"),
+                then: (schema) => schema.required("E-money pin is a required field").min(4, "E-money pin must be equal to 4 numbers length"),
                 otherwise: (schema) => schema.notRequired(),
             })
         })

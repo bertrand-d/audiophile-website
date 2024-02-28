@@ -14,7 +14,7 @@ type TProps = {
 export default function PopupCheckout(props: TProps) {
 
     //cart
-    const { cart: cart } = useContext(CartContext)
+    const { cart: cart, removeAllFromCart } = useContext(CartContext)
 
     //total
     const total = cart.reduce((sum: number, i: { price: number, quantity: number }) => sum + (i.price * i.quantity), 0)
@@ -53,7 +53,7 @@ export default function PopupCheckout(props: TProps) {
                         <span>$ {ParseToDecimal(total + 50)}</span>
                     </div>
                 </div>
-                <Link to="/" className="button-primary">Back to home</Link>
+                <Link to="/" className="button-primary" onClick={removeAllFromCart}>Back to home</Link>
             </div>
         </div>
     )

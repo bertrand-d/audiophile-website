@@ -59,6 +59,26 @@
         }
     }
 
+    &-dropdown {
+        position: absolute;
+        top: 98px;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 30px;
+        width: 100%;
+        background: $primary;
+        z-index: 2;
+        transform-origin: top center;
+        animation: growDown 300ms ease-in-out forwards;
+
+        &.show {
+            display: flex;
+        }
+    }
+
     &-list.footer {
         @include breakpoint(md) {
             flex-direction: column;

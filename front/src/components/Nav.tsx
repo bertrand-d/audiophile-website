@@ -16,9 +16,14 @@ export default function Nav(props: TProps) {
     let isInFooter = props.isInFooter
 
     const [isPopupVisible, setPopupVisible] = useState(false)
+    const [isDropdownVisible, setIsDropDownVisible] = useState(false)
 
     function displayPopup() {
         setPopupVisible(!isPopupVisible)
+    }
+
+    function displayDropdown() {
+        setIsDropDownVisible(!isDropdownVisible)
     }
 
     return (
@@ -26,7 +31,7 @@ export default function Nav(props: TProps) {
             <nav className="nav max-content">
                 <ul className={isInFooter ? "nav-list footer" : "nav-list"}>
                     {isInHeader &&
-                        <li className="nav-list-item menu-hamburger">
+                        <li className="nav-list-item menu-hamburger" onClick={displayDropdown}>
                             <MenuHamburger />
                         </li>
                     }
@@ -63,6 +68,30 @@ export default function Nav(props: TProps) {
                     }
                 </ul>
             </nav>
+            <div className={`nav-dropdown-container`}>
+                <ul className={`nav nav-dropdown ${isDropdownVisible ? "show": "hide"}`}>
+                    <li className="nav-list-item text-link" onClick={displayDropdown}>
+                        <Link to="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li className="nav-list-item text-link" onClick={displayDropdown}>
+                        <Link to="/product-list/Headphones">
+                            Headphones
+                        </Link>
+                    </li>
+                    <li className="nav-list-item text-link" onClick={displayDropdown}>
+                        <Link to="/product-list/Speakers">
+                            Speakers
+                        </Link>
+                    </li>
+                    <li className="nav-list-item text-link" onClick={displayDropdown}>
+                        <Link to="/product-list/Earphones">
+                            Earphones
+                        </Link>
+                    </li>
+                </ul>
+            </div>
             <PopupCart show={isPopupVisible} onClose={displayPopup} />
         </>
     )

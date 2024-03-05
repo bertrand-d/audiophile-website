@@ -39,7 +39,7 @@ export default function ProductPage() {
 
     //back to previous page
     const navigate = useNavigate()
-    const goBack: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    const goBack: React.MouseEventHandler<HTMLButtonElement> = (e) => {
         e.preventDefault()
         navigate(-1)
     }
@@ -53,7 +53,7 @@ export default function ProductPage() {
     if (product) {
         return (
             <main className="product-page max-content">
-                <Link to="#" onClick={goBack} className="back-link">Go back</Link>
+                <button onClick={goBack} className="back-link">Go back</button>
                 <section className="product-page-sheet-container">
                     {
                         <ProductSheet productData={product} />

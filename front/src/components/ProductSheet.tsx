@@ -13,7 +13,7 @@ type TProps = {
 export default function ProductSheet(props: TProps) {
 
     //use cart
-    const { addToCart } = useContext(CartContext)
+    const { updateCart } = useContext(CartContext)
 
     //get input quantity when user press add to cart
     const [inputQuantity, setInputQuantity] = useState<number>(0)
@@ -22,21 +22,8 @@ export default function ProductSheet(props: TProps) {
         setInputQuantity(quantity)
     }
 
-    function handleUpdateCart() {
-        const data: TProduct = {
-            ...props.productData,
-            id: id,
-            name: name,
-            price: price,
-            image: image,
-            quantity: inputQuantity
-        }
-        addToCart(data)
-    }
-
     //product informations
     const {
-        id,
         image,
         name,
         category,
@@ -51,7 +38,6 @@ export default function ProductSheet(props: TProps) {
 
 
     //toast
-
     const [isToastVisible, setToastVisible] = useState(false)
 
     function handleToastVisibility() {
@@ -93,7 +79,7 @@ export default function ProductSheet(props: TProps) {
                             <div className="product-sheet-button-container">
                                 <InputNumber callback={handleCallback} />
                                 <button className="button-primary" onClick={() => {
-                                    handleUpdateCart();
+                                    updateCart(inputQuantity, props.productData)
                                     handleToastVisibility()
                                 }}>
                                     add to cart

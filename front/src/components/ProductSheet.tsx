@@ -16,11 +16,7 @@ export default function ProductSheet(props: TProps) {
     const { updateCart } = useContext(CartContext)
 
     //get input quantity when user press add to cart
-    const [inputQuantity, setInputQuantity] = useState<number>(0)
-
-    function handleCallback(quantity: number) {
-        setInputQuantity(quantity)
-    }
+    const [inputQuantity, setInputQuantity] = useState<number>(1)
 
     //product informations
     const {
@@ -35,7 +31,6 @@ export default function ProductSheet(props: TProps) {
     const isNew = props.productData.new
     const locationArray = useLocation().pathname.split('/')
     const isProductPage = locationArray.includes('product')
-
 
     //toast
     const [isToastVisible, setToastVisible] = useState(false)
@@ -77,7 +72,7 @@ export default function ProductSheet(props: TProps) {
                         <div className="product-sheet-add-container">
                             <span className="product-sheet-price">$ {ParseToDecimal(price)}</span>
                             <div className="product-sheet-button-container">
-                                <InputNumber callback={handleCallback} />
+                                <InputNumber quantity={inputQuantity} callback={setInputQuantity} />
                                 <button className="button-primary" onClick={() => {
                                     updateCart(inputQuantity, props.productData)
                                     handleToastVisibility()

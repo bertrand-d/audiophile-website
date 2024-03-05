@@ -24,9 +24,7 @@ const defaultValue: TCartContext = {
 
 const CartContext = createContext<TCartContext>(defaultValue)
 
-
 const defaultCartItem = localStorage.getItem('cart') || JSON.stringify([])
-
 
 const CartProvider = (props: any) => {
     const [cart, setCart] = useState<Array<any>>(JSON.parse(defaultCartItem))
@@ -65,8 +63,6 @@ const CartProvider = (props: any) => {
         }
     }
 
-
-
     const updateCart = (inputQuantity, data: TProduct) => {
 
         //product information for update
@@ -74,10 +70,7 @@ const CartProvider = (props: any) => {
             id,
             image,
             name,
-            category,
-            description,
-            price,
-            slug
+            price
         } = data
 
         const dataProduct: TProduct = {

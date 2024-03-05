@@ -3,6 +3,7 @@ import React, { useEffect, useContext } from "react"
 import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 import { TProduct } from '../utils/Types'
+import InputNumber from './InputNumber'
 
 type TProps = {
   show: boolean,
@@ -40,6 +41,14 @@ export default function PopupCart(props: TProps) {
               <ul className="cart-box-content-list">
                 {
                   React.Children.toArray(cart.map((product: TProduct) => {
+
+                    const handleChange = (quantity: number) => {
+                      if (quantity < product.quantity) {
+                        decreaseFromCart(product)
+                      } else if (quantity > product.quantity) {
+                        increaseFromCart(product)
+                      }
+                    }
                     return (
                       <li className="cart-box-content-list-item">
                         <img src={product.image.desktop} className="cart-box-content-list-item-image" />
@@ -47,11 +56,11 @@ export default function PopupCart(props: TProps) {
                           <span className="cart-box-content-list-item-name">{product.name}</span>
                           <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>
                         </div>
-                        <div className="input-number">
-                          <button className="input-number-button" onClick={() => decreaseFromCart(product)}>-</button>
-                          <input type="number" className="input-number-input" min="0" placeholder='1' value={product.quantity} />
-                          <button className="input-number-button" onClick={() => increaseFromCart(product)}>+</button>
-                        </div>
+                        <InputNumber 
+                          quantity={product.quantity} 
+                          isInCart={true} 
+                          callback={handleChange} 
+                        />
                       </li>
                     )
                   }))

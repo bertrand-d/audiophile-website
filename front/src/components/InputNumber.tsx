@@ -1,36 +1,25 @@
-import { useEffect, useState } from "react"
-
 type TProps = {
-    initialQuantity?: number,
+    quantity: number,
+    isInCart?: boolean,
     callback: (quantity: number) => void
 }
 
-
-export default function InputNumber(props : TProps) {
-    
-    //use initial quantity from props or 1
-    const [inputNumber, setInputNumber] = useState(props.initialQuantity || 1)
-
-    function increase() {
-        setInputNumber(inputNumber + 1)
-    }
+export default function InputNumber(props: TProps) {
 
     function decrease() {
-        setInputNumber(inputNumber - 1)
+        props.callback(props.quantity - 1)
+    } 
+    function inputChange(evt) {
+        props.callback(parseInt(evt.target.value, 10))
     }
-
-    function handleChange(evt : any) {
-        setInputNumber(parseInt(evt.target.value))
-    }
-
-    useEffect(() => {
-        props.callback(inputNumber)
-    }, [inputNumber])
+    function increase() {
+        props.callback(props.quantity + 1)
+    } 
 
     return (
         <div className="input-number">
             <button className="input-number-button" onClick={decrease}>-</button>
-            <input type="number" className="input-number-input" min="0" placeholder='1' value={inputNumber} onChange={handleChange} />
+            <input type="number" className="input-number-input" min="0" placeholder='1' value={props.quantity} readOnly={props.isInCart} onChange={inputChange} />
             <button className="input-number-button" onClick={increase} >+</button>
         </div>
     )

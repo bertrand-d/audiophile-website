@@ -40,7 +40,6 @@ export default function ProductSheet(props: TProps) {
         setTimeout(() => {
             setToastVisible(false)
           }, 3200)
-          
     }
 
     return (

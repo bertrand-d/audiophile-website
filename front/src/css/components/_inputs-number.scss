@@ -29,7 +29,7 @@ input[type=number]::-webkit-outer-spin-button {
     &-input {
         background: none;
         text-align: center;
-        width: 57px;
+        max-width: 57px;
         font-weight: 700;
         font-size: 0.8125em;
         

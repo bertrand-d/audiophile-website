@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/audiophile-website/static/css/main.0348880e.css",
-    "main.js": "/audiophile-website/static/js/main.606fd776.js",
-    "static/js/453.80efc53e.chunk.js": "/audiophile-website/static/js/453.80efc53e.chunk.js",
+    "main.css": "/audiophile-website/static/css/main.fa530675.css",
+    "main.js": "/audiophile-website/static/js/main.5b339579.js",
+    "static/js/787.71df535f.chunk.js": "/audiophile-website/static/js/787.71df535f.chunk.js",
     "static/media/image-hero.jpg": "/audiophile-website/static/media/image-hero.fb7f46173fa4c819c755.jpg",
-    "static/media/image-speaker-zx7.jpg": "/audiophile-website/static/media/image-speaker-zx7.3d4940e89ebadd9beb50.jpg",
+    "static/media/image-header.jpg": "/audiophile-website/static/media/image-header.d200a3583e72c7981f46.jpg",
+    "static/media/image-speaker-zx7.jpg": "/audiophile-website/static/media/image-speaker-zx7.82dc33d645ab18cf1ac1.jpg",
     "static/media/logo.svg": "/audiophile-website/static/media/logo.e03974f8eeb36e51813ca6f10681acdc.svg",
     "static/media/instagram.svg": "/audiophile-website/static/media/instagram.8d0df55595e16bac2d486efccdc6b4b3.svg",
     "index.html": "/audiophile-website/index.html",
@@ -15,12 +16,12 @@
     "static/media/pattern-circles.svg": "/audiophile-website/static/media/pattern-circles.f4df3610b83b818abbbecd009a5b11d3.svg",
     "static/media/icon-arrow-right.svg": "/audiophile-website/static/media/icon-arrow-right.357b9db81a798d76397efa2f4ad3409f.svg",
     "static/media/icon-hamburger.svg": "/audiophile-website/static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
-    "main.0348880e.css.map": "/audiophile-website/static/css/main.0348880e.css.map",
-    "main.606fd776.js.map": "/audiophile-website/static/js/main.606fd776.js.map",
-    "453.80efc53e.chunk.js.map": "/audiophile-website/static/js/453.80efc53e.chunk.js.map"
+    "main.fa530675.css.map": "/audiophile-website/static/css/main.fa530675.css.map",
+    "main.5b339579.js.map": "/audiophile-website/static/js/main.5b339579.js.map",
+    "787.71df535f.chunk.js.map": "/audiophile-website/static/js/787.71df535f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0348880e.css",
-    "static/js/main.606fd776.js"
+    "static/css/main.fa530675.css",
+    "static/js/main.5b339579.js"
   ]
 }

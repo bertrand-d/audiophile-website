@@ -7,6 +7,8 @@ import { TProduct } from "../utils/Types"
 import { IData } from "../utils/Types"
 import React, { useEffect, useState } from "react"
 
+const BASE_URL = `${window.location.origin}${window.location.port ? ':' + window.location.port : ''}/`
+
 export default function ProductPage() {
     //slug in url
     const { slug } = useParams()
@@ -16,7 +18,7 @@ export default function ProductPage() {
     const [product, setProduct] = useState<TProduct>()
 
     const fetchJson = () => {
-        fetch('http://localhost:3000/data.json')
+        fetch(BASE_URL + 'data.json')
             .then(response => {
                 return response.json()
             }).then(response => {

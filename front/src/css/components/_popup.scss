@@ -114,6 +114,10 @@
             border-radius: 8px;
             overflow: hidden;
 
+            @include breakpoint(md) {
+                flex-direction: column;
+            }
+
             &-left {
                 background: $secondary;
                 padding: 25px;

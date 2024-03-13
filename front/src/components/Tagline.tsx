@@ -1,4 +1,5 @@
 export default function Tagline() {
+    //https://create-react-app.dev/docs/adding-images-fonts-and-files/
     return (
         <section className="section-tagline max-content">
             <div className="section-tagline-left">

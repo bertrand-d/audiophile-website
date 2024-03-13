@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "./static/css/main.1d4b70a9.css",
-    "main.js": "./static/js/main.4d1fea81.js",
-    "static/js/787.71df535f.chunk.js": "./static/js/787.71df535f.chunk.js",
-    "static/media/image-hero.jpg": "./static/media/image-hero.fb7f46173fa4c819c755.jpg",
-    "static/media/image-header.jpg": "./static/media/image-header.d200a3583e72c7981f46.jpg",
-    "static/media/image-speaker-zx7.jpg": "./static/media/image-speaker-zx7.82dc33d645ab18cf1ac1.jpg",
-    "static/media/logo.svg": "./static/media/logo.e03974f8eeb36e51813ca6f10681acdc.svg",
-    "static/media/instagram.svg": "./static/media/instagram.8d0df55595e16bac2d486efccdc6b4b3.svg",
-    "static/media/checked.svg": "./static/media/checked.26f592124e08aab357e7549fd2cb9bc1.svg",
-    "static/media/cart.svg": "./static/media/cart.5e1893a62995fc7b443abe7bee68063e.svg",
-    "index.html": "./index.html",
-    "static/media/twitter.svg": "./static/media/twitter.5dc7711ff2433b3b89ee7742a407e3bd.svg",
-    "static/media/facebook.svg": "./static/media/facebook.e9773e52bc64ea377cb95af7ccb6877e.svg",
-    "static/media/pattern-circles.svg": "./static/media/pattern-circles.f4df3610b83b818abbbecd009a5b11d3.svg",
-    "static/media/icon-arrow-right.svg": "./static/media/icon-arrow-right.357b9db81a798d76397efa2f4ad3409f.svg",
-    "static/media/icon-hamburger.svg": "./static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
-    "main.1d4b70a9.css.map": "./static/css/main.1d4b70a9.css.map",
-    "main.4d1fea81.js.map": "./static/js/main.4d1fea81.js.map",
-    "787.71df535f.chunk.js.map": "./static/js/787.71df535f.chunk.js.map"
+    "main.css": "/audiophile-website/static/css/main.fa530675.css",
+    "main.js": "/audiophile-website/static/js/main.5b339579.js",
+    "static/js/787.71df535f.chunk.js": "/audiophile-website/static/js/787.71df535f.chunk.js",
+    "static/media/image-hero.jpg": "/audiophile-website/static/media/image-hero.fb7f46173fa4c819c755.jpg",
+    "static/media/image-header.jpg": "/audiophile-website/static/media/image-header.d200a3583e72c7981f46.jpg",
+    "static/media/image-speaker-zx7.jpg": "/audiophile-website/static/media/image-speaker-zx7.82dc33d645ab18cf1ac1.jpg",
+    "static/media/logo.svg": "/audiophile-website/static/media/logo.e03974f8eeb36e51813ca6f10681acdc.svg",
+    "static/media/instagram.svg": "/audiophile-website/static/media/instagram.8d0df55595e16bac2d486efccdc6b4b3.svg",
+    "index.html": "/audiophile-website/index.html",
+    "static/media/checked.svg": "/audiophile-website/static/media/checked.26f592124e08aab357e7549fd2cb9bc1.svg",
+    "static/media/cart.svg": "/audiophile-website/static/media/cart.5e1893a62995fc7b443abe7bee68063e.svg",
+    "static/media/twitter.svg": "/audiophile-website/static/media/twitter.5dc7711ff2433b3b89ee7742a407e3bd.svg",
+    "static/media/facebook.svg": "/audiophile-website/static/media/facebook.e9773e52bc64ea377cb95af7ccb6877e.svg",
+    "static/media/pattern-circles.svg": "/audiophile-website/static/media/pattern-circles.f4df3610b83b818abbbecd009a5b11d3.svg",
+    "static/media/icon-arrow-right.svg": "/audiophile-website/static/media/icon-arrow-right.357b9db81a798d76397efa2f4ad3409f.svg",
+    "static/media/icon-hamburger.svg": "/audiophile-website/static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
+    "main.fa530675.css.map": "/audiophile-website/static/css/main.fa530675.css.map",
+    "main.5b339579.js.map": "/audiophile-website/static/js/main.5b339579.js.map",
+    "787.71df535f.chunk.js.map": "/audiophile-website/static/js/787.71df535f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d4b70a9.css",
-    "static/js/main.4d1fea81.js"
+    "static/css/main.fa530675.css",
+    "static/js/main.5b339579.js"
   ]
 }

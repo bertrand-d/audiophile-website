@@ -1,5 +1,6 @@
+import tagimg from '../assets/shared/desktop/image-best-gear.jpg'
+
 export default function Tagline() {
-    //https://create-react-app.dev/docs/adding-images-fonts-and-files/
     return (
         <section className="section-tagline max-content">
             <div className="section-tagline-left">
@@ -17,7 +18,7 @@ export default function Tagline() {
                 </p>
             </div>
             <div className="section-tagline-right">
-                <img src ="../assets/shared/desktop/image-best-gear.jpg"/>
+                <img src ={tagimg} alt="image tagline"/>
             </div>
         </section>
     )

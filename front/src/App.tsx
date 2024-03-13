@@ -17,13 +17,13 @@ export default function App() {
       <CartProvider>
         <Header />
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/product/:slug" element={<ProductPage />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/product-list/:category" element={<ProductList />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/product/:slug" element={<ProductPage />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/product-list/:category" element={<ProductList />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
         <Footer />
       </CartProvider>
     </div>

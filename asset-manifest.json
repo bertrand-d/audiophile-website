@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.1d4b70a9.css",
-    "main.js": "./static/js/main.eb24182a.js",
+    "main.js": "./static/js/main.e104f354.js",
     "static/js/787.71df535f.chunk.js": "./static/js/787.71df535f.chunk.js",
     "static/media/image-hero.jpg": "./static/media/image-hero.fb7f46173fa4c819c755.jpg",
     "static/media/image-best-gear.jpg": "./static/media/image-best-gear.4d4a28e9e7c9ab158dd8.jpg",
@@ -18,11 +18,11 @@
     "static/media/icon-arrow-right.svg": "./static/media/icon-arrow-right.357b9db81a798d76397efa2f4ad3409f.svg",
     "static/media/icon-hamburger.svg": "./static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
     "main.1d4b70a9.css.map": "./static/css/main.1d4b70a9.css.map",
-    "main.eb24182a.js.map": "./static/js/main.eb24182a.js.map",
+    "main.e104f354.js.map": "./static/js/main.e104f354.js.map",
     "787.71df535f.chunk.js.map": "./static/js/787.71df535f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1d4b70a9.css",
-    "static/js/main.eb24182a.js"
+    "static/js/main.e104f354.js"
   ]
 }

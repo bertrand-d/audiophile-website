@@ -1,5 +1,10 @@
 const BASE_URL = `${window.location.origin + "/"}`
-const DYNAMIC_URL = window.location.href
+let DYNAMIC_URL = window.location.href
+
+//if we are in localhost, than don't change url
+if(window.location.href.indexOf('localhost') > - 1) {
+    DYNAMIC_URL = BASE_URL
+}
 
 export {
     BASE_URL,

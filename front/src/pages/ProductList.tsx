@@ -4,6 +4,7 @@ import Tagline from "../components/Tagline"
 import { IData } from "../utils/Types"
 import { Navigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
+import BASE_URL from "../utils/env"
 
 export default function ProductList() {
 
@@ -14,7 +15,7 @@ export default function ProductList() {
     const [data, setData] = useState<IData>()
 
     const fetchJson = () => {
-        fetch('http://localhost:3000/data.json')
+        fetch(BASE_URL + 'data.json')
             .then(response => {
                 return response.json()
             }).then(response => {

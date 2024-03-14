@@ -5,9 +5,8 @@ import ProductSheet from "../components/ProductSheet"
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { TProduct } from "../utils/Types"
 import { IData } from "../utils/Types"
+import BASE_URL from "../utils/env"
 import React, { useEffect, useState } from "react"
-
-const BASE_URL = `${window.location.origin}${window.location.port ? ':' + window.location.port : ''}/`
 
 export default function ProductPage() {
     //slug in url

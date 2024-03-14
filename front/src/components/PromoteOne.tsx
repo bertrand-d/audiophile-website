@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { ReactComponent as Circle } from "../assets/home/desktop/pattern-circles.svg"
+import promoteImg from '../assets/home/desktop/image-speaker-zx9.png'
 
 export default function PromoteOne() {
     return (
         <div className="promote-one-content">
             <div className="promote-one-picture-container">
                 <Circle className="promote-one-icon" />
-                <img className="promote-one-picture" src="\assets\home\desktop\image-speaker-zx9.png" alt="zx9" />
+                <img className="promote-one-picture" src={promoteImg} alt="zx9 product" />
             </div>
             <div className="promote-one-content-text">
                 <h2 className="promote-one-title big-title white">

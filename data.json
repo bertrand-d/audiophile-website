@@ -2,15 +2,15 @@
   "categories": [
     {
       "name": "Headphones",
-      "image": "../assets/categories/headphones.png"
+      "image": "/assets/categories/headphones.png"
     },
     {
       "name": "Speakers",
-      "image": "../assets/categories/speakers.png"
+      "image": "/assets/categories/speakers.png"
     },
     {
       "name": "Earphones",
-      "image": "../assets/categories/earphones.png"
+      "image": "/assets/categories/earphones.png"
     }
   ],
   "products": [

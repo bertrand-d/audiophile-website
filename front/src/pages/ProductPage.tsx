@@ -5,7 +5,7 @@ import ProductSheet from "../components/ProductSheet"
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { TProduct } from "../utils/Types"
 import { IData } from "../utils/Types"
-import BASE_URL from "../utils/env"
+import { DYNAMIC_URL } from "../utils/env"
 import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {
@@ -17,7 +17,7 @@ export default function ProductPage() {
     const [product, setProduct] = useState<TProduct>()
 
     const fetchJson = () => {
-        fetch(window.location.href + 'data.json')
+        fetch(DYNAMIC_URL + 'data.json')
             .then(response => {
                 return response.json()
             }).then(response => {

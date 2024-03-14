@@ -17,7 +17,7 @@ export default function ProductPage() {
     const [product, setProduct] = useState<TProduct>()
 
     const fetchJson = () => {
-        fetch(BASE_URL + 'data.json')
+        fetch(window.location.href + 'data.json')
             .then(response => {
                 return response.json()
             }).then(response => {

@@ -15,7 +15,7 @@ export default function ProductList() {
     const [data, setData] = useState<IData>()
 
     const fetchJson = () => {
-        fetch(BASE_URL + 'data.json')
+        fetch(window.location.href + 'data.json')
             .then(response => {
                 return response.json()
             }).then(response => {

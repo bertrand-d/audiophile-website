@@ -48,8 +48,7 @@ export default function ProductPage() {
     //back to previous page -> scroll to top when come from navigate(-1)
     window.scrollTo(0, 0)
 
-
-    //todo fix link to
+    console.log(process.env.PUBLIC_URL)
 
     if (product) {
         return (
@@ -100,7 +99,7 @@ export default function ProductPage() {
                                 return (
                                     <div className="product-page-related-item">
                                         <div className="product-page-related-item-image">
-                                            <img src={other.image.desktop} />
+                                            <img src={process.env.PUBLIC_URL + other.image.desktop} />
                                         </div>
                                         <span className="product-page-related-item-name">
                                             {other.name}

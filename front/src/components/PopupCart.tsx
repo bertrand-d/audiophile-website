@@ -4,6 +4,7 @@ import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 import { TProduct } from '../utils/Types'
 import InputNumber from './InputNumber'
+import { IMG_BASE_URL } from '../utils/env'
 
 type TProps = {
   show: boolean,
@@ -51,7 +52,7 @@ export default function PopupCart(props: TProps) {
                     }
                     return (
                       <li className="cart-box-content-list-item">
-                        <img src={product.image.desktop} className="cart-box-content-list-item-image" />
+                        <img src={IMG_BASE_URL + product.image.desktop} className="cart-box-content-list-item-image" />
                         <div className="cart-box-content-list-item-content">
                           <span className="cart-box-content-list-item-name">{product.name}</span>
                           <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>

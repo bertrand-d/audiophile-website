@@ -5,7 +5,7 @@ import ProductSheet from "../components/ProductSheet"
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { TProduct } from "../utils/Types"
 import { IData } from "../utils/Types"
-import { DYNAMIC_URL } from "../utils/env"
+import { DYNAMIC_URL, IMG_BASE_URL } from "../utils/env"
 import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {
@@ -82,11 +82,11 @@ export default function ProductPage() {
                 </section>
                 <section className="product-page-mosaic">
                     <div className="product-page-mosaic-left">
-                        <img src={product.gallery.first.desktop} />
-                        <img src={product.gallery.second.desktop} />
+                        <img src={IMG_BASE_URL + product.gallery.first.desktop} />
+                        <img src={IMG_BASE_URL + product.gallery.second.desktop} />
                     </div>
                     <div className="product-page-mosaic-right">
-                        <img src={product.gallery.third.desktop} />
+                        <img src={IMG_BASE_URL + product.gallery.third.desktop} />
                     </div>
                 </section>
                 <section className="product-page-related">
@@ -97,7 +97,7 @@ export default function ProductPage() {
                                 return (
                                     <div className="product-page-related-item">
                                         <div className="product-page-related-item-image">
-                                            <img src={other.image.desktop} />
+                                            <img src={IMG_BASE_URL + other.image.desktop} />
                                         </div>
                                         <span className="product-page-related-item-name">
                                             {other.name}

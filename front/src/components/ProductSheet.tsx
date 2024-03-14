@@ -5,6 +5,7 @@ import { TProduct } from '../utils/Types'
 import { CartContext } from '../context/CartContext'
 import ToastInfo from './ToastInfo'
 import ParseToDecimal from "../utils/ParseToDecimal"
+import { IMG_BASE_URL } from '../utils/env'
 
 type TProps = {
     productData: TProduct
@@ -46,7 +47,7 @@ export default function ProductSheet(props: TProps) {
         <>
             <article className="product-sheet">
                 <div className="product-sheet-image">
-                    <img src={image.desktop} />
+                    <img src={IMG_BASE_URL + image.desktop} />
                 </div>
                 <div className="product-sheet-informations">
                     {

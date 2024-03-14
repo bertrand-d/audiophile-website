@@ -48,7 +48,7 @@ export default function ProductPage() {
     //back to previous page -> scroll to top when come from navigate(-1)
     window.scrollTo(0, 0)
 
-    console.log(process.env.PUBLIC_URL)
+    console.log('coucou ?')
 
     if (product) {
         return (
@@ -99,7 +99,7 @@ export default function ProductPage() {
                                 return (
                                     <div className="product-page-related-item">
                                         <div className="product-page-related-item-image">
-                                            <img src={process.env.PUBLIC_URL + other.image.desktop} />
+                                            <img src={"./audiophile-website" + other.image.desktop} />
                                         </div>
                                         <span className="product-page-related-item-name">
                                             {other.name}

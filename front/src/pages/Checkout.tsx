@@ -7,6 +7,7 @@ import { CartContext } from '../context/CartContext'
 import { TProduct } from '../utils/Types'
 import ParseToDecimal from "../utils/ParseToDecimal"
 import PopupCheckout from '../components/PopupCheckout'
+import { IMG_BASE_URL } from '../utils/env'
 
 export default function Checkout() {
 
@@ -202,7 +203,7 @@ export default function Checkout() {
                                     React.Children.toArray(cart.map((product: TProduct) => {
                                         return (
                                             <li className="cart-box-content-list-item">
-                                                <img src={product.image.desktop} className="cart-box-content-list-item-image" />
+                                                <img src={IMG_BASE_URL + product.image.desktop} className="cart-box-content-list-item-image" />
                                                 <div className="cart-box-content-list-item-content">
                                                     <span className="cart-box-content-list-item-name">{product.name}</span>
                                                     <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>

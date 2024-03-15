@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.1d4b70a9.css",
+    "main.css": "./static/css/main.283e9edc.css",
     "main.js": "./static/js/main.98cd3623.js",
     "static/js/787.71df535f.chunk.js": "./static/js/787.71df535f.chunk.js",
     "static/media/image-speaker-zx9.png": "./static/media/image-speaker-zx9.153cd899b91a08b22b1a.png",
@@ -18,12 +18,12 @@
     "static/media/pattern-circles.svg": "./static/media/pattern-circles.f4df3610b83b818abbbecd009a5b11d3.svg",
     "static/media/icon-arrow-right.svg": "./static/media/icon-arrow-right.357b9db81a798d76397efa2f4ad3409f.svg",
     "static/media/icon-hamburger.svg": "./static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
-    "main.1d4b70a9.css.map": "./static/css/main.1d4b70a9.css.map",
+    "main.283e9edc.css.map": "./static/css/main.283e9edc.css.map",
     "main.98cd3623.js.map": "./static/js/main.98cd3623.js.map",
     "787.71df535f.chunk.js.map": "./static/js/787.71df535f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d4b70a9.css",
+    "static/css/main.283e9edc.css",
     "static/js/main.98cd3623.js"
   ]
 }

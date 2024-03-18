@@ -4,7 +4,7 @@ import Tagline from "../components/Tagline"
 import { IData } from "../utils/Types"
 import { Navigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
-import { DYNAMIC_URL } from "../utils/env"
+import { BASE_URL, DYNAMIC_URL } from "../utils/env"
 
 export default function ProductList() {
 
@@ -26,8 +26,11 @@ export default function ProductList() {
     }
     useEffect(() => {
         fetchJson()
+        console.log("url de base", BASE_URL)
+        console.log("url dynamique", DYNAMIC_URL)
     }, [])
     
+  
     if (data?.categories) {
         //sort all element with "new" as true first
         const sortTrueFirst = data?.products.sort((a) => a.new ? -1 : 1)

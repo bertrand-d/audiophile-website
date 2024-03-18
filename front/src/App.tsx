@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 import ScrollToTop from "./utils/ScrollToTop";
 
 export default function App() {
-  //todo data ici en contexte
+  
   return (
     <div className="App">
       <CartProvider>

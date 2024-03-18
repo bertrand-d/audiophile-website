@@ -63,7 +63,7 @@ const CartProvider = (props: any) => {
         }
     }
 
-    const updateCart = (inputQuantity, data: TProduct) => {
+    const updateCart = (inputQuantity: number, data: TProduct) => {
 
         //product information for update
         const {

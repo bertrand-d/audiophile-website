@@ -75,8 +75,7 @@ export default function Checkout() {
 
     const { isSubmitting, isSubmitSuccessful } = formState
 
-
-    const onSubmit = (data) => {
+    const onSubmit = (data : any) => {
         console.log("data", data)
     }
 

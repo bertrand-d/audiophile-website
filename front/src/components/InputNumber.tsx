@@ -9,9 +9,11 @@ export default function InputNumber(props: TProps) {
     function decrease() {
         props.callback(props.quantity - 1)
     } 
-    function inputChange(evt) {
+
+    const inputChange: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
         props.callback(parseInt(evt.target.value, 10))
     }
+
     function increase() {
         props.callback(props.quantity + 1)
     } 

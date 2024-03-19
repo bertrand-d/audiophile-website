@@ -26,8 +26,6 @@ export default function ProductList() {
     }
     useEffect(() => {
         fetchJson()
-        console.log("url de base", BASE_URL)
-        console.log("url dynamique", DYNAMIC_URL)
     }, [])
     
   

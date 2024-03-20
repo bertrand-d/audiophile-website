@@ -1,4 +1,6 @@
 
+import React, { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 import Categories from "../components/Categories"
 import Tagline from "../components/Tagline"
 import ProductSheet from "../components/ProductSheet"
@@ -6,7 +8,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { TProduct } from "../utils/Types"
 import { IData } from "../utils/Types"
 import { DYNAMIC_URL, IMG_BASE_URL } from "../utils/env"
-import React, { useEffect, useState } from "react"
 
 export default function ProductPage() {
     //slug in url
@@ -50,7 +51,12 @@ export default function ProductPage() {
 
     if (product) {
         return (
-            <main className="product-page max-content">
+            <motion.main
+                className="product-page max-content"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+            >
                 <button onClick={goBack} className="back-link">Go back</button>
                 <section className="product-page-sheet-container">
                     {
@@ -68,7 +74,7 @@ export default function ProductPage() {
                         <h2 className="medium-title">In the box</h2>
                         <ul className="product-page-features-items">
                             {
-                                React.Children.toArray(product.includes.map((includeItem : {quantity : number, item : string}) => {
+                                React.Children.toArray(product.includes.map((includeItem: { quantity: number, item: string }) => {
                                     return (
                                         <li className="product-page-features-items-list">
                                             <span className="product-page-features-items-list-quantity">{includeItem.quantity}x</span>
@@ -113,7 +119,7 @@ export default function ProductPage() {
                 </section>
                 <Categories categoryData={data?.categories || []} />
                 <Tagline />
-            </main>
+            </motion.main>
         )
     }
 

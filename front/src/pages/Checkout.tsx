@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { motion } from "framer-motion"
 import { CartContext } from '../context/CartContext'
 import { TProduct } from '../utils/Types'
 import ParseToDecimal from "../utils/ParseToDecimal"
@@ -75,7 +76,7 @@ export default function Checkout() {
 
     const { isSubmitting, isSubmitSuccessful } = formState
 
-    const onSubmit = (data : any) => {
+    const onSubmit = (data: any) => {
         console.log("data", data)
     }
 
@@ -86,7 +87,12 @@ export default function Checkout() {
     }
 
     return (
-        <main className="checkout">
+        <motion.main
+            className="checkout"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
             <div className="max-content">
                 <button onClick={goBack} className="back-link">Go back</button>
                 <div className="section-container">
@@ -245,6 +251,6 @@ export default function Checkout() {
                     }
                 </div>
             </div>
-        </main>
+        </motion.main>
     )
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { motion } from 'framer-motion'
 import Categories from "../components/Categories"
 import PromoteOne from "../components/PromoteOne"
 import PromoteTwo from "../components/PromoteTwo"
@@ -6,8 +7,6 @@ import PromoteThree from "../components/PromoteThree"
 import Hero from "../components/Hero"
 import Tagline from "../components/Tagline"
 import { IData } from "../utils/Types"
-
-//todo change response to only category
 
 export default function Homepage() {
 
@@ -27,7 +26,12 @@ export default function Homepage() {
     }, [])
 
     return (
-        <main className="homepage">
+        <motion.main
+            className="homepage"
+            initial = {{opacity: 0}}
+            animate = {{opacity: 1}}
+            exit = {{opacity: 0}}
+        >
             <Hero />
             <Categories categoryData={data?.categories || []} />
             <section className="section-promote max-content">
@@ -36,6 +40,6 @@ export default function Homepage() {
                 <PromoteThree />
             </section>
             <Tagline />
-        </main>
+        </motion.main>
     )
 }

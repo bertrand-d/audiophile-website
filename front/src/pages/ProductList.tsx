@@ -3,8 +3,9 @@ import ProductSheet from "../components/ProductSheet"
 import Tagline from "../components/Tagline"
 import { IData } from "../utils/Types"
 import { Navigate, useParams } from 'react-router-dom'
+import { motion } from "framer-motion"
 import React, { useEffect, useState } from "react"
-import { BASE_URL, DYNAMIC_URL } from "../utils/env"
+import { DYNAMIC_URL } from "../utils/env"
 
 export default function ProductList() {
 
@@ -26,11 +27,9 @@ export default function ProductList() {
     }
     useEffect(() => {
         fetchJson()
-        console.log("url de base", BASE_URL)
-        console.log("url dynamique", DYNAMIC_URL)
     }, [])
-    
-  
+
+
     if (data?.categories) {
         //sort all element with "new" as true first
         const sortTrueFirst = data?.products.sort((a) => a.new ? -1 : 1)
@@ -45,7 +44,12 @@ export default function ProductList() {
 
         if (isFound) {
             return (
-                <main className="product-list">
+                <motion.main
+                    className="product-list"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
                     <div className="product-list-title-container">
                         <div className="product-list-title max-content">
                             <h1 className="medium-title white">{category}</h1>
@@ -56,7 +60,7 @@ export default function ProductList() {
                             React.Children.toArray(sortTrueFirst.map((product) => {
                                 if (category === product.category) {
                                     return (
-                                        <ProductSheet productData = {product} />
+                                        <ProductSheet productData={product} />
                                     )
                                 }
                             }))
@@ -64,7 +68,7 @@ export default function ProductList() {
                     </div>
                     <Categories categoryData={data?.categories || []} />
                     <Tagline />
-                </main>
+                </motion.main>
             )
         } else {
             return <Navigate to="/*" />

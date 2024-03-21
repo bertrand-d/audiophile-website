@@ -62,6 +62,8 @@ export default function ProductList() {
                                     return (
                                         <ProductSheet productData={product} />
                                     )
+                                } else {
+                                    return null
                                 }
                             }))
                         }

@@ -37,6 +37,7 @@ export default function ProductPage() {
     useEffect(() => {
         fetchJson()
         //when slug change in url, remount component
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug])
 
     //back to previous page
@@ -88,11 +89,11 @@ export default function ProductPage() {
                 </section>
                 <section className="product-page-mosaic">
                     <div className="product-page-mosaic-left">
-                        <img src={IMG_BASE_URL + product.gallery.first.desktop} />
-                        <img src={IMG_BASE_URL + product.gallery.second.desktop} />
+                        <img src={IMG_BASE_URL + product.gallery.first.desktop} alt="product audio alternative" />
+                        <img src={IMG_BASE_URL + product.gallery.second.desktop} alt="product audio alternative" />
                     </div>
                     <div className="product-page-mosaic-right">
-                        <img src={IMG_BASE_URL + product.gallery.third.desktop} />
+                        <img src={IMG_BASE_URL + product.gallery.third.desktop} alt="product audio alternative"/>
                     </div>
                 </section>
                 <section className="product-page-related">
@@ -103,7 +104,7 @@ export default function ProductPage() {
                                 return (
                                     <div className="product-page-related-item">
                                         <div className="product-page-related-item-image">
-                                            <img src={IMG_BASE_URL + other.image.desktop} />
+                                            <img src={IMG_BASE_URL + other.image.desktop} alt="product audio"/>
                                         </div>
                                         <span className="product-page-related-item-name">
                                             {other.name}

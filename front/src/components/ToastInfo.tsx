@@ -1,6 +1,5 @@
 import { ReactComponent as CheckedLogo } from '../assets/icons/checked.svg'
 
-//todo onclose type
 type TProps = {
     show: boolean
 }

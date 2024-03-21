@@ -5,7 +5,6 @@ import { CartContext } from '../context/CartContext'
 import ParseToDecimal from "../utils/ParseToDecimal"
 import { TProduct } from '../utils/Types'
 
-//todo onclose type
 type TProps = {
     show: boolean,
     onClose: React.MouseEventHandler<Element>
@@ -33,7 +32,7 @@ export default function PopupCheckout(props: TProps) {
                                     index === 0 &&
                                     <div className="cart-box-checkout-total-left">
                                         <div className="cart-box-content-list-item">
-                                            <img src={product.image.desktop} className="cart-box-content-list-item-image" />
+                                            <img src={product.image.desktop} className="cart-box-content-list-item-image" alt="product audio" />
                                             <div className="cart-box-content-list-item-content">
                                                 <span className="cart-box-content-list-item-name">{product.name}</span>
                                                 <span className="cart-box-content-list-item-price">$ {ParseToDecimal(product.price)}</span>

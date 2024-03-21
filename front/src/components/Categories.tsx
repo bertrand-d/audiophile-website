@@ -13,7 +13,6 @@ export default function Categories(props: TProps) {
             {
                 props.categoryData.map((category, index) => {
                     return (
-                        //todo react children for key
                         <Link to={`/product-list/${category.name}`} key={index} className="category">
                             <div className="category-content">
                                 <div className="category-picture-container">
